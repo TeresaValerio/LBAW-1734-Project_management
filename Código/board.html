@@ -107,7 +107,7 @@
                                                 <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
                                             </div>
                                         </div>
-                                        <a href="#" data-toggle="modal" data-target="#new-Task-modal">
+                                        <a href="#" data-toggle="modal" data-target="#new-task-modal">
                                             <div class="col-sm-4">
                                                 <div class="thumbnail">
                                                     <span class="glyphicon glyphicon-plus"></span>
@@ -125,7 +125,67 @@
         </div> 
     </div>  
     
-    
+    <!-- Modal New Task -->
+    <div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <!-- Begin # DIV Form -->
+                <div id="div-forms">
+                    <!-- Begin # Login Form -->
+                    <form id="login-form">
+                        <div class="modal-body">
+                            <div id="div-register-msg">
+                                <p>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Name *</span>
+                                </p>
+                            </div>
+                            <input id="task_name" class="form-control" type="text" placeholder="Task Name" required>
+                            
+                            <div id="div-register-msg">
+                                <p>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Description *</span>
+                                </p>
+                            </div>
+                            <input id="task_description" class="form-control" type="text" placeholder="Task Description">
+                            
+                            <div id="div-register-msg">
+                                <p>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Deadline * </span>
+                                </p>
+                            </div>
+                            <input id="task_description" class="form-control" type="text" placeholder="Task Deadline">
+
+                            <div id="div-register-msg">
+                                <p>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Budget </span>
+                                </p>
+                            </div>
+                            <input id="task_description" class="form-control" type="text" placeholder="Task Budget">
+
+                            <p>
+                                <strong>NOTE: Sections marked with * are of mandatory filling.</strong>
+                            </p>
+
+                            
+                        </div>
+                    </form>
+                    <!-- End # Login Form -->
+                </div>
+                <!-- End # DIV Form -->
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
 
 
 
