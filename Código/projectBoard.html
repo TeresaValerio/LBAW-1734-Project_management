@@ -95,7 +95,7 @@
 
                                                 <div>
                                                     <a href="#" data-toggle="modal" data-target="#update-task-modal">
-                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                        <span class="glyphicon glyphicon-pencil"></span>
                                                         <p>
                                                             <strong>Update</strong>
                                                         </p>
@@ -128,9 +128,11 @@
                                                     </p>
                                                 </div>
 
-                                                <div>
-                                                    <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
-                                                </div>
+                                                <a href="#" data-toggle="modal" data-target="#see-more-task-modal">
+                                                    <div>
+                                                            <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
+                                                    </div>
+                                                </a>
                                             </div>
 
                                         </div>
@@ -141,15 +143,15 @@
                                                     <strong>Task</strong>
                                                 </p>
 
-                                                <div>
+                                                <div >
                                                     <a href="#" data-toggle="modal" data-target="#update-task-modal">
-                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                        <span class="glyphicon glyphicon-pencil"></span>
                                                         <p>
                                                             <strong>Update</strong>
                                                         </p>
                                                     </a>
                                                 </div>
-    
+                                                    
                                                 <div class="thumbnail">
                                                     <p>
                                                         <strong>Creator:</strong> Username
@@ -176,9 +178,12 @@
                                                     </p>
                                                 </div>
 
-                                                <div>
-                                                    <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
-                                                </div>
+                                                <a href="#" data-toggle="modal" data-target="#see-more-task-modal">
+                                                    <div>
+                                                            <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
+                                                    </div>
+                                                </a>
+
                                             </div>
                                         </div>
                                         <a href="#" data-toggle="modal" data-target="#new-task-modal">
@@ -341,6 +346,39 @@
                     <!-- End # Login Form -->
                 </div>
                 <!-- End # DIV Form -->
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
+
+
+
+    <!-- Modal See more Task -->
+    <div class="modal fade" id="see-more-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <p><strong>Task Name</strong></p>
+                </div>
+
+                <div class="thumbnail">
+                    <p>
+                        <strong>Updated on </strong> <i>*dd-mm-yyyy*</i> by <i>*Username*</i>
+                    </p>
+                    <p><strong>Changes made:</strong></p>
+                </div>
+
+                <div class="thumbnail">
+                    <p>
+                        <strong>Updated on </strong> <i>*dd-mm-yyyy*</i> by <i>*Username*</i>
+                    </p>
+                    <p><strong>Changes made:</strong></p>
+                </div>
+                
             </div>
         </div>
     </div>
