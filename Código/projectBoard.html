@@ -242,7 +242,7 @@
                                     <span id="text-register-msg">Deadline * </span>
                                 </p>
                             </div>
-                            <input id="task_description" class="form-control" type="text" placeholder="Task Deadline" required>
+                            <input id="task_description" class="form-control" type="date" placeholder="Task Deadline" required>
 
                             <div id="div-register-msg">
                                 <p>
@@ -297,15 +297,15 @@
                             <div id="div-register-msg">
                                 <p>
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                    <span id="text-register-msg">Update's Description</span>
+                                    <span id="text-register-msg"><strong>Update's commentaries *</strong></span>
                                 </p>
                             </div>
-                            <input id="task_update_description" class="form-control" type="text" placeholder="Description" required>
+                            <input id="task_update_commentaries" class="form-control" type="text" placeholder="Commentaries" required>
 
                             <div id="div-register-msg">
                                     <p>
                                         <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                        <span id="text-register-msg">Update Progress</span>
+                                        <span id="text-register-msg"><strong>Update Progress</strong></span>
                                     </p>
                             </div>
                             <select>
@@ -324,14 +324,26 @@
 
                             <div>
                                 <p>
-                                    <strong>NOTE: All sections are of mandatory filling.</strong>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg"><strong>Upload file </strong></span>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-paperclip"></div>
                                 </p>
                             </div>
+                            <form action="upload.php" method="post" enctype="multipart/form-data">
+                                <input type="file" name="fileToUpload" id="fileToUpload">
+                            </form>
 
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox"> Close task
                                 </label>
+                                <p>(A message will be sent to the task's coordinator for approval)</p>
+                            </div>
+
+                            <div>
+                                <p>
+                                    <strong>NOTE: Sections marked with * are of mandatory filling.</strong>
+                                </p>
                             </div>
 
                             <div class="modal-footer">
