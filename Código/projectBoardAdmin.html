@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Vici | Conquer your World</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="CSS/user.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<script src="JS/frontPage.js"></script>-->
+    <style>
+    </style>
+</head>
+
+<body>
+<!-- Static navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="user.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="explore.html">Explore</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-bell"></span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-cog"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="settings.html">Account Settings</a>
+                            </li>
+                            <li>
+                                <a href="index.html">Log Out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/.container-fluid -->
+    </nav>
+    <!-- navbar -->
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container-fluid main-color-bg header-padding">
+            <div class="row">
+                <div class="column-md-10">
+                        <h2>Board Name</h2>
+                </div>
+                <div class="column-md-2">
+    
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header -->
+
+    <!-- Main -->
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                    <div class="user-dashboard">
+                        <h1>Tasks</h1>
+                        <div class="search hidden-xs hidden-sm">
+                                <input type="text" placeholder="Search" id="search">
+                            </div>
+                            
+                            <div class="row">
+                                <div class="well">
+                                    <div class="row text-center">
+                                            <div class="col-sm-4">
+                                                <div class="thumbnail">
+                                                    <p>
+                                                        <strong>Task</strong>
+                                                    </p>
+    
+                                                    <div>
+                                                        <a href="#" data-toggle="modal" data-target="#schedule-meeting-modal">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                            <p>
+                                                                <strong>Schedule meeting</strong>
+                                                            </p>
+                                                        </a>
+                                                    </div>
+        
+                                                    <div >
+                                                        <a href="#" data-toggle="modal" data-target="#update-task-modal">
+                                                            <span class="glyphicon glyphicon-pencil"></span>
+                                                            <p>
+                                                                <strong>Update</strong>
+                                                            </p>
+                                                        </a>
+                                                    </div>
+                                                        
+                                                    <div class="thumbnail">
+                                                        <p>
+                                                            <strong>Creator:</strong> Username
+                                                        </p>
+                                                    </div>
+                                                    <div class="thumbnail">
+                                                        <p>
+                                                            <strong>Description:</strong> bla bla bla
+                                                        </p>
+                                                    </div>
+                                                    <div class="thumbnail">
+                                                        <p>
+                                                            <strong>Working on this task:</strong> Username1, Username2...
+                                                            <div>
+                                                                <a href="#" data-toggle="modal" data-target="#update-team-modal">
+                                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                                    <p>
+                                                                        <strong>Edit</strong>
+                                                                    </p>
+                                                                </a>
+                                                            </div>
+                                                        </p>
+                                                    </div>
+                                                    <div class="thumbnail">
+                                                        <p>
+                                                            <strong>Deadline:</strong> dd-mm-yyyy
+                                                            <div>
+                                                                <a href="#" data-toggle="modal" data-target="#update-deadline-modal">
+                                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                                    <p>
+                                                                        <strong>Edit</strong>
+                                                                    </p>
+                                                                </a>
+                                                            </div>
+                                                        </p>
+                                                    </div>
+                                                    <div class="thumbnail">
+                                                        <p>
+                                                            <strong>Progress:</strong> xx %
+                                                        </p>
+                                                    </div>
+        
+                                                    <a href="#" data-toggle="modal" data-target="#see-more-task-modal">
+                                                        <div>
+                                                                <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
+                                                        </div>
+                                                    </a>
+    
+                                                </div>
+                                            </div>
+                                        
+                                        <div class="col-sm-4">
+                                            <div class="thumbnail">
+                                                <p>
+                                                    <strong>Task</strong>
+                                                </p>
+
+                                                <div>
+                                                    <a href="#" data-toggle="modal" data-target="#schedule-meeting-modal">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                        <p>
+                                                            <strong>Schedule meeting</strong>
+                                                        </p>
+                                                    </a>
+                                                </div>
+
+                                                <div >
+                                                    <a href="#" data-toggle="modal" data-target="#update-task-modal">
+                                                        <span class="glyphicon glyphicon-pencil"></span>
+                                                        <p>
+                                                            <strong>Update</strong>
+                                                        </p>
+                                                    </a>
+                                                </div>
+                                                    
+                                                <div class="thumbnail">
+                                                    <p>
+                                                        <strong>Creator:</strong> Username
+                                                    </p>
+                                                </div>
+                                                <div class="thumbnail">
+                                                    <p>
+                                                        <strong>Description:</strong> bla bla bla
+                                                    </p>
+                                                </div>
+                                                <div class="thumbnail">
+                                                    <p>
+                                                        <strong>Working on this task:</strong> Username1, Username2...
+                                                        <div>
+                                                            <a href="#" data-toggle="modal" data-target="#update-team-modal">
+                                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                                <p>
+                                                                    <strong>Edit</strong>
+                                                                </p>
+                                                            </a>
+                                                        </div>
+                                                    </p>
+                                                </div>
+                                                <div class="thumbnail">
+                                                    <p>
+                                                        <strong>Deadline:</strong> dd-mm-yyyy
+                                                        <div>
+                                                            <a href="#" data-toggle="modal" data-target="#update-deadline-modal">
+                                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                                <p>
+                                                                    <strong>Edit</strong>
+                                                                </p>
+                                                            </a>
+                                                        </div>
+                                                    </p>
+                                                </div>
+                                                <div class="thumbnail">
+                                                    <p>
+                                                        <strong>Progress:</strong> xx %
+                                                    </p>
+                                                </div>
+
+                                                <a href="#" data-toggle="modal" data-target="#see-more-task-modal">
+                                                    <div>
+                                                            <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
+                                                    </div>
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                        <a href="#" data-toggle="modal" data-target="#new-task-modal">
+                                            <div class="col-sm-4">
+                                                <div class="thumbnail">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                    <p>
+                                                        <strong>New Task</strong>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+        </div> 
+    </div>  
+    
+    <!-- Modal New Task -->
+    <div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <p>New Task</p>
+                </div>
+                <!-- Begin # DIV Form -->
+                <div id="div-forms">
+                    <!-- Begin # Login Form -->
+                    <form id="login-form">
+                        <div class="modal-body">
+                            <div id="div-register-msg">
+                                <p>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Name *</span>
+                                </p>
+                            </div>
+                            <input id="task_name" class="form-control" type="text" placeholder="Task Name" required>
+                            
+                            <div id="div-register-msg">
+                                <p>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Description *</span>
+                                </p>
+                            </div>
+                            <input id="task_description" class="form-control" type="text" placeholder="Task Description" required>
+                            
+                            <div id="div-register-msg">
+                                <p>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Deadline * </span>
+                                </p>
+                            </div>
+                            <input id="task_description" class="form-control" type="date" placeholder="Task Deadline" required>
+
+                            <div id="div-register-msg">
+                                <p>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Budget </span>
+                                </p>
+                            </div>
+                            <input id="task_description" class="form-control" type="text" placeholder="Task Budget" >
+
+                            <div>
+                                <p>
+                                    <strong>NOTE: Sections marked with * are of mandatory filling.</strong>
+                                </p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                    </form>
+                    <!-- End # Login Form -->
+                </div>
+                <!-- End # DIV Form -->
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
+
+
+
+    <!-- Modal Update Task -->
+    <div class="modal fade" id="update-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <p><strong>Update <i>*Task name*</i></strong></p>
+                </div>
+                <!-- Begin # DIV Form -->
+                <div id="div-forms">
+                    <!-- Begin # Login Form -->
+                    <form id="login-form">
+                        <div class="modal-body">
+                            
+                            <div id="div-register-msg">
+                                <p>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg"><strong>Update's commentaries *</strong></span>
+                                </p>
+                            </div>
+                            <input id="task_update_commentaries" class="form-control" type="text" placeholder="Commentaries" required>
+
+                            <div id="div-register-msg">
+                                    <p>
+                                        <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                        <span id="text-register-msg"><strong>Update Progress</strong></span>
+                                    </p>
+                            </div>
+                            <select>
+                                <option value="0">0 %</option>
+                                <option value="10">10 %</option>
+                                <option value="20">20 %</option>
+                                <option value="30">30 %</option>
+                                <option value="40">40 %</option>
+                                <option value="50">50 %</option>
+                                <option value="60">60 %</option>
+                                <option value="70">70 %</option>
+                                <option value="80">80 %</option>
+                                <option value="90">90 %</option>
+                                <option value="100">100 %</option>
+                            </select>
+
+                            <div>
+                                <p>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg"><strong>Upload file </strong></span>
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-paperclip"></div>
+                                </p>
+                            </div>
+                            <form action="upload.php" method="post" enctype="multipart/form-data">
+                                <input type="file" name="fileToUpload" id="fileToUpload">
+                            </form>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Close task
+                                </label>
+                                <p>(A message will be sent to the task's coordinator for approval)</p>
+                            </div>
+
+                            <div>
+                                <p>
+                                    <strong>NOTE: Sections marked with * are of mandatory filling.</strong>
+                                </p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form>
+                    <!-- End # Login Form -->
+                </div>
+                <!-- End # DIV Form -->
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
+
+
+
+    <!-- Modal See more Task -->
+    <div class="modal fade" id="see-more-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <p><strong>Task Name</strong></p>
+                </div>
+
+                <div class="thumbnail">
+                    <p>
+                        <div id="icon-register-msg" class="glyphicon glyphicon-pushpin"></div>
+                        <strong>Updated on </strong> <i>*dd-mm-yyyy*</i> by <i>*Username*</i>
+                    </p>
+                    <p><strong>Changes made:</strong></p>
+                    <p>Progress from xx % to yy %</p>
+                    <p><u>Description: </u>Proident enim sint amet exercitation est aliquip ullamco elit proident ea commodo et pariatur dolore. Laborum
+                            eiusmod nostrud esse elit non occaecat duis est. Quis nisi proident nisi exercitation ut fugiat labore.
+                            Do dolore officia officia cillum irure laborum qui quis nostrud laborum. Aliqua sit aute labore aliqua
+                            nostrud incididunt sunt sunt consequat cillum dolor sint id. In in consequat adipisicing excepteur incididunt.
+                            Nulla esse aliquip mollit est anim duis reprehenderit qui ut labore.</p>
+                </div>
+
+                <div class="thumbnail">
+                    <p>
+                        <div id="icon-register-msg" class="glyphicon glyphicon-pushpin"></div>
+                        <strong>Updated on </strong> <i>*dd-mm-yyyy*</i> by <i>*Username*</i>
+                    </p>
+                    <p><strong>Changes made:</strong></p>
+                    <p>Progress from xx % to yy %</p>
+                    <p><u>Description: </u>Aliqua sit aute labore aliqua
+                            nostrud incididunt sunt sunt consequat cillum dolor sint id. In in consequat adipisicing excepteur incididunt.
+                            Nulla esse aliquip mollit est anim duis reprehenderit qui ut labore.</p>
+                </div>
+
+                <div class="thumbnail">
+                    <p>
+                        <div id="icon-register-msg" class="glyphicon glyphicon-pushpin"></div>    
+                        <strong>Updated on </strong> <i>*dd-mm-yyyy*</i> by <i>*Username*</i>
+                    </p>
+                    <p><strong>Changes made:</strong></p>
+                    <p>Progress from xx % to yy %</p>
+                    <p><u>Description: </u>Proident enim sint amet exercitation est aliquip ullamco elit proident ea commodo et pariatur dolore. Laborum
+                            eiusmod nostrud esse elit non occaecat duis est. </p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
+
+
+    <!-- Modal Update Team Task -->
+    <div class="modal fade" id="update-team-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <p><strong>*Task Name* Team</strong></p>
+                </div>
+
+                <div class="thumbnail">
+                    <p>
+                        <div id="icon-register-msg" class="glyphicon glyphicon-user"></div>
+                        <strong>Username 1</strong> - Working on this project since <i>*dd-mm-yyyy*</i>
+                    </p>
+                    <p>Completed tasks:</p>
+                    <p>Tasks working on:</p> 
+                    <p>
+                        <div id="icon-register-msg" class="glyphicon glyphicon-remove"></div>
+                            <button id="remove_user_from_task_btn" type="button" class="btn btn-link">Remove user</button>
+                        </a>
+                    </p>           
+                </div>
+
+                <div class="thumbnail">
+                    <p>
+                        <div id="icon-register-msg" class="glyphicon glyphicon-user"></div>
+                        <strong>Username 2</strong> - Working on this project since <i>*dd-mm-yyyy*</i>
+                    </p>
+                    <p>Completed tasks:</p>
+                    <p>Tasks working on:</p> 
+                    <p>
+                        <div id="icon-register-msg" class="glyphicon glyphicon-remove"></div>
+                            <button id="remove_user_from_task_btn" type="button" class="btn btn-link">Remove user</button>
+                        </a>
+                    </p>           
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
+
+
+    <!-- -Update deadline Task -->
+    <div class="modal fade" id="update-deadline-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <p><strong>*Task Name* Deadline</strong></p>
+                </div>
+
+                <div class="thumbnail">
+                    <p><strong>Current deadline set to: </strong><i>dd-mm-yyyy</i></p> 
+                    <p>Change to:</p>
+                    <input id="task_deadline" class="form-control" type="date" placeholder="Task Deadline" required>
+                </div>
+
+                <div class="modal-footer">
+                    <div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Apply changes</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
+
+
+    <!-- -Update deadline Task -->
+    <div class="modal fade" id="schedule-meeting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <p><strong>*Task Name*</strong></p>
+                </div>
+
+                <div>
+                    <p><strong>Schedule meeting for: 
+                    <input id="meeting_date" class="form-control" type="date" placeholder="Meeting date" required>
+                </div>
+
+                <div class="modal-footer">
+                    <div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Confirm</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
+
+
+
+</body>
