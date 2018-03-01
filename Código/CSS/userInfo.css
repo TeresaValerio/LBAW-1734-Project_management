@@ -1,55 +1,63 @@
 /*Standard Page Code */
+
 .navbar {
     margin-bottom: 0;
     z-index: 9999;
     border: 0;
     border-radius: 0;
-  }
-  
-  .header-padding {
-    padding: 50px 0px 10px 40px;
-  }
-  
-  .main-color-bg {
+}
+
+.main-color-bg {
     background-color: #7ABED3;
     color: #FFF;
-  }
-  
-  .modal-backdrop {
+}
+
+.header {
+    padding: 50px 0px 0px 0px;
+}
+
+.breadcrumb {background: #7ABED3; border: 0px solid rgba(245, 245, 245, 1); border-radius: 0px; display: block;}
+.breadcrumb li {font-size: 20px;}
+.breadcrumb a {color: rgba(255, 255, 255, 1);}
+.breadcrumb a:hover {color: rgb(224, 224, 224);}
+.breadcrumb>.active {color: rgba(255, 255, 255, 1);}
+.breadcrumb>li+li:before {color: rgba(255, 255, 255, 1); content: "\003E\00a0";}
+
+.modal-backdrop {
     z-index: 100000 !important;
-  }
-  
-  .modal {
+}
+
+.modal {
     z-index: 100001 !important;
-  }
-  
-  #navigation {
+}
+
+#navigation {
     background: #19191a;
-  }
-  
-  #navigation {
+}
+
+#navigation {
     padding: 0;
-  }
-  
-  .display-table {
+}
+
+.display-table {
     display: table;
     padding: 0;
     height: 100%;
     width: 100%;
-  }
-  
-  .display-table-row {
+}
+
+.display-table-row {
     display: table-row;
     height: 100%
-  }
-  
-  .display-table-cell {
+}
+
+.display-table-cell {
     display: table-cell;
     float: none;
-    height: 100% ;
-  }
-  
-  .navi a {
+    height: 100%;
+}
+
+.navi a {
     border-bottom: 1px solid #19191a;
     border-top: 1px solid #19191a;
     color: #ffffff;
@@ -58,26 +66,27 @@
     font-weight: 500;
     padding: 28px 20px;
     text-decoration: none;
-  }
-  
-  .navi i {
+}
+
+.navi i {
     margin-right: 15px;
     color: #7ABED3;
-  }
-  
-  .navi .active a {
+}
+
+.navi .active a {
     background: #19191a;
     border-left: 5px solid #7ABED3;
-  }
-  
-  .navi a:hover {
+}
+
+.navi a:hover {
     background: #19191a none repeat scroll 0 0;
     border-left: 5px solid #7ABED3;
     display: block;
-  }
+}
 
-  /* Profile Pic Code */
-  .profile-pic {
+/* Profile Pic Code */
+
+.profile-pic {
     border-radius: 50%;
     height: 150px;
     width: 150px;
@@ -92,7 +101,7 @@
 }
 
 .profile-pic:hover {
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, .5);
     z-index: 9999;
     color: #fff;
     transition: all .3s ease;
