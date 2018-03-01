@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="CSS/user.css">
+    <link rel="stylesheet" href="CSS/forum.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--<script src="JS/frontPage.js"></script>-->
@@ -82,7 +83,7 @@
             <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
                 <div class="navi">
                     <ul>
-                        <li class="active">
+                        <li>
                             <a href="project.html">
                                 <i class="fa fa-home" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Boards</span>
@@ -106,7 +107,7 @@
                                 <span class="hidden-xs hidden-sm">Calendar</span>
                             </a>
                         </li>
-                        <li>
+                        <li  class="active">
                             <a href="#">
                                 <i class="fa fa-comments" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Forum</span>
@@ -115,9 +116,107 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+            <div class="col-md-10 col-sm-11 display-table-cell v-align" item-width="100">
                 <div class="user-dashboard">
-                    <h1>Project Forum</h1>
+                        <div class="container">
+                                <div class="panel-body">
+                                        <ul class="chat">
+                                            <li class="left clearfix"><span class="chat-img pull-left">
+                                                <img src="img/bolota.jpg" alt="User Avatar" class="img-circle" width="50" height="50" />
+                                            </span>
+                                                <div class="chat-body clearfix">
+                                                    <div class="header">
+                                                        <strong class="primary-font">Sara Gomes</strong> <small class="pull-right text-muted">
+                                                            <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                                    </div>
+                                                    <p>
+                                                        Então Teresa, como estão as colmeias?
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li class="left clearfix"><span class="chat-img pull-left">
+                                                    <img src="img/maya.jpg" alt="User Avatar" class="img-circle" width="50" height="50"/>
+                                                </span>
+                                                    <div class="chat-body clearfix">
+                                                        <div class="header">
+                                                            <strong class="primary-font">Teresa Valério</strong> <small class="pull-right text-muted">
+                                                                <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                                        </div>
+                                                        <p>
+                                                            Nesta altura do ano é difícil, mas a tua estratégia de distribuição de recursos está a ter um ótimo resultado!
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                            <li class="right clearfix"><span class="chat-img pull-right">
+                                                <img src="img/profile.jpg" alt="User Avatar" class="img-circle" width="50" height="50"/>
+                                            </span>
+                                                <div class="chat-body clearfix">
+                                                    <div class="header">
+                                                        <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+                                                        <strong class="pull-right primary-font">Inês Gonçalves</strong>
+                                                    </div>
+                                                    <p align="right">
+                                                        Acham necessário marcar uma reunião para fazer uma revisão do mês?
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li class="left clearfix"><span class="chat-img pull-left">
+                                                <img src="img/bolota.jpg" alt="User Avatar" class="img-circle" width="50" height="50"/>
+                                            </span>
+                                                <div class="chat-body clearfix">
+                                                    <div class="header">
+                                                        <strong class="primary-font">Sara Gomes</strong> <small class="pull-right text-muted">
+                                                            <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+                                                    </div>
+                                                    <p>
+                                                        É melhor, para que possamos estar todos ao corrente da situação. É a melhor maneira de motivar a equipa!
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li class="right clearfix"><span class="chat-img pull-right">
+                                                <img src="img/profile.jpg" alt="User Avatar" class="img-circle" width="50" height="50"/>
+                                            </span>
+                                                <div class="chat-body clearfix">
+                                                    <div class="header">
+                                                        <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+                                                        <strong class="pull-right primary-font">Inês Gonçalves</strong>
+                                                    </div>
+                                                    <p align="right">
+                                                        Ok, vou marcar agora mesmo!
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li class="left clearfix"><span class="chat-img pull-left">
+                                                    <img src="img/maya.jpg" alt="User Avatar" class="img-circle" width="50" height="50"/>
+                                                </span>
+                                                    <div class="chat-body clearfix">
+                                                        <div class="header">
+                                                            <strong class="primary-font">Teresa Valério</strong> <small class="pull-right text-muted">
+                                                                <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                                        </div>
+                                                        <p>
+                                                            Ótimo!
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="input-group">
+                                            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-warning btn-sm" id="btn-chat">
+                                                    Send</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                                            
                 </div>
             </div>
         </div>
