@@ -1,0 +1,118 @@
+/*Standard Page Code */
+.navbar {
+    margin-bottom: 0;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 3px;
+    border-radius: 0;
+  }
+  
+  .header-padding {
+    padding: 50px 0px 10px 40px;
+  }
+  
+  .main-color-bg {
+    background-color: #7ABED3;
+    color: #FFF;
+  }
+  
+  .modal-backdrop {
+    z-index: 100000 !important;
+  }
+  
+  .modal {
+    z-index: 100001 !important;
+  }
+  
+  #navigation {
+    background: #19191a;
+  }
+  
+  #navigation {
+    padding: 0;
+  }
+  
+  .display-table {
+    display: table;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .display-table-row {
+    display: table-row;
+    height: 100%;
+  }
+  
+  .display-table-cell {
+    display: table-cell;
+    float: none;
+    height: 100% ;
+  }
+  
+  .navi a {
+    border-bottom: 1px solid #19191a;
+    border-top: 1px solid #19191a;
+    color: #ffffff;
+    display: block;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 28px 20px;
+    text-decoration: none;
+  }
+  
+  .navi i {
+    margin-right: 15px;
+    color: #7ABED3;
+  }
+  
+  .navi .active a {
+    background: #19191a;
+    border-left: 5px solid #7ABED3;
+  }
+  
+  .navi a:hover {
+    background: #19191a none repeat scroll 0 0;
+    border-left: 5px solid #7ABED3;
+    display: block;
+  }
+  
+  .search input {
+    border: none;
+    font-size: 15px;
+    padding: 15px 9px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0) url("../images/search.png") no-repeat scroll 99% 12px;
+    color: #8492af;
+  }
+
+  .profile-pic {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    vertical-align: middle;
+    text-align: center;
+    color: transparent;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+/* Profile Pic Code */
+.profile-pic:hover {
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+.profile-pic span {
+    display: inline-block;
+    padding-top: 4.5em;
+    padding-bottom: 4.5em;
+}
