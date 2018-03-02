@@ -100,10 +100,14 @@
             </div>
             <div class="col-md-10 col-sm-11 display-table-cell v-align">
                 <div class="user-dashboard">
-                    <h1>My Projects</h1>
-                    <div class="search hidden-xs hidden-sm">
-                        <input type="text" placeholder="Search" id="search">
+                    <!-- /input-group -->
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search projects...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Search</button>
+                        </span>
                     </div>
+                    <!-- /input-group -->
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12 gutter">
                             <div class="created">
@@ -113,62 +117,60 @@
                     </div>
                     <div class="row">
                         <div class="well">
-                            <div class="row text-center">
-                                <div class="col-sm-4">
-                                    <div class="thumbnail">
-                                        <p>
-                                            <strong>Project</strong>
-                                        </p>
-                                        <p>Proident enim sint amet exercitation est aliquip ullamco elit proident ea commodo.</p>
-                                    </div>
-                                </div>
-                                <a href="project.html">
-                                    <div class="col-sm-4">
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Project</strong>
-                                            </p>
-                                            <p>Proident enim sint amet exercitation est aliquip ullamco elit proident ea commodo</p>
-                                        </div>
-                                    </div>
-                                </a>
+                            <div class="row">
                                 <a href="#" data-toggle="modal" data-target="#new-project-modal">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-2">
                                         <div class="thumbnail">
                                             <span class="glyphicon glyphicon-plus"></span>
-                                            <p>
-                                                <strong>New Project</strong>
-                                            </p>
+                                            <strong>Create Project</strong>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-7 col-sm-7 col-xs-12 gutter">
-                            <div class="working on">
-                                <h2>Working on</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="well">
                             <div class="row text-center">
                                 <div class="col-sm-4">
                                     <div class="thumbnail">
-                                        <p>
-                                            <strong>Project</strong>
-                                        </p>
-                                        <p>Proident enim sint amet exercitation est aliquip ullamco elit proident ea commodo.</p>
+                                        <a href="project.html">
+                                            <img src="https://cdn2.f-cdn.com/contestentries/951618/21545865/58a20f1ed47c4_thumb900.jpg" alt="Tuna for the world" style="height:150px;"
+                                            />
+                                        </a>
+                                        <h4>
+                                            <strong>Tuna FTW</strong>
+                                        </h4>
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="thumbnail">
-                                        <p>
-                                            <strong>Project</strong>
-                                        </p>
-                                        <p>Proident enim sint amet exercitation est aliquip ullamco elit proident ea commodo</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7 col-sm-7 col-xs-12 gutter">
+                                    <div class="working on">
+                                        <h2>Working on</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="well">
+                                    <div class="row text-center">
+                                        <div class="col-sm-4">
+                                            <div class="thumbnail">
+                                                <a href="project.html">
+                                                    <img src="https://thumbs.dreamstime.com/b/best-bee-hive-logo-design-84149860.jpg" alt="HIVE" style="height:150px" />
+                                                </a>
+                                                <h4>
+                                                    <strong>HIVE</strong>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="thumbnail">
+                                                <a href="project.html">
+                                                    <img src="https://i.pinimg.com/originals/61/08/5b/61085bf8f325fe5e0a99b4259564e44a.jpg" alt="Acorn" style="height:150px"
+                                                    />
+                                                </a>
+                                                <h4>
+                                                    <strong>Acorn</strong>
+                                                </h4>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -177,49 +179,47 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
 
-    <!-- Modal New Project -->
-    <div class="modal fade" id="new-project-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-        style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" align="center">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                </div>
-                <!-- Begin # DIV Form -->
-                <div id="div-forms">
-                    <!-- Begin # Login Form -->
-                    <form id="login-form">
-                        <div class="modal-body">
-                            <div id="div-register-msg">
-                                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Project Name</span>
+        <!-- Modal New Project -->
+        <div class="modal fade" id="new-project-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+            style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" align="center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <!-- Begin # DIV Form -->
+                    <div id="div-forms">
+                        <!-- Begin # Login Form -->
+                        <form id="login-form">
+                            <div class="modal-body">
+                                <div id="div-register-msg">
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Project Name</span>
+                                </div>
+                                <input id="login_email" class="form-control" type="text" placeholder="Project Name" required>
+                                <div id="div-register-msg">
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Project Description</span>
+                                </div>
+                                <input id="login_password" class="form-control" type="text" placeholder="Project Description">
                             </div>
-                            <input id="login_email" class="form-control" type="text" placeholder="Project Name" required>
-                            <div id="div-register-msg">
-                                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Project Description</span>
-                            </div>
-                            <input id="login_password" class="form-control" type="text" placeholder="Project Description">
-                        </div>
-                    </form>
-                    <!-- End # Login Form -->
+                        </form>
+                        <!-- End # Login Form -->
+                    </div>
+                    <!-- End # DIV Form -->
                 </div>
-                <!-- End # DIV Form -->
             </div>
         </div>
-    </div>
-    <!-- END # MODAL LOGIN -->
+        <!-- END # MODAL LOGIN -->
 
-    <!-- Bootstrap core JavaScript
+        <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="bootstrap.min.js"></script>
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="bootstrap.min.js"></script>
 </body>
 
 </html>
