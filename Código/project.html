@@ -65,7 +65,7 @@
     <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb">
             <li class="active">
-                Project Name
+                HIVE
             </li>
         </ol>
     </div>
@@ -112,89 +112,85 @@
             </div>
             <div class="col-md-10 col-sm-11 display-table-cell v-align">
                 <div class="user-dashboard">
-                    <h1>My Boards</h1>
-                    <div class="search hidden-xs hidden-sm">
-                        <input type="text" placeholder="Search" id="search">
+                    <!-- /input-group -->
+                    <div class="input-group" style="padding-bottom:10px">
+                        <input type="text" class="form-control" placeholder="Search boards...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Search</button>
+                        </span>
                     </div>
-
+                    <!-- /input-group -->
                     <div class="row">
                         <div class="well">
                             <div class="row text-center">
-                                <div class="col-sm-4">
-                                    <div class="thumbnail">
-                                        <p>
-                                            <strong>Board</strong>
-                                        </p>
-                                        <p>
-                                            Check some recent activity on this board:
-                                        </p>
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Username</strong> added
-                                                <i>*task*</i> to
-                                                <i>*board*</i> on dd-mm-yyyy.
-                                            </p>
+                                <div class="col-sm-4" >
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <div class="card-header">
+                                                <h3>
+                                                    <strong>Marketing</strong>
+                                                </h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <h4>
+                                                    Recent activity:
+                                                </h4>
+                                                <div>
+                                                    <p>
+                                                        <strong>Inês Gonçalves</strong> joined the board on 01-03-2018.
+                                                    </p>
+                                                </div>
+                                                <hr />
+                                                <a href="projectBoard.html">
+                                                    <button id="see_more_tasks_btn" type="button" class="btn btn-link">See more</button>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Username</strong> added
-                                                <i>*task*</i> to
-                                                <i>*board*</i> on dd-mm-yyyy.
-                                            </p>
-                                        </div>
-                                        <a href="projectBoard.html">
-                                            <button id="see_more_tasks_btn" type="button" class="btn btn-link">See more</button>
-                                        </a>
                                     </div>
                                 </div>
-
                                 <div class="col-sm-4">
-                                    <div class="thumbnail">
-                                        <p>
-                                            <strong>Board</strong>
-                                        </p>
-                                        <p>
-                                            Check some recent activity on this board:
-                                        </p>
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Username</strong> added
-                                                <i>*task*</i> to
-                                                <i>*board*</i> on dd-mm-yyyy.
-                                            </p>
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <div class="card-header">
+                                                <h3>
+                                                    <strong>Gathering</strong>
+                                                </h3>
+                                                <p>
+                                                    Team responsible for purchases
+                                                </p>
+                                            </div>
+                                            <div class="card-body">
+                                                <h4>
+                                                    Recent activity:
+                                                </h4>
+                                                <div>
+                                                    <p>
+                                                        <strong>Teresa Valério</strong> added the task
+                                                        <em>Buy honey</em> on 28-02-2018.
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p>
+                                                        <strong>Sara Gomes</strong> completed the task
+                                                        <em>Inventory</em> on 27-02-2018.
+                                                    </p>
+                                                </div>
+                                                <hr />
+                                                <a href="projectBoard.html">
+                                                    <button id="see_more_tasks_btn" type="button" class="btn btn-link">See more</button>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Username</strong> added
-                                                <i>*task*</i> to
-                                                <i>*board*</i> on dd-mm-yyyy.
-                                            </p>
-                                        </div>
-                                        <a href="projectBoard.html">
-                                            <button id="see_more_tasks_btn" type="button" class="btn btn-link">See more</button>
-                                        </a>
                                     </div>
                                 </div>
-                                <a href="#" data-toggle="modal" data-target="#new-project-modal">
-                                    <div class="col-sm-4">
-                                        <div class="thumbnail">
-                                            <span class="glyphicon glyphicon-plus"></span>
-                                            <p>
-                                                <strong>New Board</strong>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
-    </div>
+
 
     <!-- Modal New Project -->
     <div class="modal fade" id="new-project-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
@@ -203,24 +199,38 @@
             <div class="modal-content">
                 <div class="modal-header" align="center">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span style="color: #fff" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
+                    <h4>
+                        Create Board
+                    </h4>
                 </div>
                 <!-- Begin # DIV Form -->
                 <div id="div-forms">
                     <!-- Begin # Login Form -->
                     <form id="login-form">
                         <div class="modal-body">
-                            <div id="div-register-msg">
+                            <div style="padding-bottom:10px" id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Project Name</span>
+                                <span id="text-register-msg">Board Name*</span>
                             </div>
-                            <input id="login_email" class="form-control" type="text" placeholder="Project Name" required>
-                            <div id="div-register-msg">
+                            <div style="padding-bottom:20px">
+                                <input id="login_email" class="form-control" type="text" placeholder="Project Name" required>
+                            </div>
+                            <div style="padding-bottom:10px" id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Project Description</span>
+                                <span id="text-register-msg">Board Description</span>
                             </div>
-                            <input id="login_password" class="form-control" type="text" placeholder="Project Description">
+                            <div style="padding-bottom:20px">
+                                <input id="login_password" class="form-control" type="text" placeholder="Project Description">
+                            </div>
+                            <div style="padding-bottom:10px" id="div-register-msg">
+                                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                <span id="text-register-msg">Add Team Members</span>
+                            </div>
+                            <div style="padding-bottom:20px">
+                                <input id="login_password" class="form-control" type="text" placeholder="Project Description">
+                            </div>
                         </div>
                     </form>
                     <!-- End # Login Form -->
