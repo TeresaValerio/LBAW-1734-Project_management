@@ -124,14 +124,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-top:20px">
                 <div class="col-md-4 col-sm-3 display-table-cell v-align">
-                    <canvas id="pieChart" style="max-width: 300px; padding: 50px;"></canvas>
-                    <h4 align="center">Time Spent on Projects</h4>
+                    <h4 align="center">Time spent on boards</h4>
+                    <canvas id="pieChart" style="max-width: 250px; padding: 0px;"></canvas>
                 </div>
                 <div class="col-md-8 col-sm-9 display-table-cell v-align">
-                    <canvas id="myChart" style="max-width: 1000px; padding: 50px;"></canvas>
-                    <h4 align="center">Completed Tasks by Project</h4>
+                    <h4 align="center">Tasks created in each board</h4>
+                    <canvas id="myChart" style="max-width: 900px; padding: 0px;"></canvas>
                 </div>
             </div>
         </div>
@@ -150,11 +150,11 @@
         var myPieChart = new Chart(ctxP, {
             type: 'pie',
             data: {
-                labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+                labels: ["ACORN", "Tuna FTW","Hive"],
                 datasets: [{
-                    data: [300, 50, 100, 40, 120],
-                    backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-                    hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+                    data: [300, 50, 100],
+                    backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C"],
+                    hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870"]
                 }]
             },
             options: {
@@ -168,10 +168,10 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                labels:  ["ACORN", "Tuna FTW","Hive"],
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: '# of Tasks',
+                    data: [12, 19, 3,],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
