@@ -116,11 +116,14 @@
             </div>
             <div class="col-md-10 col-sm-11 display-table-cell v-align">
                 <div class="user-dashboard">
-                    <h1>Project Team</h1>
-                    <div class="search hidden-xs hidden-sm">
-                        <input type="text" placeholder="Search" id="search">
+                    <!-- /input-group -->
+                    <div class="input-group" style="padding-bottom:10px">
+                        <input type="text" class="form-control" placeholder="Search workers...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Search</button>
+                        </span>
                     </div>
-
+                    <!-- /input-group -->
                     <div class="row">
                         <div class="well">
                             <div class="row">
@@ -134,50 +137,79 @@
                                 </a>
                             </div>
                             <div class="row ">
-                                <div class="col-sm-4">
-                                    <div class="thumbnail">
-                                        <img src="img/profile.jpg" class="img-circle" alt="User Picture" style="float:left;width:90px;height:90px;">
-                                        <p>
-                                            <strong>Inês Gonçalves</strong>
-                                        </p>
-                                        <p>
-                                            <strong>Username:</strong>m.ines.ggoncalves</p>
-                                        <p>
-                                            <strong>Email:</strong>m.ines.ggoncalves@gmail.com</p>
-
+                                <div class="col-sm-3">
+                                    <div class="card">
+                                        <div class="card-content" align="center">
+                                            <div class="card-header">
+                                                <h4>
+                                                    <strong>Inês Gonçalves</strong>
+                                                </h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <img src="img/profile.jpg" class="img-circle" alt="User Picture" style="padding: px; width:80px;height:80px;">
+                                                <hr />
+                                                <p>
+                                                    <strong>Username:</strong>
+                                                    <p>m.ines.ggoncalves</p>
+                                                    <p>
+                                                        <strong>Email:</strong>
+                                                    </p>
+                                                    <p>m.ines.ggoncalves@gmail.com</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-
-                                <div class="col-sm-4">
-                                    <div class="thumbnail">
-                                        <img src="img/maya.jpg" class="img-circle" alt="User Picture" style="float:left;width:90px;height:90px;">
-                                        <p>
-                                            <strong>Teresa Valério</strong>
-                                        </p>
-                                        <p>
-                                            <strong>Username:</strong>teresa.gsvalerio</p>
-                                        <p>
-                                            <a href="#">
-                                                <span class="glyphicon glyphicon-envelope"></span>
-                                                <strong>Ask for email</strong>
-                                            </a>
-                                        </p>
-
+                                <div class="col-sm-3">
+                                    <div class="card">
+                                        <div class="card-content" align="center">
+                                            <div class="card-header">
+                                                <h4>
+                                                    <strong>Teresa Valério</strong>
+                                                </h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <img src="img/maya.jpg" class="img-circle" alt="User Picture" style="padding: px; width:80px;height:80px;">
+                                                <hr />
+                                                <p>
+                                                    <strong>Username: </strong>
+                                                    <p>teresa.gsvalerio</p>
+                                                    <p>
+                                                        <strong>Email: </strong>
+                                                    </p>
+                                                    <p>
+                                                        This user does not have a public email address
+                                                    </p>
+                                                    <a href="#">
+                                                        <span class="glyphicon glyphicon-envelope"></span>
+                                                        <strong>Ask for email</strong>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="col-sm-4">
-                                    <div class="thumbnail">
-                                        <img src="img/bolota.jpg" class="img-circle" alt="User Picture" style="float:left;width:90px;height:90px;">
-                                        <p>
-                                            <strong>Sara Gomes</strong>
-                                        </p>
-                                        <p>
-                                            <strong>Username:</strong>saraggomes26</p>
-                                        <p>
-                                            <strong>Email:</strong>saraggomes@gmail.com</p>
-
+                                <div class="row ">
+                                    <div class="col-sm-3">
+                                        <div class="card">
+                                            <div class="card-content" align="center">
+                                                <div class="card-header">
+                                                    <h4>
+                                                        <strong>Sara Gomes</strong>
+                                                    </h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <img src="img/bolota.jpg" class="img-circle" alt="User Picture" style="padding: px; width:80px;height:80px;">
+                                                    <hr />
+                                                    <p>
+                                                        <strong>Username:</strong>
+                                                        <p>saraggomes26</p>
+                                                        <p>
+                                                            <strong>Email:</strong>
+                                                        </p>
+                                                        <p>saraggomes@gmail.com / up20140394@fe.up.pt</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -186,15 +218,14 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
 
 
-    <!-- Bootstrap core JavaScript
+
+        <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="bootstrap.min.js"></script>
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="bootstrap.min.js"></script>
 </body>
 
 </html>
