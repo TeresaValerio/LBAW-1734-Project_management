@@ -117,25 +117,33 @@
                 <div class="col-md-10 col-sm-11 display-table-cell v-align">
                     <div class="col-md-2 col-sm-3 display-table-cell v-align">
                         <a href="#" class="profile-pic">
-                            <div class="profile-pic" style="background-image: url(img/bolota.jpg)">
+                            <div class="profile-pic" style="background-image: url(img/profile.jpg)">
                                 <span class="glyphicon glyphicon-camera"></span>
                                 <span>Change Image</span>
                             </div>
                         </a>
                     </div>
                     <div class="col-md-10 col-sm-9 display-table-cell v-align">
-                        <h1>Project Name</h1>
+                        <h1>ACORN</h1>
+                    </div>
+                    <div class="col-md-10 col-sm-9 display-table-cell v-align">
+                        <i class="fa fa-smile-o" aria-hidden="true" style="font-size:60px;color:green"></i>
+                        <h5 align="center">12 tasks successfully completed!</h5>
+                    </div>
+                    <div class="col-md-10 col-sm-9 display-table-cell v-align">
+                        <i class="fa fa-frown-o" aria-hidden="true" style="font-size:60px;color:red"></i>
+                        <h5 align="center">1 task completed afted deadline</h5>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 col-sm-3 display-table-cell v-align">
+                    <h4 align="center">Time spent on boards</h4>
                     <canvas id="pieChart" style="max-width: 300px; padding: 50px;"></canvas>
-                    <h4 align="center">Time Spent on Tasks</h4>
                 </div>
                 <div class="col-md-8 col-sm-9 display-table-cell v-align">
+                    <h4 align="center">Workers involved in each board</h4>
                     <canvas id="myChart" style="max-width: 1000px; padding: 50px;"></canvas>
-                    <h4 align="center">User Activity</h4>
                 </div>
             </div>
         </div>
@@ -156,9 +164,9 @@
         var myPieChart = new Chart(ctxP, {
             type: 'pie',
             data: {
-                labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+                labels: ["Collect nuts", "Field recognition", "Nuts storage", "Others"],
                 datasets: [{
-                    data: [300, 50, 100, 40, 120],
+                    data: [30, 70, 60, 100],
                     backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
                     hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
                 }]
