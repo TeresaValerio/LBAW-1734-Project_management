@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Vici | Conquer your World</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="CSS/user.css">
+    <link rel="stylesheet" href="CSS/administration.css">
+    <script src="JS/administration.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<script src="JS/frontPage.js"></script>-->
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- Static navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="img/navbarLogo.png" height="30" alt="Vici">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="user.html">Inês Gonçalves</a>
+                    </li>
+                    <li>
+                        <a href="explore.html">Explore</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Notifications
+                            <span class="badge badge-light">2</span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="settings.html">Account Settings</a>
+                            </li>
+                            <li>
+                                <a href="index.html">Log Out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/.container-fluid -->
+    </nav>
+    <!-- navbar -->
+
+    <!-- Header -->
+    <div class="header container-fluid main-color-bg">
+        <ol class="breadcrumb">
+            <li>
+                Administration
+            </li>
+        </ol>
+    </div>
+    <!-- Header -->
+
+    <!-- Main -->
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+                <div class="navi">
+                    <ul>
+                        <li class="active">
+                            <a href="#">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <span class="hidden-xs hidden-sm">User List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-info" aria-hidden="true"></i>
+                                <span class="hidden-xs hidden-sm">Project List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <div class="user-dashboard">
+                    <!-- /input-group -->
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search users...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Search</button>
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+
+                    <div class="row">
+                        <div class="container">
+                            <div class="well col-sm-12 col-md-8 col-md-offset-2">
+                                   <div class="row user-row">
+                                       <div class="col-md-1">
+                                           <img class="img-circle"
+                                                src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=50"
+                                                alt="User Pic">
+                                       </div>
+                                       <div class="col-md-10">
+                                           <strong>Cyruxx</strong><br>
+                                           <span class="text-muted">User level: Administrator</span>
+                                       </div>
+                                       <div class="col-md-1 dropdown-user" data-for=".cyruxx">
+                                           <i class="glyphicon glyphicon-chevron-down text-muted"></i>
+                                       </div>
+                                   </div>
+                                   <div class="row user-infos cyruxx">
+                                       <div class="col-sm-10 col-md-10 col-md-offset-1">
+                                           <div class="panel panel-primary">
+                                               <div class="panel-heading">
+                                                   <h3 class="panel-title">User information</h3>
+                                               </div>
+                                               <div class="panel-body">
+                                                   <div class="row">
+                                                       <div class="col-md-3">
+                                                           <img class="img-circle"
+                                                                src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100"
+                                                                alt="User Pic">
+                                                       </div>
+                                                       <div class="col-md-6">
+                                                           <strong>Cyruxx</strong><br>
+                                                           <table class="table table-condensed table-responsive table-user-information">
+                                                               <tbody>
+                                                               <tr>
+                                                                   <td>User level:</td>
+                                                                   <td>Administrator</td>
+                                                               </tr>
+                                                               <tr>
+                                                                   <td>Registered since:</td>
+                                                                   <td>11/12/2013</td>
+                                                               </tr>
+                                                               <tr>
+                                                                   <td>Topics</td>
+                                                                   <td>15</td>
+                                                               </tr>
+                                                               <tr>
+                                                                   <td>Warnings</td>
+                                                                   <td>0</td>
+                                                               </tr>
+                                                               </tbody>
+                                                           </table>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                               <div class="panel-footer">
+                                                   <button class="btn btn-sm btn-primary" type="button"
+                                                           data-toggle="tooltip"
+                                                           data-original-title="Send message to user"><i class="glyphicon glyphicon-envelope"></i></button>
+                                                   <span class="pull-right">
+                                                       <button class="btn btn-sm btn-warning" type="button"
+                                                               data-toggle="tooltip"
+                                                               data-original-title="Edit this user"><i class="glyphicon glyphicon-edit"></i></button>
+                                                       <button class="btn btn-sm btn-danger" type="button"
+                                                               data-toggle="tooltip"
+                                                               data-original-title="Remove this user"><i class="glyphicon glyphicon-remove"></i></button>
+                                                   </span>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                           
+                           
+                                   <div class="row user-row">
+                                       <div class="col-md-1">
+                                           <img class="img-circle"
+                                                src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=50"
+                                                alt="User Pic">
+                                       </div>
+                                       <div class="col-md-10">
+                                           <strong>Alexander Mahrt</strong><br>
+                                           <span class="text-muted">User level: Moderator</span>
+                                       </div>
+                                       <div class="col-md-1 dropdown-user" data-for=".alexanderMahrt">
+                                           <i class="glyphicon glyphicon-chevron-down text-muted"></i>
+                                       </div>
+                                   </div>
+                                   <div class="row user-infos alexanderMahrt">
+                                       <div class="col-sm-10 col-md-10 col-md-offset-1">
+                                           <div class="panel panel-primary">
+                                               <div class="panel-heading">
+                                                   <h3 class="panel-title">User information</h3>
+                                               </div>
+                                               <div class="panel-body">
+                                                   <div class="row">
+                                                       <div class="col-md-3">
+                                                           <img class="img-circle"
+                                                                src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100"
+                                                                alt="User Pic">
+                                                       </div>
+                                                       <div class="col-md-6">
+                                                           <strong>Alexander Mahrt</strong><br>
+                                                           <table class="table table-condensed table-responsive table-user-information">
+                                                               <tbody>
+                                                                   <tr>
+                                                                       <td>User level:</td>
+                                                                       <td>Moderator</td>
+                                                                   </tr>
+                                                                   <tr>
+                                                                       <td>Registered since:</td>
+                                                                       <td>11/12/2013</td>
+                                                                   </tr>
+                                                                   <tr>
+                                                                       <td>Topics</td>
+                                                                       <td>5</td>
+                                                                   </tr>
+                                                                   <tr>
+                                                                       <td>Warnings</td>
+                                                                       <td>0</td>
+                                                                   </tr>
+                                                               </tbody>
+                                                           </table>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                               <div class="panel-footer">
+                                                   <button class="btn btn-sm btn-primary" type="button"
+                                                           data-toggle="tooltip"
+                                                           data-original-title="Send message to user"><i class="glyphicon glyphicon-envelope"></i></button>
+                                                   <span class="pull-right">
+                                                       <button class="btn btn-sm btn-warning" type="button"
+                                                               data-toggle="tooltip"
+                                                               data-original-title="Edit this user"><i class="glyphicon glyphicon-edit"></i></button>
+                                                       <button class="btn btn-sm btn-danger" type="button"
+                                                               data-toggle="tooltip"
+                                                               data-original-title="Remove this user"><i class="glyphicon glyphicon-remove"></i></button>
+                                                   </span>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                           
+                           
+                                   <div class="row user-row">
+                                       <div class="col-md-1">
+                                           <img class="img-circle"
+                                                src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=50"
+                                                alt="User Pic">
+                                       </div>
+                                       <div class="col-md-10">
+                                           <strong>MyUsername</strong><br>
+                                           <span class="text-muted">User level: Registered user</span>
+                                       </div>
+                                       <div class="col-md-1 dropdown-user" data-for=".myUsername">
+                                           <i class="glyphicon glyphicon-chevron-down text-muted"></i>
+                                       </div>
+                                   </div>
+                                   <div class="row user-infos myUsername">
+                                       <div class="col-sm-10 col-md-10 col-md-offset-1">
+                                           <div class="panel panel-primary">
+                                               <div class="panel-heading">
+                                                   <h3 class="panel-title">User information</h3>
+                                               </div>
+                                               <div class="panel-body">
+                                                   <div class="row">
+                                                       <div class="col-md-3">
+                                                           <img class="img-circle"
+                                                                src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100"
+                                                                alt="User Pic">
+                                                       </div>
+                                                       <div class="col-md-6">
+                                                           <strong>MyUsername</strong><br>
+                                                           <table class="table table-condensed table-responsive table-user-information">
+                                                               <tbody>
+                                                               <tr>
+                                                                   <td>User level:</td>
+                                                                   <td>Registered user</td>
+                                                               </tr>
+                                                               <tr>
+                                                                   <td>Registered since:</td>
+                                                                   <td>11/12/2013</td>
+                                                               </tr>
+                                                               <tr>
+                                                                   <td>Topics</td>
+                                                                   <td>1</td>
+                                                               </tr>
+                                                               <tr>
+                                                                   <td>Warnings</td>
+                                                                   <td>1</td>
+                                                               </tr>
+                                                               </tbody>
+                                                           </table>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                               <div class="panel-footer">
+                                                   <button class="btn btn-sm btn-primary" type="button"
+                                                           data-toggle="tooltip"
+                                                           data-original-title="Send message to user"><i class="glyphicon glyphicon-envelope"></i></button>
+                                                   <span class="pull-right">
+                                                       <button class="btn btn-sm btn-warning" type="button"
+                                                               data-toggle="tooltip"
+                                                               data-original-title="Edit this user"><i class="glyphicon glyphicon-edit"></i></button>
+                                                       <button class="btn btn-sm btn-danger" type="button"
+                                                               data-toggle="tooltip"
+                                                               data-original-title="Remove this user"><i class="glyphicon glyphicon-remove"></i></button>
+                                                   </span>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal New Project -->
+    <div class="modal fade" id="new-project-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <!-- Begin # DIV Form -->
+                <div id="div-forms">
+                    <!-- Begin # Login Form -->
+                    <form id="login-form">
+                        <div class="modal-body">
+                            <div id="div-register-msg">
+                                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                <span id="text-register-msg">Project Name</span>
+                            </div>
+                            <input id="login_email" class="form-control" type="text" placeholder="Project Name" required>
+                            <div id="div-register-msg">
+                                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                <span id="text-register-msg">Project Description</span>
+                            </div>
+                            <input id="login_password" class="form-control" type="text" placeholder="Project Description">
+                        </div>
+                    </form>
+                    <!-- End # Login Form -->
+                </div>
+                <!-- End # DIV Form -->
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+</body>
+
+</html>
