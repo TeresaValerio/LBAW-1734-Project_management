@@ -240,46 +240,64 @@
 
 
     <!-- Modal New Project -->
-    <div class="modal fade" id="new-board-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-        style="display: none;">
+    <div class="modal fade" id="new-board-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" align="center">
+                <div class="modal-header" style="background-color: #7ABED3; color: #fff">
+                    <strong>Create new board</strong>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span style="color: #fff" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
-                    <h4>
-                        Create Board
-                    </h4>
                 </div>
                 <!-- Begin # DIV Form -->
                 <div id="div-forms">
                     <!-- Begin # Login Form -->
+
                     <form id="login-form">
                         <div class="modal-body">
-                            <div style="padding-bottom:10px" id="div-register-msg">
+                            <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Board Name*</span>
+                                <span id="text-register-msg">Name</span>
                             </div>
-                            <div style="padding-bottom:20px">
-                                <input id="login_email" class="form-control" type="text" placeholder="Project Name" required>
-                            </div>
-                            <div style="padding-bottom:10px" id="div-register-msg">
+                            <input id="project_name" class="form-control" type="name" placeholder="Board name">
+                            
+                            <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Board Description</span>
+                                <span id="text-register-msg">Description</span>
                             </div>
-                            <div style="padding-bottom:20px">
-                                <input id="login_password" class="form-control" type="text" placeholder="Project Description">
-                            </div>
-                            <div style="padding-bottom:10px" id="div-register-msg">
+                            <input id="project_name" class="form-control" type="description" placeholder="Board description"> 
+                            
+                            <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Add Team Members</span>
+                                <span id="text-register-msg">Add member</span>
+                                <div class="row" style="padding-left:15px" style="padding-left:5px">
+                                    <div class="column-md-3">
+                                        <img src="img/profile.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
+                                    </div>
+                                    <div class="column-md-1">
+                                        <img src="img/bolota.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
+                                    </div>
+                                    <a href="#" data-toggle="modal" data-target="#">
+                                        <button type="button" class="btn btn-info  btn-xs">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                        </button>
+                                    </a>
+                                </div>
+
+                                
+
                             </div>
-                            <div style="padding-bottom:20px">
-                                <input id="login_password" class="form-control" type="text" placeholder="Project Description">
+
+                            <input type="checkbox" name="public" value="public" > Public board
+                        </div>
+
+                        <div class="modal-footer">
+                            <div>
+                                <button type="submit" class="btn btn-info btn-lg btn-block">Create board</button>
                             </div>
                         </div>
                     </form>
+
                     <!-- End # Login Form -->
                 </div>
                 <!-- End # DIV Form -->
