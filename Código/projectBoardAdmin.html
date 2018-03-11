@@ -75,213 +75,121 @@
     <!-- Header -->
 
     <!-- Main -->
-    <div class="container-fluid display-table">
+    <div class="container-fluid display-table" style="padding: 10px">
         <div class="row display-table-row">
-            <div class="col-md-10 col-sm-11 display-table-cell v-align">
-                <div class="user-dashboard">
-                    <h1>Tasks</h1>
-                    <div class="search hidden-xs hidden-sm">
-                        <input type="text" placeholder="Search" id="search">
-                    </div>
+            <!-- /input-group -->
+            <div class="input-group" style="padding-bottom:10px">
+                <input type="text" class="form-control" placeholder="Search tasks...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Search</button>
+                </span>
+            </div>
+            <!-- /input-group -->
 
+            <div class="row">
+                <div class="well">
                     <div class="row">
-                        <div class="well">
-                            <div class="row text-center">
-                                <div class="col-sm-4">
-                                    <div class="thumbnail">
+                        <a href="#" data-toggle="modal" data-target="#new-task-modal">
+                            <button type="button" class="btn btn-info btn-circle">
+                                <i class="glyphicon glyphicon-plus"></i>
+                            </button>
+                            <h4>
+                                <font color="#7ABED3">
+                                    <strong>Add task</strong>
+                                </font>
+                            </h4>
+                        </a>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-header">
                                         <p>
-                                            <strong>Task</strong>
+                                            <strong>
+                                                <h3>Buy honey</h3>
+                                            </strong>
                                         </p>
-
-                                        <div>
-                                            <a href="#">
-                                                <span class="glyphicon glyphicon-folder-open"></span>
-                                                <p>
-                                                    <strong>Archive task</strong>
-                                                </p>
-                                            </a>
-                                        </div>
-
-                                        <div>
-                                            <a href="#">
-                                                <span class="glyphicon glyphicon-trash"></span>
-                                                <p>
-                                                    <strong>Delete task</strong>
-                                                </p>
-                                            </a>
-                                        </div>
-
-                                        <div>
-                                            <a href="#" data-toggle="modal" data-target="#schedule-meeting-modal">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                <p>
-                                                    <strong>Schedule meeting</strong>
-                                                </p>
-                                            </a>
-                                        </div>
-
-                                        <div>
-                                            <a href="#" data-toggle="modal" data-target="#update-task-modal">
-                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                <p>
-                                                    <strong>Update</strong>
-                                                </p>
-                                            </a>
-                                        </div>
-
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Creator:</strong> Username
-                                            </p>
-                                        </div>
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Description:</strong> bla bla bla
-                                            </p>
-                                        </div>
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Working on this task:</strong> Username1, Username2...
-                                                <div>
-                                                    <a href="#" data-toggle="modal" data-target="#update-team-modal">
-                                                        <span class="glyphicon glyphicon-pencil"></span>
-                                                        <p>
-                                                            <strong>Edit</strong>
-                                                        </p>
-                                                    </a>
-                                                </div>
-                                            </p>
-                                        </div>
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Deadline:</strong> dd-mm-yyyy
-                                                <div>
-                                                    <a href="#" data-toggle="modal" data-target="#update-deadline-modal">
-                                                        <span class="glyphicon glyphicon-pencil"></span>
-                                                        <p>
-                                                            <strong>Edit</strong>
-                                                        </p>
-                                                    </a>
-                                                </div>
-                                            </p>
-                                        </div>
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Progress:</strong> xx %
-                                            </p>
-                                        </div>
-
-                                        <a href="#" data-toggle="modal" data-target="#see-more-task-modal">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
                                             <div>
-                                                <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
+                                                <a href="#">
+                                                    <p>
+                                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                                        <strong>Archive task</strong>
+                                                    </p>
+                                                </a>
+                                                <a href="#">
+                                                    <p>
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                        <strong>Delete task</strong>
+                                                    </p>
+                                                </a>
+                                                <a href="#" data-toggle="modal" data-target="#schedule-meeting-modal">
+                                                    <p>
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                        <strong>Schedule meeting</strong>
+                                                    </p>
+                                                </a>
                                             </div>
+                                            <hr />
+                                            <img src="img/maya.jpg" class="img-circle" alt="User Picture" style="float:left;width:50px;height:50px;">
+                                            <h4>
+                                                <strong>
+                                                    Task created by:
+                                                </strong>
+                                            </h4>
+                                            <p>
+                                                Teresa Valério
+                                            </p>
+                                        </div>
+                                        <div class="row">
+                                            <hr />
+                                            <p>
+                                                <strong>
+                                                    <h4>Description:</h4>
+                                                </strong>
+                                                Honey is scarcing. 30L of honey are needed for the hive's survival!
+                                            </p>
+                                            <hr />
+                                            <p>
+                                                <strong>
+                                                    <h4>Working on this task:</h4>
+                                                </strong>
+                                            </p>
+                                        </div>
+                                        <div class="row">
+                                            <div class="column-md-1">
+                                                <img src="img/profile.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
+                                            </div>
+                                            <div class="column-md-1">
+                                                <img src="img/bolota.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <h4>
+                                            <strong>Deadline:</strong> 15-08-2019
+                                        </h4>
+
+                                        <p>
+                                            <strong>Progress:</strong>
+                                        </p>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div>
+                                        </div>
+
+
+                                        <a href="#" data-toggle="modal" data-target="#update-task-modal">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                            <strong>Update</strong>
                                         </a>
 
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <div class="thumbnail">
-                                        <p>
-                                            <strong>Task</strong>
-                                        </p>
-
-                                        <div>
-                                            <a href="#">
-                                                <span class="glyphicon glyphicon-folder-open"></span>
-                                                <p>
-                                                    <strong>Archive task</strong>
-                                                </p>
-                                            </a>
-                                        </div>
-
-                                        <div>
-                                            <a href="#">
-                                                <span class="glyphicon glyphicon-trash"></span>
-                                                <p>
-                                                    <strong>Delete task</strong>
-                                                </p>
-                                            </a>
-                                        </div>
-
-                                        <div>
-                                            <a href="#" data-toggle="modal" data-target="#schedule-meeting-modal">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                <p>
-                                                    <strong>Schedule meeting</strong>
-                                                </p>
-                                            </a>
-                                        </div>
-
-                                        <div>
-                                            <a href="#" data-toggle="modal" data-target="#update-task-modal">
-                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                <p>
-                                                    <strong>Update</strong>
-                                                </p>
-                                            </a>
-                                        </div>
-
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Creator:</strong> Username
-                                            </p>
-                                        </div>
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Description:</strong> bla bla bla
-                                            </p>
-                                        </div>
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Working on this task:</strong> Username1, Username2...
-                                                <div>
-                                                    <a href="#" data-toggle="modal" data-target="#update-team-modal">
-                                                        <span class="glyphicon glyphicon-pencil"></span>
-                                                        <p>
-                                                            <strong>Edit</strong>
-                                                        </p>
-                                                    </a>
-                                                </div>
-                                            </p>
-                                        </div>
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Deadline:</strong> dd-mm-yyyy
-                                                <div>
-                                                    <a href="#" data-toggle="modal" data-target="#update-deadline-modal">
-                                                        <span class="glyphicon glyphicon-pencil"></span>
-                                                        <p>
-                                                            <strong>Edit</strong>
-                                                        </p>
-                                                    </a>
-                                                </div>
-                                            </p>
-                                        </div>
-                                        <div class="thumbnail">
-                                            <p>
-                                                <strong>Progress:</strong> xx %
-                                            </p>
-                                        </div>
-
                                         <a href="#" data-toggle="modal" data-target="#see-more-task-modal">
-                                            <div>
-                                                <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
-                                            </div>
+                                            <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
                                         </a>
-
                                     </div>
                                 </div>
-                                <a href="#" data-toggle="modal" data-target="#new-task-modal">
-                                    <div class="col-sm-4">
-                                        <div class="thumbnail">
-                                            <span class="glyphicon glyphicon-plus"></span>
-                                            <p>
-                                                <strong>New Task</strong>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
                             </div>
                         </div>
                     </div>
