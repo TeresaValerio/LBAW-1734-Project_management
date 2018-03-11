@@ -124,8 +124,9 @@
                                 <div class="col-sm-3">
                                     <a href="#" data-toggle="modal" data-target="#new-project-modal">
                                         <button type="button" class="btn btn-info btn-circle">
-                                            <i class="glyphicon glyphicon-plus"></i>
+                                            <i class="glyphicon glyphicon-plus"></i> 
                                         </button>
+                                        Create project
                                     </a>
                                 </div>
                             </div>
@@ -213,24 +214,45 @@
             <div class="modal-content">
                 <div class="modal-header" align="center">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span style="color: #fff" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
+                    <h4>
+                        Create project
+                    </h4>
                 </div>
                 <!-- Begin # DIV Form -->
                 <div id="div-forms">
                     <!-- Begin # Login Form -->
                     <form id="login-form">
                         <div class="modal-body">
-                            <div id="div-register-msg">
-                                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Project Name</span>
+                            <div class="form-group">
+                                <div>
+                                <b>Name:</b>
+                                    <input required name="password" type="text" class="form-control inputpass" placeholder="Input project name" id="project_name" /> </p>
+                                </div>
+
+                                <div>
+                                <b>Description:</b>
+                                    <input name="password" type="text" class="form-control inputpass" placeholder="Write something about this project"  id="pass2" onkeyup="checkPass(); return false;" />
+                                        
+                                </div>
+
+                                <div>
+                                <b>Start date:</b>
+                                    <input type="date" name="date" value="start_date" > 
+                                </div>
+
+                                <b>Deadline:</b>
+                                    <input type="date" name="date" value="projectdate" > 
+                                </div>
+
+                                <input type="checkbox" name="public" value="public" > Public project
+
                             </div>
-                            <input id="login_email" class="form-control" type="text" placeholder="Project Name" required>
-                            <div id="div-register-msg">
-                                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Project Description</span>
+                            <div class="form-group">
+                                <input class="btn btn-primary" type="submit" name="submit_reg" value="Submit"> 
+                                
                             </div>
-                            <input id="login_password" class="form-control" type="text" placeholder="Project Description">
                         </div>
                     </form>
                     <!-- End # Login Form -->
