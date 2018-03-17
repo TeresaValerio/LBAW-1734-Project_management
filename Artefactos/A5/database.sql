@@ -4,13 +4,13 @@
 CREATE TABLE "Archive_project" (
     id_administrator integer NOT NULL,
     id_project integer NOT NULL,
-    date timestamp without time zone NOT NULL
+    date timestamp without time zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE "Ban_user" (
     id_user integer NOT NULL,
     id_administrator integer NOT NULL,
-    date timestamp without time zone NOT NULL
+    date timestamp without time zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE "Board" (
@@ -29,7 +29,7 @@ CREATE TABLE "Board_team" (
 CREATE TABLE "Comment" (
     id integer NOT NULL,
     comment text NOT NULL,
-    date timestamp without time zone NOT NULL,
+    date timestamp without time zone DEFAULT now() NOT NULL,
     id_user integer NOT NULL,
     id_task integer NOT NULL
 );
@@ -42,7 +42,7 @@ CREATE TABLE "Contact" (
 CREATE TABLE "File" (
     id integer NOT NULL,
     path text NOT NULL,
-    publish_date timestamp without time zone NOT NULL,
+    publish_date timestamp without time zone DEFAULT now() NOT NULL,
     description text,
     id_user integer NOT NULL,
     id_task integer NOT NULL
@@ -60,7 +60,7 @@ CREATE TABLE "Meeting" (
 CREATE TABLE "Message" (
     id integer NOT NULL,
     message text NOT NULL,
-    date timestamp without time zone NOT NULL,
+    date timestamp without time zone DEFAULT now() NOT NULL,
     id_user integer NOT NULL,
     id_project integer NOT NULL
 );
@@ -68,9 +68,9 @@ CREATE TABLE "Message" (
 CREATE TABLE "Notification" (
     id integer NOT NULL,
     id_user integer NOT NULL,
-    date timestamp without time zone NOT NULL,
+    date timestamp without time zone DEFAULT now() NOT NULL,
     notification text NOT NULL,
-    read text NOT NULL
+    read boolean DEFAULT false NOT NULL
 );
 
 CREATE TABLE "Personal_event" (
@@ -90,7 +90,7 @@ CREATE TABLE "Profile_picture" (
 
 CREATE TABLE "Progress_update" (
     id integer NOT NULL,
-    date timestamp without time zone NOT NULL,
+    date timestamp without time zone DEFAULT now() NOT NULL,
     new_value integer NOT NULL,
     id_user integer NOT NULL,
     id_task integer NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE "Project" (
     end_date date,
     name text NOT NULL,
     id_coordinator integer NOT NULL,
-    state text NOT NULL,
+    state text DEFAULT 'In_progress' NOT NULL,
     privacy boolean DEFAULT false NOT NULL,
     CONSTRAINT "CK1" CHECK ((end_date > start_date)),
     CONSTRAINT "CK2" CHECK ((state = ANY (ARRAY['In_progress'::text, 'Closed'::text, 'Archived'::text])))
@@ -129,7 +129,7 @@ CREATE TABLE "Task" (
     description text,
     name text NOT NULL,
     progress integer DEFAULT 0 NOT NULL,
-    state text NOT NULL,
+    state text DEFAULT 'In_progress' NOT NULL,
     id_creator integer NOT NULL,
     id_board integer NOT NULL,
     CONSTRAINT "CK1" CHECK ((progress > 0)),
