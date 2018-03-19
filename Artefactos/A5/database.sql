@@ -1,22 +1,11 @@
-DROP DATABASE lbaw1734
+DROP DATABASE lbaw1734;
 
 --
 -- Tables
 --
-CREATE TABLE "Archive_project" (
-    id_administrator integer NOT NULL,
-    id_project integer NOT NULL,
-    date timestamp without time zone DEFAULT now() NOT NULL
-);
-
-CREATE TABLE "Ban_user" (
-    id_user integer NOT NULL,
-    id_administrator integer NOT NULL,
-    date timestamp without time zone DEFAULT now() NOT NULL
-);
 
 CREATE TABLE "Board" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     description text,
     name text NOT NULL,
     id_creator integer NOT NULL,
@@ -29,7 +18,7 @@ CREATE TABLE "Board_team" (
 );
 
 CREATE TABLE "Comment" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     comment text NOT NULL,
     date timestamp without time zone DEFAULT now() NOT NULL,
     id_user integer NOT NULL,
@@ -42,7 +31,7 @@ CREATE TABLE "Contact" (
 );
 
 CREATE TABLE "File" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     path text NOT NULL,
     publish_date timestamp without time zone DEFAULT now() NOT NULL,
     description text,
@@ -51,7 +40,7 @@ CREATE TABLE "File" (
 );
 
 CREATE TABLE "Meeting" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     date timestamp without time zone NOT NULL,
     name text,
     place text,
@@ -60,7 +49,7 @@ CREATE TABLE "Meeting" (
 );
 
 CREATE TABLE "Message" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     message text NOT NULL,
     date timestamp without time zone DEFAULT now() NOT NULL,
     id_user integer NOT NULL,
@@ -68,7 +57,7 @@ CREATE TABLE "Message" (
 );
 
 CREATE TABLE "Notification" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     id_user integer NOT NULL,
     date timestamp without time zone DEFAULT now() NOT NULL,
     notification text NOT NULL,
@@ -76,7 +65,7 @@ CREATE TABLE "Notification" (
 );
 
 CREATE TABLE "Personal_event" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     date timestamp without time zone NOT NULL,
     place text,
     name text,
@@ -85,13 +74,13 @@ CREATE TABLE "Personal_event" (
 );
 
 CREATE TABLE "Profile_picture" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     id_user integer NOT NULL,
     path text NOT NULL
 );
 
 CREATE TABLE "Progress_update" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     date timestamp without time zone DEFAULT now() NOT NULL,
     new_value integer NOT NULL,
     id_user integer NOT NULL,
@@ -101,7 +90,7 @@ CREATE TABLE "Progress_update" (
 );
 
 CREATE TABLE "Project" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     description text,
     start_date timestamp without time zone DEFAULT now() NOT NULL,
     end_date date,
@@ -114,7 +103,7 @@ CREATE TABLE "Project" (
 );
 
 CREATE TABLE "Project_picture" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     id_project integer NOT NULL,
     path text NOT NULL
 );
@@ -125,7 +114,7 @@ CREATE TABLE "Project_team" (
 );
 
 CREATE TABLE "Task" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     budget money,
     deadline date NOT NULL,
     description text,
@@ -140,7 +129,7 @@ CREATE TABLE "Task" (
 );
 
 CREATE TABLE "User" (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     "e-mail" text NOT NULL,
     full_name text,
     password text NOT NULL,
@@ -152,11 +141,6 @@ CREATE TABLE "User" (
 --
 -- Primary Keys and Uniques
 --
-ALTER TABLE ONLY "Archive_project"
-    ADD CONSTRAINT "Archive_project_pkey" PRIMARY KEY (id_administrator);
-
-ALTER TABLE ONLY "Ban_user"
-    ADD CONSTRAINT "Ban_user_pkey" PRIMARY KEY (id_user);
 
 ALTER TABLE ONLY "Board"
     ADD CONSTRAINT "Board_pkey" PRIMARY KEY (id);
@@ -227,17 +211,6 @@ ALTER TABLE ONLY "User"
 --
 -- Foreign Keys
 --
-ALTER TABLE ONLY "Archive_project"
-    ADD CONSTRAINT "Archive_project_id_administrator_fkey" FOREIGN KEY (id_administrator) REFERENCES "User"(id);
-
-ALTER TABLE ONLY "Archive_project"
-    ADD CONSTRAINT "Archive_project_id_project_fkey" FOREIGN KEY (id_project) REFERENCES "Project"(id);
-
-ALTER TABLE ONLY "Ban_user"
-    ADD CONSTRAINT "Ban_user_id_administrator_fkey" FOREIGN KEY (id_administrator) REFERENCES "User"(id);
-
-ALTER TABLE ONLY "Ban_user"
-    ADD CONSTRAINT "Ban_user_id_user_fkey" FOREIGN KEY (id_user) REFERENCES "User"(id);
 
 ALTER TABLE ONLY "Board"
     ADD CONSTRAINT "Board_id_creator_fkey" FOREIGN KEY (id_creator) REFERENCES "User"(id);
