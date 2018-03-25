@@ -107,6 +107,7 @@ CREATE TABLE "Project" (
     id_coordinator integer NOT NULL,
     project_state state DEFAULT 'In_progress' NOT NULL,
     privacy boolean DEFAULT false NOT NULL,
+    user_archived integer,
     CONSTRAINT "CK1" CHECK ((end_date > start_date))
 );
 
@@ -142,7 +143,8 @@ CREATE TABLE "User" (
     password text NOT NULL,
     "URL" text NOT NULL,
     username text NOT NULL,
-    administrator boolean DEFAULT false NOT NULL
+    administrator boolean DEFAULT false NOT NULL,
+    user_ban integer
 );
 
 --
@@ -276,6 +278,9 @@ ALTER TABLE ONLY "Progress_update"
 ALTER TABLE ONLY "Project"
     ADD CONSTRAINT "Project_id_coordinator_fkey" FOREIGN KEY (id_coordinator) REFERENCES "User"(id);
 
+ALTER TABLE ONLY "Project"
+    ADD CONSTRAINT "Project_user_archived_fkey" FOREIGN KEY (user_archived) REFERENCES "User"(id);
+
 ALTER TABLE ONLY "Project_picture"
     ADD CONSTRAINT "Project_picture_id_project_fkey" FOREIGN KEY (id_project) REFERENCES "Project"(id);
 
@@ -290,3 +295,6 @@ ALTER TABLE ONLY "Task"
 
 ALTER TABLE ONLY "Task"
     ADD CONSTRAINT "Task_id_creator_fkey" FOREIGN KEY (id_creator) REFERENCES "User"(id);
+
+ALTER TABLE ONLY "User"
+    ADD CONSTRAINT "User_user_ban_fkey" FOREIGN KEY (user_ban) REFERENCES "User"(id);
