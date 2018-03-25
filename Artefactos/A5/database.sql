@@ -1,5 +1,3 @@
-DROP DATABASE lbaw1734;
-
 --
 -- Tables
 --
