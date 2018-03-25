@@ -1,4 +1,15 @@
 --
+-- Domains
+--
+
+CREATE DOMAIN state AS TEXT
+CHECK(
+   VALUE ~ 'In_progress'
+OR VALUE ~ 'Closed'
+OR VALUE ~ 'Archived'
+);
+
+--
 -- Tables
 --
 
@@ -94,10 +105,9 @@ CREATE TABLE "Project" (
     end_date date,
     name text NOT NULL,
     id_coordinator integer NOT NULL,
-    state text DEFAULT 'In_progress' NOT NULL,
+    project_state state DEFAULT 'In_progress' NOT NULL,
     privacy boolean DEFAULT false NOT NULL,
-    CONSTRAINT "CK1" CHECK ((end_date > start_date)),
-    CONSTRAINT "CK2" CHECK ((state = ANY (ARRAY['In_progress'::text, 'Closed'::text, 'Archived'::text])))
+    CONSTRAINT "CK1" CHECK ((end_date > start_date))
 );
 
 CREATE TABLE "Project_picture" (
@@ -118,12 +128,11 @@ CREATE TABLE "Task" (
     description text,
     name text NOT NULL,
     progress integer DEFAULT 0 NOT NULL,
-    state text DEFAULT 'In_progress' NOT NULL,
+    task_state state DEFAULT 'In_progress' NOT NULL,
     id_creator integer NOT NULL,
     id_board integer NOT NULL,
     CONSTRAINT "CK1" CHECK ((progress > 0)),
-    CONSTRAINT "CK2" CHECK ((progress <= 100)),
-    CONSTRAINT "CK3" CHECK ((state = ANY (ARRAY['In_progress'::text, 'Closed'::text, 'Archived'::text])))
+    CONSTRAINT "CK2" CHECK ((progress <= 100))
 );
 
 CREATE TABLE "User" (
