@@ -80,3 +80,13 @@ SELECT TOP 5 Comment.id, File.id, Progress_update.id
     INNER JOIN File ON Task.id=File.id_task
     INNER JOIN Task.id=Progress_update.id_task
     WHERE Task.id=$taskId
+
+-- Search project
+SELECT description, start_date, name FROM Project
+  WHERE description LIKE %$search% OR title LIKE %$search% AND privacy=false;
+ORDER BY title;
+
+-- Search user
+SELECT username, full_name, "e-mail" FROM User
+  WHERE username LIKE %$search% OR full_name LIKE %$search%;
+ORDER BY username;
