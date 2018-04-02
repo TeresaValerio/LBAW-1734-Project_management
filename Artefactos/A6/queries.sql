@@ -3,7 +3,7 @@ SELECT "e-mail" FROM "User"
 
 -- Password de certo e-mail
 SELECT password FROM "User"
-    WHERE user.e-mail = $userEmail
+    WHERE user."e-mail" = $userEmail
 
 -- Todos os projetos publicos
 SELECT name FROM Project
