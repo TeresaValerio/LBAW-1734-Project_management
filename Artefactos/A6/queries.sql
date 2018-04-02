@@ -7,7 +7,7 @@ SELECT password FROM "User"
 
 -- Todos os projetos publicos
 SELECT name FROM Project
-    WHERE project.privacy=1
+    WHERE Project.privacy=1
 
 -- Todos os projetos de um utilizador
 SELECT * 
