@@ -26,11 +26,11 @@ INSERT INTO "User" (id, e_mail, full_name, password, url, username) VALUES (20, 
 --- PROJECTS ---
 ----------------
 
-INSERT INTO "Project" (id, description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (1, 'Projeto de LIEB para deteção de apneia do sono', TIMESTAMP '2018/04/04', timestamp '2018/05/18', 'Hypnos', 1, 'In_progress', true)
-INSERT INTO "Project" (id, end_date, name, id_coordinator, project_state) VALUES (2, TIMESTAMP '2018/05/25 24:00:00', 'Fotopletismógrafo portátil', 1, 'In_progress')
-INSERT INTO "Project" (id, end_date, name, id_coordinator) VALUES (3, TIMESTAMP '2018/06/10 9:00:00', 'Estudo da doença de Alzheimer através de análise de imagens do cérebro', 3)
-INSERT INTO "Project" (id, description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (4, 'Deteção de emoções através da análise de sinais de EEG', TIMESTAMP '2018/04/04', timestamp '2018/05/18', 'EEG feelings', 4, 'In_progress', true)
-INSERT INTO "Project" (id, end_date, name, id_coordinator, project_state, privacy) VALUES (5, TIMESTAMP '2018/05/30', 'Projeto MINV', 20, 'In_progress', false)
+INSERT INTO "Project" (id, description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (1, 'Projeto de LIEB para deteção de apneia do sono', TIMESTAMP '2019/04/04', timestamp '2019/05/18', 'Hypnos', 1, 'In_progress', true)
+INSERT INTO "Project" (id, start_date, end_date, name, id_coordinator, project_state) VALUES (2, TIMESTAMP '2019/02/20', TIMESTAMP '2019/05/25 24:00:00', 'Fotopletismógrafo portátil', 1, 'In_progress')
+INSERT INTO "Project" (id, start_date, end_date, name, id_coordinator) VALUES (3, TIMESTAMP '2019/03/1', TIMESTAMP '2019/06/10 9:00:00', 'Estudo da doença de Alzheimer através de análise de imagens do cérebro', 3)
+INSERT INTO "Project" (id, description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (4, 'Deteção de emoções através da análise de sinais de EEG', TIMESTAMP '2019/04/04', timestamp '2019/09/18', 'EEG feelings', 4, 'In_progress', true)
+INSERT INTO "Project" (id, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (5, TIMESTAMP '2019/02/15', TIMESTAMP '2019/05/30', 'Projeto MINV', 20, 'In_progress', false)
 
 
 --- PROJECT'S TEAMS ---
@@ -54,13 +54,29 @@ INSERT INTO "Project_team" (id_user, id_project) VALUES (3,5)
 --- PROJECT'S BOARDS ---
 ------------------------
 
-INSERT INTO "Board" (id, description, name, id_creator, id_project) VALUES (1, "Pesquisa de fundamentos teóricos que servirão de base à implementação de código", "Pesquisa", 1, 1)
-INSERT INTO "Board" (id, description, name, id_creator, id_project) VALUES (2, "Pesquisa de possíveis técnicas a adotar", "Pesquisa", 3, 3)
- 
+INSERT INTO "Board" (id, description, name, id_creator, id_project) VALUES (1, 'Pesquisa de fundamentos teóricos que servirão de base à implementação de código', 'Pesquisa', 1, 1)
+INSERT INTO "Board" (id, description, name, id_creator, id_project) VALUES (2, 'Pesquisa sobre funcionamento da fotopletismografia e métodos a adotar', 'Pesquisa', 3, 2)
+INSERT INTO "Board" (id, name, id_creator, id_project) VALUES (3, 'Construção circuito', 3, 2)
+INSERT INTO "Board" (id, description, name, id_creator, id_project) VALUES (4, 'Pesquisa de possíveis técnicas a adotar', 'Pesquisa', 3, 3)
+INSERT INTO "Board" (id, description, name, id_creator, id_project) VALUES (5, 'Procurar artigos sobre projetos semelhantes', 'Artigos', 7, 4)
+INSERT INTO "Board" (id, description, name, id_creator, id_project) VALUES (6, 'Pesquisar acerca do EEC e possíveis maneiras de o analisar', 'Pesquisa EEG', 9, 4)
+INSERT INTO "Board" (id, description, name, id_creator, id_project) VALUES (7, 'Pesquisa de artigos relacionados com o tema', 'Pesquisa bibliográfica', 1, 5)
+INSERT INTO "Board" (id, description, name, id_creator, id_project) VALUES (8, 'Elaboração do questionário sob a forma de Google Form', 'Questionário', 20, 5)
+INSERT INTO "Board" (id, description, name, id_creator, id_project) VALUES (9, 'Elaboração do guião da entrevista', 'Entrevista', 3, 5)
+
 
 --- BOARD'S TASKS ---
 ---------------------
- 
-INSERT INTO "Task" (id, deadline, description, name, progress, state, id_creator, id_board) VALUES(1, 24/03/18, "Pesquisa em várias fontes bibliográficas relativamente ao que causa a apneia e como poderá ser detetada" , "Pesquisa sobre apneia", 10, "In_progress", 1, 1)
-INSERT INTO "Task" (id, deadline, description, name, progress, state, id_creator, id_board) VALUES(1, 22/03/18, "Pesquisa sobre o que é a doença de Alzheimer e que efeitos tem no cérebro humano" , "Pesquisa sobre Alzheimer", 30, "In_progress", 3, 2)
-INSERT INTO "Task" (id, deadline, description, name, progress, state, id_creator, id_board) VALUES(1, 29/03/18, "Pesquisa sobre possíveis técnicas de análise de imagem a adotar, tendo em conta estudos previamente realizados" , "Pesquisa sobre técnicas de análise de imagem", 20, "In_progress", 3, 2)
+
+INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(1, TIMESTAMP '2019/05/1', 'Pesquisa em várias fontes bibliográficas relativamente ao que causa a apneia e como poderá ser detetada' , 'Pesquisa sobre apneia', 10, 'In_progress', 1, 1)
+INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(2, TIMESTAMP '2019/05/10', 'Pesquisa sobre fotopletismografia (como funciona, que método utilizar, etc)' , 'Pesquisa fotopletismografia', 40, 'In_progress', 3, 2)
+INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(3, TIMESTAMP '2019/05/15', 'Pesquisar melhor sensor a utilizar e possíveis circuitos a implementar' , 'Pesquisa circuito', 30, 'In_progress', 3, 2)
+INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(4, TIMESTAMP '2019/05/10', 'Pesquisa sobre o que é a doença de Alzheimer e que efeitos tem no cérebro humano' , 'Pesquisa sobre Alzheimer', 30, 'In_progress', 3, 3)
+INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(5, TIMESTAMP '2019/05/20', 'Pesquisa sobre possíveis técnicas de análise de imagem a adotar, tendo em conta estudos previamente realizados' , 'Pesquisa sobre técnicas de análise de imagem', 20, 'In_progress', 3, 3)
+INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(6, TIMESTAMP '2019/06/24', 'O que é o EEG, como é obtido e que informação nos dá?', 'Fundamentos EEG', 60, 'In_progress', 8, 4)
+INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(7, TIMESTAMP '2019/06/30', 'Pesquisa de processamentos a adotar para analisar o sinal EEG', 'Processamento EEG', 10, 'In_progress', 6, 4)
+INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(8, TIMESTAMP '2019/04/22', 'Pesquisa sobre a estrutura que um questionário deve ter (quantidade/tipo de perguntas, etc)', 'Estrutura questionário', 40, 'In_progress', 1, 8)
+INSERT INTO "Task" (id, deadline, name, progress, task_state, id_creator, id_board) VALUES(9, TIMESTAMP '2019/04/30', 'Elaboração questionário', 10, 'In_progress', 20, 8)
+INSERT INTO "Task" (id, deadline, name, progress, task_state, id_creator, id_board) VALUES(10, TIMESTAMP '2019/04/25', 'Como fazer uma entrevista?', 50, 'In_progress', 3, 9)
+INSERT INTO "Task" (id, deadline, name, progress, task_state, id_creator, id_board) VALUES(11, TIMESTAMP '2019/04/27', 'Guião da entervista', 10, 'In_progress', 1, 9)
+INSERT INTO "Task" (id, deadline, name, progress, task_state, id_creator, id_board) VALUES(12, TIMESTAMP '2019/05/10', 'Realização das entervista', 10, 'In_progress', 20, 9)
