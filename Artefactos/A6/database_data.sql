@@ -80,3 +80,22 @@ INSERT INTO "Task" (id, deadline, name, progress, task_state, id_creator, id_boa
 INSERT INTO "Task" (id, deadline, name, progress, task_state, id_creator, id_board) VALUES(10, TIMESTAMP '2019/04/25', 'Como fazer uma entrevista?', 50, 'In_progress', 3, 9)
 INSERT INTO "Task" (id, deadline, name, progress, task_state, id_creator, id_board) VALUES(11, TIMESTAMP '2019/04/27', 'Guião da entervista', 10, 'In_progress', 1, 9)
 INSERT INTO "Task" (id, deadline, name, progress, task_state, id_creator, id_board) VALUES(12, TIMESTAMP '2019/05/10', 'Realização das entervista', 10, 'In_progress', 20, 9)
+
+
+--- BOARD'S TEAMS ---
+---------------------
+
+INSERT INTO "Board_team" VALUES (3,1)
+INSERT INTO "Board_team" VALUES (2,1)
+INSERT INTO "Board_team" VALUES (4,16)
+INSERT INTO "Board_team" VALUES (5,5)
+INSERT INTO "Board_team" VALUES (5,1)
+INSERT INTO "Board_team" VALUES (5,8)
+INSERT INTO "Board_team" VALUES (5,11)
+INSERT INTO "Board_team" VALUES (6,6)
+INSERT INTO "Board_team" VALUES (6,1)
+INSERT INTO "Board_team" VALUES (6,8)
+INSERT INTO "Board_team" VALUES (6,9)
+INSERT INTO "Board_team" VALUES (6,10)
+INSERT INTO "Board_team" VALUES (6,11)
+
