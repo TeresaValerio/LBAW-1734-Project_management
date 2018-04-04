@@ -142,3 +142,26 @@ INSERT INTO "Personal_event" (id, date, name, id_user) VALUES (6, TIMESTAMP '201
 INSERT INTO "Personal_event" (id, date, name, id_user) VALUES (7, TIMESTAMP '2018/05/06', 'Dia da mãe!!', 8)
 INSERT INTO "Personal_event" (id, date, name, id_user) VALUES (8, TIMESTAMP '2018/05/05', 'Aniversário da Maya', 3)
 
+
+--- CONTACT ---
+---------------
+
+INSERT INTO "Contact" (id_user, id_contact) VALUES (1,2)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (1,3)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (1,4)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (1,8)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (2,3)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (2,1)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (2,5)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (3,16)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (4,6)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (4,7)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (4,9)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (4,11)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (5,6)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (5,9)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (6,4)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (6,10)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (7,11)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (8,5)
+INSERT INTO "Contact" (id_user, id_contact) VALUES (8,9)
