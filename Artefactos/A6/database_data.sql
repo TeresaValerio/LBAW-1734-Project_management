@@ -186,3 +186,15 @@ INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (2, TI
 INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (3, TIMESTAMP '2018/03/02', 'Um utilizador deseja adiciona um novo colaborador ao seu projeto "Estudo da doença de Alzheimer através de análise de imagens do cérebro" ', false, 3)
 INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (4, TIMESTAMP '2018/03/04', 'Utilizador "Joana Monteiro" pediu para o adicionar à sua lista de contactos', false, 6)
 INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (5, TIMESTAMP '2018/03/04', 'Utilizador "Noelle Moran" pediu para o adicionar à sua lista de contactos', false, 8)
+
+
+--- PROGRESS UPDATE ---
+-----------------------
+
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (1,TIMESTAMP '2018/04/03 10:40:45', 30, 1, 1)
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (2,TIMESTAMP '2018/04/03 10:37:23', 60, 3, 2)
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (3,TIMESTAMP '2018/04/04 11:07:15', 80, 3, 2)
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (4,TIMESTAMP '2018/03/21 19:16:35', 50, 1, 3)
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (5,TIMESTAMP '2018/03/29 22:52:05', 70, 1, 3)
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (6,TIMESTAMP '2018/03/27 14:46:35', 70, 8, 6)
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (7,TIMESTAMP '2018/03/03 18:35:17', 40, 20, 8)
