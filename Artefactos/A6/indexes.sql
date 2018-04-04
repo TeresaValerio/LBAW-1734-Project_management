@@ -1,7 +1,7 @@
 -- User info
 -- Index relation: user; index attribute: email
 -- Type: hash; cardinality: high (unique key); clustering: no
-CREATE INDEX email_user ON User USING hash("e-mail")
+CREATE INDEX email_user ON User USING hash(e_mail)
 
 -- Project info
 -- Index relation: Project; index attribute: id

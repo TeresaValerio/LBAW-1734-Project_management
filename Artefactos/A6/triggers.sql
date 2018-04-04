@@ -4,7 +4,7 @@
 CREATE FUNCTION check_exist_email() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF EXISTS (SELECT "e-mail" FROM "User" WHERE NEW.e-mail = "e-mail") THEN
+    IF EXISTS (SELECT e_mail FROM "User" WHERE NEW.e_mail = e_mail) THEN
         RAISE EXCEPTION 'The e-mail you are trying to use is already registred'
     END IF;
     RETURN NEW;
