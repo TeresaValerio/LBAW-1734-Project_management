@@ -1,9 +1,9 @@
 -- Todos os e-mails
-SELECT "e-mail" FROM "User"
+SELECT e_mail FROM "User"
 
 -- Password de certo e-mail
 SELECT password FROM "User"
-    WHERE user."e-mail" = $userEmail
+    WHERE user.e_mail = $userEmail
 
 -- Todos os projetos publicos
 SELECT name FROM Project
@@ -47,7 +47,7 @@ SELECT * FROM Project
     WHERE Project.id=$projectId
 
 -- Todos os users (nome, foto, mail) de um projeto
-SELECT User.full_name, Profile_picture.path, User.e-mail
+SELECT User.full_name, Profile_picture.path, User.e_mail
     FROM "User"
     INNER JOIN Profile_picture ON Profile_picture.id_user=$user
     WHERE Project.id=$projectId AND Profile_picture.path=SELECT(MAX(Profile_picture.id))
@@ -87,6 +87,6 @@ SELECT description, start_date, name FROM Project
 ORDER BY title;
 
 -- Search user
-SELECT username, full_name, "e-mail" FROM User
+SELECT username, full_name, e_mail FROM User
   WHERE username LIKE %$search% OR full_name LIKE %$search%;
 ORDER BY username;

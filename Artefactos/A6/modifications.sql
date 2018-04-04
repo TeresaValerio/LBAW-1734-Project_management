@@ -47,8 +47,8 @@ INSERT INTO Board_team (id_board, id_user)
 VALUES ($id_board, $id_user)
 
 -- New user
-INSERT INTO User (e-mail, password, URL, username)
-VALUES ($e-mail, $password, $URL, $username)
+INSERT INTO User (e_mail, password, URL, username)
+VALUES ($e_mail, $password, $URL, $username)
 
 -- Update user info - full_name
 UPDATE User
