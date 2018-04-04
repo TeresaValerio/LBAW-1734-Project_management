@@ -165,3 +165,36 @@ INSERT INTO "Contact" (id_user, id_contact) VALUES (6,10)
 INSERT INTO "Contact" (id_user, id_contact) VALUES (7,11)
 INSERT INTO "Contact" (id_user, id_contact) VALUES (8,5)
 INSERT INTO "Contact" (id_user, id_contact) VALUES (8,9)
+
+
+--- FILE ---
+------------
+
+INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (1, 'Referências bibliográficas apneia','https://docs.google.com/document/d/1KZ00yc2JSSUsC3EdrPWqTRZqUhBn4oIB-IR61YU7EHs/edit' , TIMESTAMP '2018/04/03 10:35:07', 1, 1 )
+INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (2, 'Fotopletismografia','http://www.peb.ufrj.br/teses/Tese0030_2006_03_29.pdf' , TIMESTAMP '2018/04/03 10:35:07', 1, 2 )
+INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (3, 'Datasheet SFH7050','https://www.mouser.com/ds/2/311/SFH%207050,%20Lead%20(Pb)%20Free%20Product%20-%20RoHS%20Compliant-608232.pdf' , TIMESTAMP '2018/03/21 19:14:44', 1, 3 )
+INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (4, 'Datasheet TCRT1000','https://www.vishay.com/docs/83752/tcrt1000.pdf' , TIMESTAMP '2018/03/29 22:51:00', 1, 3 )
+INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (5, 'EEG','https://pt.wikipedia.org/wiki/Eletroencefalografia' , TIMESTAMP '2018/03/17 20:58:12', 8, 6 )
+INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (6, 'EEG','https://docs.google.com/forms/d/e/1FAIpQLSfa60Ny5pTFxZGpUwyCp6_LiL5hKLWMZExoCpicrAqdcdR2uw/viewform' , TIMESTAMP '2018/03/03 17:49:22', 20, 9 )
+
+
+--- NOTIFICATION ---
+--------------------
+
+INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (1, TIMESTAMP '2018/03/04', 'Foi adicionado a um novo projeto "Hypnos" ', false, 3)
+INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (2, TIMESTAMP '2018/03/04', 'Foi adicionado a um novo projeto "Hypnos" ', false, 8)
+INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (3, TIMESTAMP '2018/03/02', 'Um utilizador deseja adiciona um novo colaborador ao seu projeto "Estudo da doença de Alzheimer através de análise de imagens do cérebro" ', false, 3)
+INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (4, TIMESTAMP '2018/03/04', 'Utilizador "Joana Monteiro" pediu para o adicionar à sua lista de contactos', false, 6)
+INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (5, TIMESTAMP '2018/03/04', 'Utilizador "Noelle Moran" pediu para o adicionar à sua lista de contactos', false, 8)
+
+
+--- PROGRESS UPDATE ---
+-----------------------
+
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (1,TIMESTAMP '2018/04/03 10:40:45', 30, 1, 1)
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (2,TIMESTAMP '2018/04/03 10:37:23', 60, 3, 2)
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (3,TIMESTAMP '2018/04/04 11:07:15', 80, 3, 2)
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (4,TIMESTAMP '2018/03/21 19:16:35', 50, 1, 3)
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (5,TIMESTAMP '2018/03/29 22:52:05', 70, 1, 3)
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (6,TIMESTAMP '2018/03/27 14:46:35', 70, 8, 6)
+INSERT INTO "Progress_update" (id, date, new_value, id_user, id_task) VALUES (7,TIMESTAMP '2018/03/03 18:35:17', 40, 20, 8)
