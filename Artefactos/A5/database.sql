@@ -138,10 +138,10 @@ CREATE TABLE "Task" (
 
 CREATE TABLE "User" (
     id SERIAL NOT NULL,
-    "e-mail" text NOT NULL,
+    "e_mail" text NOT NULL,
     full_name text,
     password text NOT NULL,
-    "URL" text NOT NULL,
+    "url" text NOT NULL,
     username text NOT NULL,
     administrator boolean DEFAULT false NOT NULL,
     user_ban integer
@@ -206,10 +206,10 @@ ALTER TABLE ONLY "Task"
     ADD CONSTRAINT "Task_pkey" PRIMARY KEY (id);
 
 ALTER TABLE ONLY "User"
-    ADD CONSTRAINT "User_URL_key" UNIQUE ("URL");
+    ADD CONSTRAINT "User_url_key" UNIQUE ("url");
 
 ALTER TABLE ONLY "User"
-    ADD CONSTRAINT "User_e-mail_key" UNIQUE ("e-mail");
+    ADD CONSTRAINT "User_e_mail_key" UNIQUE ("e_mail");
 
 ALTER TABLE ONLY "User"
     ADD CONSTRAINT "User_pkey" PRIMARY KEY (id);
