@@ -26,11 +26,11 @@ INSERT INTO "User" (id, e_mail, full_name, password, url, username) VALUES (20, 
 --- PROJECTS ---
 ----------------
 
-INSERT INTO "Project" (id, description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (1, 'Projeto de LIEB para deteção de apneia do sono', TIMESTAMP '2019/04/04', timestamp '2019/05/18', 'Hypnos', 1, 'In_progress', true)
-INSERT INTO "Project" (id, start_date, end_date, name, id_coordinator, project_state) VALUES (2, TIMESTAMP '2019/02/20', TIMESTAMP '2019/05/25 24:00:00', 'Fotopletismógrafo portátil', 1, 'In_progress')
-INSERT INTO "Project" (id, start_date, end_date, name, id_coordinator) VALUES (3, TIMESTAMP '2019/03/1', TIMESTAMP '2019/06/10 9:00:00', 'Estudo da doença de Alzheimer através de análise de imagens do cérebro', 3)
-INSERT INTO "Project" (id, description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (4, 'Deteção de emoções através da análise de sinais de EEG', TIMESTAMP '2019/04/04', timestamp '2019/09/18', 'EEG feelings', 4, 'In_progress', true)
-INSERT INTO "Project" (id, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (5, TIMESTAMP '2019/02/15', TIMESTAMP '2019/05/30', 'Projeto MINV', 20, 'In_progress', false)
+INSERT INTO "Project" (id, description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (1, 'Projeto de LIEB para deteção de apneia do sono', TIMESTAMP '2018/03/04', timestamp '2019/05/18', 'Hypnos', 1, 'In_progress', true)
+INSERT INTO "Project" (id, start_date, end_date, name, id_coordinator, project_state) VALUES (2, TIMESTAMP '2018/02/20', TIMESTAMP '2019/05/25 24:00:00', 'Fotopletismógrafo portátil', 1, 'In_progress')
+INSERT INTO "Project" (id, start_date, end_date, name, id_coordinator) VALUES (3, TIMESTAMP '2018/03/1', TIMESTAMP '2019/06/10 9:00:00', 'Estudo da doença de Alzheimer através de análise de imagens do cérebro', 3)
+INSERT INTO "Project" (id, description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (4, 'Deteção de emoções através da análise de sinais de EEG', TIMESTAMP '2018/03/14', timestamp '2019/09/18', 'EEG feelings', 4, 'In_progress', true)
+INSERT INTO "Project" (id, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (5, TIMESTAMP '2018/02/15', TIMESTAMP '2019/05/30', 'Projeto MINV', 20, 'In_progress', false)
 
 
 --- PROJECT'S TEAMS ---
@@ -72,7 +72,7 @@ INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_cr
 INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(2, TIMESTAMP '2019/05/10', 'Pesquisa sobre fotopletismografia (como funciona, que método utilizar, etc)' , 'Pesquisa fotopletismografia', 40, 'In_progress', 3, 2)
 INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(3, TIMESTAMP '2019/05/15', 'Pesquisar melhor sensor a utilizar e possíveis circuitos a implementar' , 'Pesquisa circuito', 30, 'In_progress', 3, 2)
 INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(4, TIMESTAMP '2019/05/10', 'Pesquisa sobre o que é a doença de Alzheimer e que efeitos tem no cérebro humano' , 'Pesquisa sobre Alzheimer', 30, 'In_progress', 3, 3)
-INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(5, TIMESTAMP '2019/05/20', 'Pesquisa sobre possíveis técnicas de análise de imagem a adotar, tendo em conta estudos previamente realizados' , 'Pesquisa sobre técnicas de análise de imagem', 20, 'In_progress', 3, 3)
+INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(5, TIMESTAMP '2019/05/20', 'Pesquisa sobre possíveis técnicas de análise de imagem a adotar e base de dados a utilizar' , 'Técnicas de análise de imagem', 20, 'In_progress', 3, 3)
 INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(6, TIMESTAMP '2019/06/24', 'O que é o EEG, como é obtido e que informação nos dá?', 'Fundamentos EEG', 60, 'In_progress', 8, 4)
 INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(7, TIMESTAMP '2019/06/30', 'Pesquisa de processamentos a adotar para analisar o sinal EEG', 'Processamento EEG', 10, 'In_progress', 6, 4)
 INSERT INTO "Task" (id, deadline, description, name, progress, task_state, id_creator, id_board) VALUES(8, TIMESTAMP '2019/04/22', 'Pesquisa sobre a estrutura que um questionário deve ter (quantidade/tipo de perguntas, etc)', 'Estrutura questionário', 40, 'In_progress', 1, 8)
@@ -99,3 +99,25 @@ INSERT INTO "Board_team" VALUES (6,9)
 INSERT INTO "Board_team" VALUES (6,10)
 INSERT INTO "Board_team" VALUES (6,11)
 
+
+--- COMMENTS ---
+----------------
+
+INSERT INTO "Comment" (id, comment, date, id_user, id_task) VALUES (1, 'SFH7050 já não pode ser utilizado!', TIMESTAMP '2018/03/25 12:50:04', 1, 3)
+INSERT INTO "Comment" (id, comment, date, id_user, id_task) VALUES (2, 'Não está a ser possível fazer o download da base de dados', TIMESTAMP '2018/03/19 19:24:34', 3, 5)
+INSERT INTO "Comment" (id, comment, date, id_user, id_task) VALUES (3, 'Ver apontamentos da aula prática!', TIMESTAMP '2018/03/27 17:58:02', 20, 8)
+
+
+--- MEETINGS ---
+----------------
+
+INSERT INTO "Meeting" (id, date, place, id_board) VALUES (1, TIMESTAMP '2018/04/10 11:00:00', 'Departamento de Bioenganheria', 1)
+INSERT INTO "Meeting" (id, date, place, id_board) VALUES (2, TIMESTAMP '2018/04/17 09:30:00', 'Departamento de Bioenganheria', 1)
+INSERT INTO "Meeting" (id, date, place, id_board) VALUES (3, TIMESTAMP '2018/04/07 14:00:00', 'I007', 2)
+INSERT INTO "Meeting" (id, date, place, id_board) VALUES (4, TIMESTAMP '2018/06/20 14:00:00', 'I007', 3)
+INSERT INTO "Meeting" (id, date, place, id_board) VALUES (5, TIMESTAMP '2018/04/20 15:30:00', 'INESC', 4)
+INSERT INTO "Meeting" (id, date, place, id_board) VALUES (6, TIMESTAMP '2018/04/23 10:30:00', 'B118', 5)
+INSERT INTO "Meeting" (id, date, place, id_board) VALUES (7, TIMESTAMP '2018/04/20 10:00:00', 'B005', 6)
+INSERT INTO "Meeting" (id, date, place, id_board) VALUES (8, TIMESTAMP '2018/04/06 17:00:00', 'Sala de bio', 7)
+INSERT INTO "Meeting" (id, date, place, id_board) VALUES (9, TIMESTAMP '2018/04/10 15:00:00', 'B223', 8)
+INSERT INTO "Meeting" (id, date, place, id_board) VALUES (10, TIMESTAMP '2018/04/13 09:20:00', 'B019', 9)
