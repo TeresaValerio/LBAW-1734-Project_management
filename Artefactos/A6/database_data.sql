@@ -176,3 +176,13 @@ INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUE
 INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (4, 'Datasheet TCRT1000','https://www.vishay.com/docs/83752/tcrt1000.pdf' , TIMESTAMP '2018/03/29 22:51:00', 1, 3 )
 INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (5, 'EEG','https://pt.wikipedia.org/wiki/Eletroencefalografia' , TIMESTAMP '2018/03/17 20:58:12', 8, 6 )
 INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (6, 'EEG','https://docs.google.com/forms/d/e/1FAIpQLSfa60Ny5pTFxZGpUwyCp6_LiL5hKLWMZExoCpicrAqdcdR2uw/viewform' , TIMESTAMP '2018/03/03 17:49:22', 20, 9 )
+
+
+--- NOTIFICATION ---
+--------------------
+
+INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (1, TIMESTAMP '2018/03/04', 'Foi adicionado a um novo projeto "Hypnos" ', false, 3)
+INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (2, TIMESTAMP '2018/03/04', 'Foi adicionado a um novo projeto "Hypnos" ', false, 8)
+INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (3, TIMESTAMP '2018/03/02', 'Um utilizador deseja adiciona um novo colaborador ao seu projeto "Estudo da doença de Alzheimer através de análise de imagens do cérebro" ', false, 3)
+INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (4, TIMESTAMP '2018/03/04', 'Utilizador "Joana Monteiro" pediu para o adicionar à sua lista de contactos', false, 6)
+INSERT INTO "Notification" (id, date, notification, read, id_user) VALUES (5, TIMESTAMP '2018/03/04', 'Utilizador "Noelle Moran" pediu para o adicionar à sua lista de contactos', false, 8)
