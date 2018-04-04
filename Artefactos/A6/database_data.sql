@@ -126,19 +126,19 @@ INSERT INTO "Meeting" (id, date, place, id_board) VALUES (10, TIMESTAMP '2018/04
 --- MESSAGE ---
 ---------------
 
-INSERT INTO "Message" (id, date, message, id_user, id_project) VALUES (1,TIMESTASMP '2018/04/02 15:02:46', 'Não esquecer que a interface do programa deve ser feita em Java!!', 3, 1)
-INSERT INTO "Message" (id, date, message, id_user, id_project) VALUES (2,TIMESTASMP '2018/03/21 10:24:06', 'Ter em conta que o circuito deve ser de dimensões reduzidas, uma vez que deve ser portátil', 1, 2)
+INSERT INTO "Message" (id, date, message, id_user, id_project) VALUES (1,TIMESTAMP '2018/04/02 15:02:46', 'Não esquecer que a interface do programa deve ser feita em Java!!', 3, 1)
+INSERT INTO "Message" (id, date, message, id_user, id_project) VALUES (2,TIMESTAMP '2018/03/21 10:24:06', 'Ter em conta que o circuito deve ser de dimensões reduzidas, uma vez que deve ser portátil', 1, 2)
 
 
 --- PERSONAL EVENTS ---
 -----------------------
 
-INSERT INTO "Personal_Event" (id, date, name, id_user) VALUES (1, TIMESTAMP '2018/04/14', 'Aniversário mãe', 1)
-INSERT INTO "Personal_Event" (id, date, name, place, id_user) VALUES (2, TIMESTAMP '2018/04/10', 'Almoço com o António', 'Casa do António', 2)
-INSERT INTO "Personal_Event" (id, date, name, place, id_user) VALUES (3, TIMESTAMP '2018/04/17 13:20:00', 'Ir buscar o João ao Aeroporto', 7)
-INSERT INTO "Personal_Event" (id, date, name, place, id_user) VALUES (4, TIMESTAMP '2018/04/21 18:00:00', 'Levar o João ao Aeroporto', 7)
-INSERT INTO "Personal_Event" (id, date, name, place, id_user) VALUES (5, TIMESTAMP '2018/04/10 18:30:00', 'Café com a Maria', 5)
-INSERT INTO "Personal_Event" (id, date, name, place, id_user) VALUES (6, TIMESTAMP '2018/05/18', 'Visitar a Joana', 5)
-INSERT INTO "Personal_Event" (id, date, name, place, id_user) VALUES (7, TIMESTAMP '2018/05/06', 'Dia da mãe!!', 8)
-INSERT INTO "Personal_Event" (id, date, name, place, id_user) VALUES (8, TIMESTAMP '2018/05/05', 'Aniversário da Maya', 3)
+INSERT INTO "Personal_event" (id, date, name, id_user) VALUES (1, TIMESTAMP '2018/04/14', 'Aniversário mãe', 1)
+INSERT INTO "Personal_event" (id, date, name, place, id_user) VALUES (2, TIMESTAMP '2018/04/10', 'Almoço com o António', 'Casa do António', 2)
+INSERT INTO "Personal_event" (id, date, name, id_user) VALUES (3, TIMESTAMP '2018/04/17 13:20:00', 'Ir buscar o João ao Aeroporto', 7)
+INSERT INTO "Personal_event" (id, date, name, id_user) VALUES (4, TIMESTAMP '2018/04/21 18:00:00', 'Levar o João ao Aeroporto', 7)
+INSERT INTO "Personal_event" (id, date, name, id_user) VALUES (5, TIMESTAMP '2018/04/10 18:30:00', 'Café com a Maria', 5)
+INSERT INTO "Personal_event" (id, date, name, id_user) VALUES (6, TIMESTAMP '2018/05/18', 'Visitar a Joana', 5)
+INSERT INTO "Personal_event" (id, date, name, id_user) VALUES (7, TIMESTAMP '2018/05/06', 'Dia da mãe!!', 8)
+INSERT INTO "Personal_event" (id, date, name, id_user) VALUES (8, TIMESTAMP '2018/05/05', 'Aniversário da Maya', 3)
 
