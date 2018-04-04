@@ -165,3 +165,14 @@ INSERT INTO "Contact" (id_user, id_contact) VALUES (6,10)
 INSERT INTO "Contact" (id_user, id_contact) VALUES (7,11)
 INSERT INTO "Contact" (id_user, id_contact) VALUES (8,5)
 INSERT INTO "Contact" (id_user, id_contact) VALUES (8,9)
+
+
+--- FILE ---
+------------
+
+INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (1, 'Referências bibliográficas apneia','https://docs.google.com/document/d/1KZ00yc2JSSUsC3EdrPWqTRZqUhBn4oIB-IR61YU7EHs/edit' , TIMESTAMP '2018/04/03 10:35:07', 1, 1 )
+INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (2, 'Fotopletismografia','http://www.peb.ufrj.br/teses/Tese0030_2006_03_29.pdf' , TIMESTAMP '2018/04/03 10:35:07', 1, 2 )
+INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (3, 'Datasheet SFH7050','https://www.mouser.com/ds/2/311/SFH%207050,%20Lead%20(Pb)%20Free%20Product%20-%20RoHS%20Compliant-608232.pdf' , TIMESTAMP '2018/03/21 19:14:44', 1, 3 )
+INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (4, 'Datasheet TCRT1000','https://www.vishay.com/docs/83752/tcrt1000.pdf' , TIMESTAMP '2018/03/29 22:51:00', 1, 3 )
+INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (5, 'EEG','https://pt.wikipedia.org/wiki/Eletroencefalografia' , TIMESTAMP '2018/03/17 20:58:12', 8, 6 )
+INSERT INTO "File" (id, description, path, publish_date, id_user, id_task) VALUES (6, 'EEG','https://docs.google.com/forms/d/e/1FAIpQLSfa60Ny5pTFxZGpUwyCp6_LiL5hKLWMZExoCpicrAqdcdR2uw/viewform' , TIMESTAMP '2018/03/03 17:49:22', 20, 9 )
