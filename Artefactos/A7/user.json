@@ -1,0 +1,24 @@
+{
+    "User": [
+        {
+            "id":"1",
+            "e_mail":"up201405655@fe.up.pt",
+            "full_name":"Teresa Valério",
+            "password":"teresaMaya19",
+            "url":"444",
+            "username":"TeresaValerio",
+            "administrator":"true",
+            "user_ban":"NULL"
+        },
+        {
+            "id":"2",
+            "e_mail":"up201402784@fe.up.pt",
+            "full_name":"Inês Gonçalves",
+            "password":"inesggtunafe8",
+            "url":"123",
+            "username":"InesGoncalves",
+            "administrator":"true",
+            "user_ban":"NULL"
+        }
+    ]
+}
