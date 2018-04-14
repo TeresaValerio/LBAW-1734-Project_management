@@ -1,0 +1,18 @@
+{
+    "Board": [
+        {
+            "id":"1",
+            "name ":"Marketing",
+            "description":"NULL",
+            "id_member":"1",
+            "privacy": "False"
+        },
+        {
+            "id":"2",
+            "name ":"Gathering",
+            "description":"Team responsible for purchases",
+            "id_member":"1",
+            "privacy": "True"
+        }
+    ]
+}
