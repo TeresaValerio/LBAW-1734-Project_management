@@ -98,7 +98,7 @@
                                 <button type="submit" class="btn btn-info btn-lg btn-block">Login</button>
                             </div>
                             <div>
-                                <a href="user.html">
+                                <a href="{{ url('personalInfo') }}">
                                     <p>Don't have an account?
                                     </p>
                                 </a>

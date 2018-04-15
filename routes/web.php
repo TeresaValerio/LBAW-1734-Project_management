@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
+Route::get('/personalInfo', function () {
+    return view('pages.userInfo');
+});
+
+Route::get('/projects', function () {
+    return view('pages.userProjects');
+});
+
 // Cards
 Route::get('cards', 'CardController@list');
 Route::get('cards/{id}', 'CardController@show');

@@ -1,0 +1,93 @@
+.navbar {
+  margin-bottom: 0;
+  z-index: 9999;
+  border: 0;
+  border-radius: 0;
+}
+
+.jumbotron {
+  background-color: #7ABED3;
+  /* Orange */
+  color: #ffffff;
+  padding: 100px 100px;
+}
+
+.bg-grey {
+  background-color: #f6f6f6;
+}
+
+.bg-darkgrey {
+  background-color: #323233;
+  color: #ffffff;
+}
+
+.container-fluid {
+  padding: 20px 40px;
+}
+
+.logo {
+  font-size: 200px;
+}
+
+.modal-backdrop {
+  z-index: 100000 !important;
+}
+
+.modal {
+  z-index: 100001 !important;
+}
+
+#login-modal .modal-dialog {
+  width: 350px;
+}
+
+#login-modal input[type=text],
+input[type=password] {
+  margin-top: 10px;
+}
+
+
+#div-login-msg,
+#div-lost-msg,
+#div-register-msg {
+  border: 1px solid #dadfe1;
+  height: 30px;
+  line-height: 28px;
+  transition: all ease-in-out 500ms;
+}
+
+.card {
+  background: #FFF;
+  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #AAA;
+  border-bottom: 3px solid #BBB;
+  padding: 0px;
+  margin-top: 1em;
+  overflow: hidden;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: 'Roboto', sans-serif;
+  -webkit-transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-body {
+  margin: 2em;
+}
+
+.card-header {
+  width: 100%;
+  color: #fff;
+  background-color: #7ABED3;
+  border-bottom: 3px solid #BBB;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: 'Roboto', sans-serif;
+  padding: 0px;
+  margin-top: 0px;
+  overflow: hidden;
+  -webkit-transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
