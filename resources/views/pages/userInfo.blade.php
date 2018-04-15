@@ -23,7 +23,7 @@
                 <div class="navi">
                     <ul>
                         <li>
-                            <a href="user.html">
+                            <a href="{{ url('userProjects') }}">
                                 <i class="fa fa-home" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">My Projects</span>
                             </a>

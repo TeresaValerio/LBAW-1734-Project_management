@@ -19,9 +19,11 @@ Route::get('/personalInfo', function () {
     return view('pages.userInfo');
 });
 
-Route::get('/projects', function () {
+Route::get('/userProjects', function () {
     return view('pages.userProjects');
 });
+
+Route::post('/loginme','Auth\LoginController@login');
 
 // Cards
 Route::get('cards', 'CardController@list');
@@ -41,3 +43,7 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
