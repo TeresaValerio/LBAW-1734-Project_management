@@ -79,14 +79,15 @@
                 <div id="div-forms">
 
                     <!-- Begin # Login Form -->
-                    <form id="login-form">
+                    <form action= "/loginme" method="post" id="login-form">
+			<input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="modal-body">
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Login to your account</span>
                             </div>
-                            <input id="login_email" class="form-control" type="email" placeholder="Email">
-                            <input id="login_password" class="form-control" type="password" placeholder="Password">
+                            <input name="login_email" class="form-control" type="email" placeholder="Email">
+                            <input name="login_password" class="form-control" type="password" placeholder="Password">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox"> Remember me
