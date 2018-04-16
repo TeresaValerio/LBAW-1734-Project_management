@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="CSS/frontPage.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="JS/frontPage.js"></script>
+    <script src="JS/welcome.js"></script>
     <style>
     </style>
 </head>
@@ -98,13 +98,7 @@
                                 <button type="submit" class="btn btn-info btn-lg btn-block">Login</button>
                             </div>
                             <div>
-                                <a href="{{ url('personalInfo') }}">
-                                    <p>Don't have an account?
-                                    </p>
-                                </a>
-                                <p>
-                                    <button id="login_register_btn" type="button" class="btn btn-link">Register</button>
-                                </p>
+                                    <button id="login_register_btn" type="button" class="btn btn-link">Don't have an account? Register</button>
                             </div>
                         </div>
                     </form>

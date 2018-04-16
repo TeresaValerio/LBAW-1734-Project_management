@@ -32,7 +32,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active">
-                        <a href="user.html">Inês Gonçalves</a>
+                        <a href={{ url('/userInfo') }}>Inês Gonçalves</a>
                     </li>
                     <li>
                         <a href="explore.html">Explore</a>
