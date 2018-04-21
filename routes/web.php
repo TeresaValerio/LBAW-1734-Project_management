@@ -23,6 +23,10 @@ Route::get('/userProjects', function () {
     return view('pages.userProjects');
 });
 
+Route::get('/settings', function () {
+    return view('pages.settings');
+});
+
 Route::post('/loginme','Auth\LoginController@login');
 
 // Cards
