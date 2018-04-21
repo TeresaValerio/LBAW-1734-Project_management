@@ -1,0 +1,33 @@
+.navbar {
+    margin-bottom: 0;
+    z-index: 9999;
+    border: 0;
+    border-radius: 0;
+ }
+  
+ .header {
+  padding: 50px 50px 20px;
+}
+  
+.main-color-bg {
+  background-color: #7ABED3;
+  color: #FFF;
+}
+
+.flipkart-navbar-input {
+  padding: 11px 16px;
+  border-radius: 2px 0 0 2px;
+  border: 0 none;
+  outline: 0 none;
+  font-size: 15px;
+}
+
+.flipkart-navbar-button {
+  background-color: #f3f3f3;
+  border: 1px solid #f3f3f3;
+  border-radius: 0 2px 2px 0;
+  color: #565656;
+  padding: 10px 0;
+  height: 43px;
+  cursor: pointer;
+}

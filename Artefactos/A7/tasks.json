@@ -1,0 +1,25 @@
+{
+    "Task": [
+        {
+            "id":"1",
+            "name ":"Buy honey",
+            "description":"Honey is scarcing. 30L of honey are needed for the hive's survival! ",
+            "id_member":"1",
+            "budget": "NULL",
+            "deadline": "15-08-2019",
+            "progress": "10%",
+            "status": "open"
+        },
+        {
+            "id":"2",
+            "name ":"Buy fields",
+            "description":"Flowers are essential for our production. We need to look for new fields, check prices and buy the one with lower price. ",
+            "id_member":"2",
+            "budget": "NULL",
+            "deadline": "15-02-2018",
+            "progress": "100%",
+            "status": "closed"
+        }
+    ]
+}
+
