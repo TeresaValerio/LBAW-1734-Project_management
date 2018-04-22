@@ -1,6 +1,6 @@
 -- T01
 BEGIN TRANSACTION
-SET TRANSACTION --faltam aqui cenas
+SET TRANSACTION ISOLATION LEVEL READ COMITTED
 
 -- Insert new progress_update
 INSERT INTO Progress_update (new_value, id_user, id_task)
@@ -16,7 +16,7 @@ COMMIT
 -----------------------------------------------------
 --T02
 BEGIN TRANSACTION
-SET TRANSACTION ---faltam cenas aqui
+SET TRANSACTION ISOLATION LEVEL READ COMITTED
 
 -- Insert new message
 INSERT INTO Message (message, id_user, id_project)
@@ -32,7 +32,7 @@ COMMIT
 -----------------------------------------------------
 --T03
 BEGIN TRANSACTION
-SET TRANSACTION -- faltam cenas aqui
+SET TRANSACTION ISOLATION LEVEL READ COMITTED
 
 -- Insert new task
 INSERT INTO Task (description, name, id_creator, id_board, deadline, budget)
@@ -48,7 +48,7 @@ COMMIT
 ----------------------------------------------------
 -- T04
 BEGIN TRANSACTION
-SET TRANSACTION ---faltam cenas aqui
+SET TRANSACTION ISOLATION LEVEL READ COMITTED
 
 -- Insert new board
 INSERT INTO Board (description, name, id_creator, id_project)
