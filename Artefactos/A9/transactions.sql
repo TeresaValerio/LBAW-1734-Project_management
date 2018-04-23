@@ -1,62 +1,50 @@
 -- T01
 BEGIN TRANSACTION
-SET TRANSACTION ISOLATION LEVEL READ COMITTED
+SET TRANSACTION ISOLATION LEVEL --faltam cenas aqui
 
--- Insert new progress_update
-INSERT INTO Progress_update (new_value, id_user, id_task)
-VALUES ($new_value, $id_user, $id_task)
+-- Archive project
+UPDATE Project
+SET project_state=$states
+WHERE id=$id
 
--- Update column progress in table Task
+-- Archive project boards
+UPDATE Board
+SET board_state=$states
+WHERE id_project=$id
+
+-- Archive board tasks
 UPDATE Task
-SET progress = $new_value
-WHERE id = $id_task
+SET task_state=$states
+INNER JOIN Board ON Board.id=Task.id_board
+WHERE Board.id_project=$id
 
 COMMIT
 
------------------------------------------------------
+--------------------------------------------------------
 --T02
 BEGIN TRANSACTION
-SET TRANSACTION ISOLATION LEVEL READ COMITTED
+SET TRANSACTION ISOLATION LEVEL --faltam cenas aqui
 
--- Insert new message
-INSERT INTO Message (message, id_user, id_project)
-VALUES ($message, $id_user, $id_project)
+-- Delete user
+DELETE FROM User
+WHERE id=$userID
 
--- Select last messages
-SELECT * 
-    FROM Message
-    WHERE Message.id_project=$projectId AND Message.date >= DATEADD(day, -7, GETDATE())
+-- Archive project
+UPDATE Project
+SET project_state='Archived'
+WHERE id_coordinator=$userID
 
-COMMIT
+-- Archive project boards
+UPDATE Board
+SET board_state='Archived'
+INNER JOIN Project ON Board.id_project=Project.id
+WHERE Porject.id_coordinator=$userID
 
------------------------------------------------------
---T03
-BEGIN TRANSACTION
-SET TRANSACTION ISOLATION LEVEL READ COMITTED
-
--- Insert new task
-INSERT INTO Task (description, name, id_creator, id_board, deadline, budget)
-VALUES ($description, $name, $id_creator, $id_project, $deadline, $budget)
-
--- Select tasks from board
-SELECT Task.id
-    FROM Task
-    WHERE Task.id_board=$boardId
-
-COMMIT
-
-----------------------------------------------------
--- T04
-BEGIN TRANSACTION
-SET TRANSACTION ISOLATION LEVEL READ COMITTED
-
--- Insert new board
-INSERT INTO Board (description, name, id_creator, id_project)
-VALUES ($description, $name, $id_creator, $id_project)
-
--- Select boards from project and user
-SELECT * FROM Board
-    INNER JOIN Board_team ON Board.id=Board_team.id_board
-    WHERE Board.id_project=$projectId AND Board_team.id_user=$id_user
+-- Archive board tasks
+UPDATE Task
+SET task_state='Archived'
+INNER JOIN Board ON Board.id=Task.id_board
+    INNER JOIN Project ON Project.id=Board.id_project
+WHERE Project.id_coordinator=$userID
 
 COMMIT

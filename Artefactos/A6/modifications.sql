@@ -43,6 +43,7 @@ WHERE id=$id
 -- Archive/close project
 UPDATE Project
 SET project_state=$project_state
+WHERE id=$id
 
 -- New project worker
 INSERT INTO Project_team (id_user, id_project)
