@@ -10,4 +10,21 @@ class SettingsController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function changePassword(Request $request){
+ 
+ 
+        $validatedData = $request->validate([
+            'new_password' => 'required',
+            'new_password2' => 'required|string|min:6|confirmed',
+        ]);
+ 
+        //Change Password
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('new_password'));
+        $user->save();
+ 
+        return redirect()->back()->with("success","Password changed successfully !");
+ 
+    }
 }

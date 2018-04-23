@@ -65,14 +65,14 @@
                     
                     <div class="col-md-5 col-sm-6 display-table-cell v-align" >
                     
-                        <form action="" method="post" id="fileForm" role="form">
+                        <form action="/changePassword" method="post" id="fileForm" role="form">
                                 <fieldset><legend class="text-left"><h2> Password </h2></legend>
                         <div class="form-group">
                             <label for="password"><span class="req"></span> New password: </label>
-                                <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Input new password" id="pass1" /> </p>
+                                <input required name="new_password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Input new password" id="pass1" /> </p>
 
                             <label for="password"><span class="req"></span> Confirm new password: </label>
-                                <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Repeat new password"  id="pass2" onkeyup="checkPass(); return false;" />
+                                <input required name="new_password2" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Repeat new password"  id="pass2" onkeyup="checkPass(); return false;" />
                                     <span id="confirmMessage" class="confirmMessage"></span>
                         </div>
                         <div class="form-group">

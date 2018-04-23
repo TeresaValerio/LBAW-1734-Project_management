@@ -35,8 +35,10 @@ CREATE TABLE Board (
     id SERIAL NOT NULL,
     description text,
     name text NOT NULL,
+    board_state state DEFAULT 'In_progress' NOT NULL,
     id_creator integer NOT NULL,
     id_project integer NOT NULL
+    
 );
 
 CREATE TABLE Board_team (
@@ -157,7 +159,7 @@ CREATE TABLE Task (
 CREATE TABLE Users (
     id SERIAL NOT NULL,
     e_mail text NOT NULL,
-    full_name text,
+    full_name text NOT NULL,
     password text NOT NULL,
     url SERIAL NOT NULL,
     username text NOT NULL,
@@ -321,5 +323,9 @@ ALTER TABLE ONLY Users
 
 
 
-INSERT INTO Users (e_mail, password, username) VALUES ('carlasantos@gmail.com', 'palavrapasse1', 'CarlaS');
+INSERT INTO Users (e_mail, password, username, full_name) VALUES ('carlasantos@gmail.com', 'palavrapasse1', 'CarlaS', 'Carla Santos');
+
+INSERT INTO Project (description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES ('Projeto de LIEB para deteção de apneia do sono', TIMESTAMP '2018/03/04', timestamp '2019/05/18', 'Hypnos', 1, 'In_progress', true);
+
+INSERT INTO Project (start_date, end_date, name, id_coordinator, project_state) VALUES (TIMESTAMP '2018/02/20', TIMESTAMP '2019/05/25 24:00:00', 'Fotopletismógrafo portátil', 1, 'In_progress');
 

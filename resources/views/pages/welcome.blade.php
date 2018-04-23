@@ -115,6 +115,7 @@
                                 <span id="text-register-msg">Register an account</span>
                             </div>
                             <input name="register_username" class="form-control" type="text" placeholder="Username" required>
+                            <input name="register_fullname" class="form-control" type="text" placeholder="Full name" required>
                             <input name="register_email" class="form-control" type="email" placeholder="E-Mail" required>
                             <input name="register_password" class="form-control" type="password" placeholder="Password" required>
                         </div>
