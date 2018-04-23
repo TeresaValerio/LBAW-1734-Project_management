@@ -19,6 +19,10 @@ Route::get('/personalInfo', function () {
     return view('pages.userInfo');
 });
 
+Route::get('/userInfo', function () {
+    return view('pages.userInfo');
+});
+
 Route::get('/userProjects', function () {
     return view('pages.userProjects');
 });
@@ -32,7 +36,7 @@ Route::post('/loginme','Auth\LoginController@login');
 
 Route::post('/register','Auth\RegisterController@register');
 
-
+Route::post('/changePassword','settingsController@change');
 
 Auth::routes();
 
