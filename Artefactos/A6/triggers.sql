@@ -95,4 +95,22 @@ LANGUAGE plpgsql;
 CREATE TRIGGER check_exist_contact
     BEFORE INSERT ON Contact
     FOR EACH ROW
-        EXECUTE PROCEDURE check_exist_contact();        
+        EXECUTE PROCEDURE check_exist_contact();
+
+-- Alterar o progress de uma task quando é adicionado um task upgrade --
+------------------------------------------------------------------------
+
+CREATE FUNCTION update_task_progress() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    UPDATE Task
+    SET Task.progress=Progress_update.new_value
+    WHERE Task.id=Progress_update.id_task
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER update_task_progress
+    AFTER INSERT ON Progress_update
+    FOR EACH ROW
+        Execute PROCEDURE update_task_progress();              
