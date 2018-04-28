@@ -19,25 +19,30 @@ Route::get('/personalInfo', function () {
     return view('pages.userInfo');
 });
 
-Route::get('/projects', function () {
+Route::get('/userInfo', function () {
+    return view('pages.userInfo');
+});
+
+Route::get('/userProjects', function () {
     return view('pages.userProjects');
 });
 
-// Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
+Route::get('/settings', function () {
+    return view('pages.settings');
+});
 
-// API
-Route::put('api/cards', 'CardController@create');
-Route::delete('api/cards/{card_id}', 'CardController@delete');
-Route::put('api/cards/{card_id}/', 'ItemController@create');
-Route::post('api/item/{id}', 'ItemController@update');
-Route::delete('api/item/{id}', 'ItemController@delete');
+Route::post('/loginme','Auth\LoginController@login');
 
-// Authentication
 
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+Route::post('/register','Auth\RegisterController@register');
+
+Route::post('/changePassword','settingsController@change');
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+

@@ -38,9 +38,9 @@ SELECT COUNT id
     WHERE Notification.id_user=$user AND Notification.read=0
 
 -- Todas as boards do projeto em que o utilizador está incluído
-SELECT *
-    FROM Board
-    WHERE Board.id_project=$projectId
+SELECT * FROM Board
+    INNER JOIN Board_team ON Board.id=Board_team.id_board
+    WHERE Board.id_project=$projectId AND Board_team.id_user=$id_user
 
 -- Toda a informação de um projeto
 SELECT * FROM Project
@@ -82,11 +82,21 @@ SELECT TOP 5 Comment.id, File.id, Progress_update.id
     WHERE Task.id=$taskId
 
 -- Search project
-SELECT description, start_date, name FROM Project
-  WHERE description LIKE %$search% OR title LIKE %$search% AND privacy=false;
-ORDER BY title;
+SELECT id, name, description, start_date, ts_rank_cd(textsearch, query) AS rank
+    FROM Project, to_tsquery($search) AS query, to_tsvector(name || ‘ ‘ || description) AS textsearch
+    WHERE query @@ textsearch\\ ORDER BY rank DESC;
 
 -- Search user
 SELECT username, full_name, e_mail FROM User
   WHERE username LIKE %$search% OR full_name LIKE %$search%;
 ORDER BY username;
+
+-- Search board
+SELECT id, name, description ts_rank_cd(textsearch, query) AS rank
+    FROM Board, to_tsquery($search) AS query, to_tsvector(name || ‘ ‘ || description) AS textsearch
+    WHERE query @@ textsearch\\ ORDER BY rank DESC;
+
+-- Search Task
+SELECT id, name, description ts_rank_cd(textsearch, query) AS rank
+    FROM Task, to_tsquery($search) AS query, to_tsvector(name || ‘ ‘ || description) AS textsearch
+    WHERE query @@ textsearch\\ ORDER BY rank DESC;

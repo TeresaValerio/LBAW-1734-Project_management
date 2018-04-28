@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="CSS/frontPage.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="JS/frontPage.js"></script>
+    <script src="JS/welcome.js"></script>
     <style>
     </style>
 </head>
@@ -79,14 +79,15 @@
                 <div id="div-forms">
 
                     <!-- Begin # Login Form -->
-                    <form id="login-form">
+                    <form action= "/loginme" method="post" id="login-form">
+			<input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="modal-body">
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Login to your account</span>
                             </div>
-                            <input id="login_email" class="form-control" type="email" placeholder="Email">
-                            <input id="login_password" class="form-control" type="password" placeholder="Password">
+                            <input name="login_email" class="form-control" type="email" placeholder="Email">
+                            <input name="login_password" class="form-control" type="password" placeholder="Password">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox"> Remember me
@@ -98,28 +99,25 @@
                                 <button type="submit" class="btn btn-info btn-lg btn-block">Login</button>
                             </div>
                             <div>
-                                <a href="{{ url('personalInfo') }}">
-                                    <p>Don't have an account?
-                                    </p>
-                                </a>
-                                <p>
-                                    <button id="login_register_btn" type="button" class="btn btn-link">Register</button>
-                                </p>
+                                    <button id="login_register_btn" type="button" class="btn btn-link">Don't have an account? Register</button>
                             </div>
                         </div>
                     </form>
                     <!-- End # Login Form -->
 
                     <!-- Begin | Register Form -->
-                    <form id="register-form" style="display:none;">
+                    <form action= "/register" method="post" id="register-form" style="display:none;">
+			<input type="hidden" name="_token" value="{{csrf_token()}}">
+
                         <div class="modal-body">
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Register an account</span>
                             </div>
-                            <input id="register_username" class="form-control" type="text" placeholder="Username" required>
-                            <input id="register_email" class="form-control" type="email" placeholder="E-Mail" required>
-                            <input id="register_password" class="form-control" type="password" placeholder="Password" required>
+                            <input name="register_username" class="form-control" type="text" placeholder="Username" required>
+                            <input name="register_fullname" class="form-control" type="text" placeholder="Full name" required>
+                            <input name="register_email" class="form-control" type="email" placeholder="E-Mail" required>
+                            <input name="register_password" class="form-control" type="password" placeholder="Password" required>
                         </div>
                         <div class="modal-footer">
                             <div>

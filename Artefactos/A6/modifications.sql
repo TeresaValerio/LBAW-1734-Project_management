@@ -5,6 +5,7 @@ VALUES ($new_value, $id_user, $id_task)
 -- Update task progress
 UPDATE Task
 SET progress = $progress
+WHERE id = $id
 
 -- New file
 INSERT INTO File (path, description, id_user, id_task)
@@ -30,13 +31,19 @@ VALUES ($description, $name, $id_coordinator, $privacy)
 INSERT INTO Board (description, name, id_creator, id_project)
 VALUES ($description, $name, $id_creator, $id_project)
 
+-- New task
+INSERT INTO Task (description, name, id_creator, id_board, deadline, budget)
+VALUES ($description, $name, $id_creator, $id_project, $deadline, $budget)
+
 -- Archive/close task
 UPDATE Task
 SET task_state=$task_state
+WHERE id=$id
 
 -- Archive/close project
 UPDATE Project
 SET project_state=$project_state
+WHERE id=$id
 
 -- New project worker
 INSERT INTO Project_team (id_user, id_project)
@@ -53,14 +60,17 @@ VALUES ($e_mail, $password, $URL, $username)
 -- Update user info - full_name
 UPDATE User
 SET full_name=$full_name
+WHERE id=$id
 
 -- Update user info - password
 UPDATE User
 SET password=$password
+WHERE id=$id
 
 -- Update user info - administrator
 UPDATE User
 SET administrator=$administrator
+WHERE id=$id
 
 -- Update user info - photo
 INSERT INTO Profile_picture (id_user, path)
@@ -69,10 +79,12 @@ VALUES ($id_user, $path)
 -- Update project info - description
 UPDATE Project
 SET description=$description
+WHERE id=$id
 
 -- Update project info - end-date
 UPDATE Project
 SET end_date=$end_date
+WHERE id=$id
 
 -- Update project info - photo
 INSERT INTO Project_picture (id_project, path)
@@ -93,3 +105,4 @@ VALUES ($id_user, $notification)
 -- Mark notification as read/unread
 UPDATE Notification
 SET read=$read
+WHERE id=$id
