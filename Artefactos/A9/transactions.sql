@@ -1,6 +1,6 @@
 -- T01
 BEGIN TRANSACTION
-SET TRANSACTION ISOLATION LEVEL --faltam cenas aqui
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE
 
 -- Archive project
 UPDATE Project
@@ -23,7 +23,7 @@ COMMIT
 --------------------------------------------------------
 --T02
 BEGIN TRANSACTION
-SET TRANSACTION ISOLATION LEVEL --faltam cenas aqui
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE
 
 -- Delete user
 DELETE FROM User
@@ -46,5 +46,21 @@ SET task_state='Archived'
 INNER JOIN Board ON Board.id=Task.id_board
     INNER JOIN Project ON Project.id=Board.id_project
 WHERE Project.id_coordinator=$userID
+
+COMMIT
+
+------------------------------------------------------------
+--T03
+BEGIN TRANSACTION
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE READ ONLY
+
+-- Get number of unread notifications
+SELECT COUNT id
+    FROM Notification
+    WHERE Notification.id_user=$user AND Notification.read=0
+
+-- Get notifications
+SELECT * FROM Notification
+    WHERE Notification.id_user=$user
 
 COMMIT
