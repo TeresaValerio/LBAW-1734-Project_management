@@ -36,7 +36,7 @@ Route::post('/loginme','Auth\LoginController@login');
 
 Route::post('/register','Auth\RegisterController@register');
 
-Route::post('/changePassword','settingsController@change');
+Route::post('/changePassword','SettingsController@change');
 
 Auth::routes();
 
