@@ -2,12 +2,12 @@
 
 
 @section('content')
- <link rel="stylesheet" href="CSS/userInfo.css">
+ <link rel="stylesheet" href="/CSS/userInfo.css">
  <!-- Header -->
     <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb">
             <li>
-                <a href="#">Inês Gonçalves</a>
+                <a href="#">{{ $person->full_name}}</a>
             </li>
             <li class="active">
                 Personal Info
@@ -47,20 +47,20 @@
                 <div class="col-md-10 col-sm-11 display-table-cell v-align">
                     <div class="col-md-2 col-sm-3 display-table-cell v-align">
                         <a href="#" class="profile-pic">
-                            <div class="profile-pic" style="background-image: url(img/profile.jpg)">
+                            <div class="profile-pic" style="background-image: url(/img/profile.jpg)">
                                 <span class="glyphicon glyphicon-camera"></span>
                                 <span>Change Image</span>
                             </div>
                         </a>
                     </div>
                     <div class="col-md-10 col-sm-9 display-table-cell v-align">
-                        <h1>Inês Gonçalves</h1>
+                        <h1>{{ $person->full_name}}</h1>
                         <p>
                             <strong>Username: </strong> <br />
-                        m.ines.ggoncalves</p>
+                            {{ $person->username}}</p>
                         <p>
                             <strong>Email: </strong> <br />
-                        m.ines.ggoncalves@gmail.com</p>
+                            {{ $person->e_mail}}</p>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                     <canvas id="myChart" style="max-width: 900px; padding: 0px;"></canvas>
                 </div>
             </div>
-        </div><link rel="stylesheet" href="CSS/userInfo.css">
+        </div>
     </div>
 
     <!-- Bootstrap core JavaScript
