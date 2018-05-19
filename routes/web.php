@@ -15,15 +15,15 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
-Route::get('/personalInfo', function () {
-    return view('pages.userInfo');
+Route::get('/{userId}/personalInfo', function ($userId) {
+
+    $person = DB::table('users')->find($userId);
+    return view('pages.userInfo', compact('person'));
 });
 
-Route::get('/userInfo', function () {
-    return view('pages.userInfo');
-});
 
-Route::get('/userProjects', function () {
+Route::get('/{id}/userProjects', function ($id) {
+    
     return view('pages.userProjects');
 });
 
@@ -36,7 +36,7 @@ Route::post('/loginme','Auth\LoginController@login');
 
 Route::post('/register','Auth\RegisterController@register');
 
-Route::post('/changePassword','settingsController@change');
+Route::post('/changePassword','SettingsController@change');
 
 Auth::routes();
 

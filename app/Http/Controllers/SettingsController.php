@@ -11,7 +11,7 @@ class SettingsController extends Controller
         $this->middleware('auth');
     }
 
-    public function changePassword(Request $request){
+    public function change(Request $request){
  
  
         $validatedData = $request->validate([
