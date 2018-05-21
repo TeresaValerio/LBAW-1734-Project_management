@@ -107,7 +107,7 @@
 
                     <!-- Begin | Register Form -->
                     <form action= "/register" method="post" id="register-form" style="display:none;">
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
+			        <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                         <div class="modal-body">
                             <div id="div-register-msg">
