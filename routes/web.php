@@ -27,8 +27,9 @@ Route::get('/{id}/userProjects', function ($id) {
     return view('pages.userProjects');
 });
 
-Route::get('/settings', function () {
-    return view('pages.settings');
+Route::get('/{userId}/settings', function ($userId) {
+    $person = DB::table('users')->find($userId);
+    return view('pages.settings', compact('person'));
 });
 
 Route::post('/loginme','Auth\LoginController@login');

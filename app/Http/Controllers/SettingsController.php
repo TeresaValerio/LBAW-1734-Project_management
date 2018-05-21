@@ -11,6 +11,13 @@ class SettingsController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/{userId}/settings';
+
     public function change(Request $request){
  
  

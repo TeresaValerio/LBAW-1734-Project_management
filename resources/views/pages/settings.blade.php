@@ -53,14 +53,14 @@
                             </div>
                         </a>
                         <p>
-                            <h2> Inês Gonçalves</h2>
+                            <h2> {{ $person->full_name}}</h2>
                         </p>
                         <p>
                             <strong>Username: </strong> <br />
-                        m.ines.ggoncalves</p>
+                            {{ $person->username}}</p>
                         <p>
                             <strong>Email: </strong> <br />
-                        m.ines.ggoncalves@gmail.com</p>
+                            {{ $person->e_mail}}</p>
                     </div>
                     
                     <div class="col-md-5 col-sm-6 display-table-cell v-align" >
@@ -71,13 +71,13 @@
 
                             <div class="modal-body">
                                 <label for="new_password"><span class="req"></span> New password: </label>
-                                <input id="new_password" class="form-control" type="password" placeholder="New password">
+                                <input required id="new_password" class="form-control" type="password" placeholder="New password">
                                 <label for="new_password2"><span class="req"></span> Confirm new password: </label>
-                                <input id="new_password2" class="form-control" type="password" placeholder="Repeat new password">
+                                <input required id="new_password2" class="form-control" type="password" placeholder="Repeat new password">
                             </div>
                             <div class="modal-footer">
                                 <div>
-                                    <button type="submit" class="btn btn-info btn-lg btn-block">Submit</button>
+                                    <input class="btn btn-primary" type="submit" name="submit_reg" value="Submit">
                                 </div>
                                 
                             </div>
