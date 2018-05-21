@@ -21,7 +21,7 @@ Route::get('/{userId}/personalInfo', function ($userId) {
     return view('pages.userInfo', compact('person'));
 });
 
-Route::get('/{id}/userProjects', function ($id) {
+Route::get('/{userId}/userProjects', function ($userId) {
     
     return view('pages.userProjects');
 });
@@ -32,7 +32,7 @@ Route::get('/settings', function () {
 
 Route::post('/loginme','Auth\LoginController@login');
 
-Route::post('/create','Auth\ProjectController@create');
+Route::post('/create','ProjectController@create');
 
 Route::post('/register','Auth\RegisterController@register');
 

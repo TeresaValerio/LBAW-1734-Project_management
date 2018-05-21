@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\User;
+use App\Project;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use DB;
 
 
-class RegisterController extends Controller
+class ProjectController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Register Controller
+    | Create Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles the registration of new users as well as their
@@ -21,8 +20,6 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
-    use RegistersUsers;
 
     
 
@@ -32,46 +29,44 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator()
     {
         return Validator::make($data, [
-        'create_name'=>'required',
-        'create_description',
-        'create_date',
-        'create_deadline'
+            'description',
+            'start_date',
+            'end_date',
+            'name'=>'required'
         ]);
         
     }
     
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new project instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Project
      */
 
     protected function create (array $data)
     {
-	return project::create([
+	return Project::create([
         'description' => $data['create_description'],
         'start_date' => $data['create_date'],
         'end_date' => $data['create_deadline'],
-        'name' => $data['create_name']
-        /** como por o id do coordenador?? */
-	    
-            
+        'name' => $data['create_name'],
+        'id_coordinator'=>1      
 	]);
 	
 	
     }
     
     /**
-     * Where to redirect users after creating. POR AQUI PARA ONDE IR
+     * Where to redirect users after creating
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/{userId}/userProjects';
 
     /**
      * Create a new controller instance.
