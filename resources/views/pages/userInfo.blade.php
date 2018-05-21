@@ -7,7 +7,7 @@
     <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb">
             <li>
-                <a href="#">{{ $person->full_name}}</a>
+                <a href="#"> {{ $person->full_name }} </a>
             </li>
             <li class="active">
                 Personal Info
@@ -23,7 +23,7 @@
                 <div class="navi">
                     <ul>
                         <li>
-                            <a href="{{ url('userProjects') }}">
+                            <a href="{{ url('/userProjects') }}">
                                 <i class="fa fa-home" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">My Projects</span>
                             </a>

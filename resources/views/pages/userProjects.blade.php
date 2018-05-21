@@ -6,7 +6,7 @@
     <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb">
             <li>
-                Inês Gonçalves
+            <a href="#">{{ $person->full_name}}</a>
             </li>
             <li class="active">
                 Projects

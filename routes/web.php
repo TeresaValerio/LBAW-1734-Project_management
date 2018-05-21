@@ -22,8 +22,11 @@ Route::get('/{userId}/personalInfo', function ($userId) {
 });
 
 Route::get('/{userId}/userProjects', function ($userId) {
-    
-    return view('pages.userProjects');
+    $person=DB::table('users')->find($userId);
+    $created_projects=DB::table('projects')->find($userid);
+    $working_ids=DB::table('project_team')->find($user_id);
+    $working_projects=DB::table('projects')->find($working_ids);
+    return view('pages.userProjects', compact ('person', 'created_projects','working_projects'));
 });
 
 Route::get('/{userId}/settings', function ($userId) {
