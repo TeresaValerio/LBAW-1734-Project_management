@@ -32,7 +32,8 @@ class LoginController extends Controller
 	}
 	else
 	{
-		return view('pages.welcome');
+		return back() -> withErrors([
+            'message' => 'Check your credentials and try again']);
 	}	
 
     }
