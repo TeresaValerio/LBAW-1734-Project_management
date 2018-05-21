@@ -17,16 +17,14 @@ Route::get('/', function () {
 
 Route::get('/{userId}/personalInfo', function ($userId) {
 
+    $userId = auth()->user()->id;
     $person = DB::table('users')->find($userId);
     return view('pages.userInfo', compact('person'));
 });
 
 Route::get('/{userId}/userProjects', function ($userId) {
-    $person=DB::table('users')->find($userId);
-    $created_projects=DB::table('projects')->find($userid);
-    $working_ids=DB::table('project_team')->find($user_id);
-    $working_projects=DB::table('projects')->find($working_ids);
-    return view('pages.userProjects', compact ('person', 'created_projects','working_projects'));
+    
+    return view('pages.userProjects');
 });
 
 Route::get('/{userId}/settings', function ($userId) {
