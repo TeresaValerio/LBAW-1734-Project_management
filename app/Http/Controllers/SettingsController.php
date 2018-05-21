@@ -11,6 +11,24 @@ class SettingsController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/{userId}/settings';
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+	    'new_password' => 'required',
+        'new_password2' => 'required',
+        'register_fullname' => 'required',
+        'register_password' => 'required'
+        ]);
+        
+    }
+
     public function change(Request $request){
  
  
