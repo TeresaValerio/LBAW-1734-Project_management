@@ -160,35 +160,37 @@
                 </div>
                 <!-- Begin # DIV Form -->
                 <div id="div-forms">
-                    <!-- Begin # Login Form -->
+                    
+                    <!-- Begin # Create project Form -->
+                    <form id="login-form" action="/create" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-                    <form id="login-form">
                         <div class="modal-body">
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Name</span>
                             </div>
-                            <input id="project_name" class="form-control" type="name" placeholder="Project name">
+                            <input name="create_name" id="project_name" class="form-control" type="text" placeholder="Project name" required>
                             
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Description</span>
                             </div>
-                            <input id="project_name" class="form-control" type="description" placeholder="Project description">
+                            <input name="create_description" id="project_name" class="form-control" type="text" placeholder="Project description">
 
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Start date</span>
                             </div>
-                            <input type="date" name="date" value="start_date" > 
+                            <input name="create_date" type="date" value="start_date" > 
 
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Deadline</span>
                             </div>
-                            <input type="date" name="date" value="start_date" > 
+                            <input name="create_deadline" type="date" value="start_date" > 
                             
-                            <input type="checkbox" name="public" value="public" > Public project
+                            <input type="checkbox" name="create_public" value="public" > Public project
                         </div>
 
                         <div class="modal-footer">
