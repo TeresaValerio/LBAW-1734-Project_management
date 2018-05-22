@@ -25,8 +25,8 @@ Route::get('/{userId}/personalInfo', function ($userId) {
 Route::get('/{userId}/userProjects', function ($userId) {
     
     $person=DB::table('users')->find($userId);
-    $created_ids=DB::table('project')->where('id_coordinator',$userId)->pluck('id');
-    $working_ids=DB::table('project_team')->where('id_user',$userId)->pluck('id_project');
+    $created_ids=DB::table('project')->where('id_coordinator',$userId)->value('id');
+    $working_ids=DB::table('project_team')->where('id_user',$userId)->value('id_project');
 
     return view('pages.userProjects', compact ('person', 'created_ids', 'working_ids'));
 });
