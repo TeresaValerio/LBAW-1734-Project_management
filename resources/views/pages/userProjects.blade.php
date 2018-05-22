@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12 gutter">
                             <div class="created">
-                                <h2>Created ({{count($created_projects)}})</h2>
+                                <h2>Created ({{count($created_ids)}})</h2>
                             </div>
                         </div>
                     </div>
@@ -72,13 +72,13 @@
                                 </div>
                             </div>
                             <div class="row text-center">
-                            @foreach ($created_projects as $project)
+                            @foreach ($created_ids as $id)
                                 <div class="col-sm-3">
                                     <div class="card">
                                         <div class="card-content" align="center">
                                             <div class="card-header">
                                                 <h4>
-                                                    <strong>{{$project}}</strong>
+                                                    <strong>{{ $project=DB::table('project')->where('id',$id)->value('name') }}</strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
@@ -105,13 +105,13 @@
                     <div class="row">
                         <div class="well">
                             <div class="row text-center">
-                            @foreach($working_ids as $project)
+                            @foreach($working_ids as $id)
                                 <div class="col-sm-3">
                                     <div class="card">
                                         <div class="card-content" align="center">
                                             <div class="card-header">
                                                 <h4>
-                                                    <strong> {{ $project }} </strong>
+                                                    <strong> {{ $project=DB::table('project')->where('id',$id)->value('name') }} </strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
