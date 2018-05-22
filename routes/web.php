@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 Route::get('/{userId}/personalInfo', function ($userId) {
 
-    $userId = auth()->user()->id;
     $person = DB::table('users')->find($userId);
     return view('pages.userInfo', compact('person'));
 });
