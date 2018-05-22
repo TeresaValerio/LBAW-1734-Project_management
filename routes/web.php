@@ -17,12 +17,12 @@ Route::get('/', function () {
 
 Route::get('/{userId}/personalInfo', function ($userId) {
 
+    $userId = auth()->user()->id;
     $person = DB::table('users')->find($userId);
     return view('pages.userInfo', compact('person'));
 });
 
 Route::get('/{userId}/userProjects', function ($userId) {
-    
     $person=DB::table('users')->find($userId);
     $created_projects=DB::table('project')->where('id_coordinator',$userId)->pluck('name');
     $created_ids=DB::table('project')->where('id_coordinator',$userId)->pluck('id');

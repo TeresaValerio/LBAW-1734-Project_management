@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+
 <link rel="stylesheet" href="CSS/userInfo.css">
 
 <!-- Header -->
@@ -64,24 +66,34 @@
                     </div>
                     
                     <div class="col-md-5 col-sm-6 display-table-cell v-align" >
+
                     
                     <form action= "/changePassword" method="post" id="change-password-form">
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
-                                <fieldset><legend class="text-left"><h2> Password </h2></legend>
+                            {{ csrf_field() }}
+                            <fieldset><legend class="text-left"><h2> Password </h2></legend>
 
-                            <div class="modal-body">
-                                <label for="new_password"><span class="req"></span> New password: </label>
-                                <input required id="new_password" class="form-control" type="password" placeholder="New password">
-                                <label for="new_password2"><span class="req"></span> Confirm new password: </label>
-                                <input required id="new_password2" class="form-control" type="password" placeholder="Repeat new password">
+                            <div class="form-group">
+                                <label for="password"><span class="req"></span> New password: </label>
+                                <input required id="password" name="password" class="form-control" type="password" placeholder="New password">
                             </div>
-                            <div class="modal-footer">
+                            <div class="form-group">    
+                                <label for="password_confirmation"><span class="req"></span> Confirm new password: </label>
+                                <input required id="password_conformation" name="password_confirmation" class="form-control" type="password" placeholder="Repeat new password">
+                            </div>
+                            <div class= "form-group">
+                                @include ('layouts.errors')
+                            </div>
+                            <div class="form-group">
                                 <div>
                                     <input class="btn btn-primary" type="submit" name="submit_reg" value="Submit">
-                                </div>
-                                
+                                </div> 
                             </div>
+
+                            
+
                         </form>    
+
+                        
                         
                         <form action="" method="post" id="fileForm" role="form">
                         <fieldset><legend class="text-left"><h2> Full name </h2></legend>

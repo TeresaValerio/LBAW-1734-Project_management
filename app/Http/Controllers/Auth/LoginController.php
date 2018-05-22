@@ -24,7 +24,7 @@ class LoginController extends Controller
 	$login_email = $req -> input('login_email');
 	$login_password = $req -> input('login_password');
 
-	$checkLogin = DB::table('users') -> where (['e_mail'=>$login_email,'password'=>$login_password])->get();
+	$checkLogin = DB::table('users') -> where (['e_mail'=>$login_email,'password'=>hash_equals($login_password)])->get();
 
 	if(count($checkLogin)>0)
 	{
@@ -32,7 +32,8 @@ class LoginController extends Controller
 	}
 	else
 	{
-		return view('pages.welcome');
+		return back() -> withErrors([
+            'message' => 'Check your credentials and try again']);
 	}	
 
     }
