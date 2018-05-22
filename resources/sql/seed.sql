@@ -329,3 +329,8 @@ INSERT INTO Project (description, start_date, end_date, name, id_coordinator, pr
 
 INSERT INTO Project (start_date, end_date, name, id_coordinator, project_state) VALUES (TIMESTAMP '2018/02/20', TIMESTAMP '2019/05/25 24:00:00', 'Fotopletismógrafo portátil', 1, 'In_progress');
 
+INSERT INTO Users (e_mail, password, username, full_name) VALUES ('martins.577@gmail.com', 'palavrapasse2', 'TMartins', 'Tiago Martins');
+
+INSERT INTO Project_team (id_user, id_project) VALUES (2,1);
+
+

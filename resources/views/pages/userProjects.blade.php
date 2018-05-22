@@ -6,7 +6,7 @@
     <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb">
             <li>
-            <a href="#">  {{ $person->full_name }} </a>
+            <a href={{ url($person->id.'/personalInfo') }}>  {{ $person->full_name }} </a>
             </li>
             <li class="active">
                 Projects
@@ -22,19 +22,19 @@
                 <div class="navi">
                     <ul>
                         <li class="active">
-                            <a href=#>
+                            <a href={{ url($person->id.'/userProjects') }}>
                                 <i class="fa fa-home" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">My Projects</span>
                             </a>
                         </li>
                         <li>
-                            <a href={{ url('/personsalInfo') }}>
+                            <a href={{ url($person->id.'/personalInfo') }}>
                                 <i class="fa fa-info" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Personal Info</span>
                             </a>
                         </li>
                         <li>
-                            <a href="userCalendar.html">
+                            <a href={{ url($person->id.'/userCalendar') }}>
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">My Calendar</span>
                             </a>
