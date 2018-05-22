@@ -24,14 +24,12 @@ class LoginController extends Controller
 	$login_email = $req -> input('login_email');
 	$login_password = $req -> input('login_password');
 
-    $checkLogin = DB::table('users') -> select('id')-> where (['e_mail'=>$login_email,'password'=>$login_password])->get();
-    
-
+    $checkLogin = DB::table('users') -> where ('e_mail',$login_email);
 
 	if(count($checkLogin)>0)
 	{
-        echo (gettype($checkLogin));
-        return redirect ('/personalInfo'.$checkLogin);
+
+        return redirect ($checkLogin->id.'/personalInfo');
 
 
 	}
