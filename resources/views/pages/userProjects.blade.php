@@ -6,7 +6,7 @@
     <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb">
             <li>
-            <a href="#">{{ $person->full_name}}</a>
+            <a href="#">  {{ $person->full_name }} </a>
             </li>
             <li class="active">
                 Projects
@@ -22,7 +22,7 @@
                 <div class="navi">
                     <ul>
                         <li class="active">
-                            <a href={{ url('/projects') }}>
+                            <a href=#>
                                 <i class="fa fa-home" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">My Projects</span>
                             </a>
@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12 gutter">
                             <div class="created">
-                                <h2>Created</h2>
+                                <h2>Created ({{count($created_ids)}})</h2>
                             </div>
                         </div>
                     </div>
@@ -72,12 +72,13 @@
                                 </div>
                             </div>
                             <div class="row text-center">
+                            @foreach ($created_ids as $id)
                                 <div class="col-sm-3">
                                     <div class="card">
                                         <div class="card-content" align="center">
                                             <div class="card-header">
                                                 <h4>
-                                                    <strong>Tuna FTW</strong>
+                                                    <strong>{{ $project=DB::table('project')->where('id',$id)->value('name') }}</strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
@@ -90,25 +91,27 @@
                                         </div>
                                     </div>
                                 </div>
+                            @endforeach
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-7 col-sm-7 col-xs-12 gutter">
                             <div class="working on">
-                                <h2>Working on</h2>
+                                <h2>Working on ({{count($working_ids)}}) </h2>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="well">
                             <div class="row text-center">
+                            @foreach($working_ids as $id)
                                 <div class="col-sm-3">
                                     <div class="card">
                                         <div class="card-content" align="center">
                                             <div class="card-header">
                                                 <h4>
-                                                    <strong>Hive</strong>
+                                                    <strong> {{ $project=DB::table('project')->where('id',$id)->value('name') }} </strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
@@ -121,24 +124,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
-                                    <div class="card">
-                                        <div class="card-content" align="center">
-                                            <div class="card-header">
-                                                <h4>
-                                                    <strong>Hive</strong>
-                                                </h4>
-                                            </div>
-                                            <div class="card-body">
-                                                <img src="https://i.pinimg.com/originals/61/08/5b/61085bf8f325fe5e0a99b4259564e44a.jpg" alt="User Picture" style="height:142px;">
-                                                <hr />
-                                                <a href="project.html">
-                                                    <p>See more</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            @endforeach
                             </div>
                         </div>
                     </div>

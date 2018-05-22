@@ -23,7 +23,11 @@ Route::get('/{userId}/personalInfo', function ($userId) {
 
 Route::get('/{userId}/userProjects', function ($userId) {
     
-    return view('pages.userProjects');
+    $person=DB::table('users')->find($userId);
+    $created_ids=DB::table('project')->where('id_coordinator',$userId)->pluck('id');
+    $working_ids=DB::table('project_team')->where('id_user',$userId)->pluck('id_project');
+
+    return view('pages.userProjects', compact ('person', 'created_ids', 'working_ids'));
 });
 
 Route::get('/{userId}/settings', function ($userId) {
@@ -32,8 +36,6 @@ Route::get('/{userId}/settings', function ($userId) {
 });
 
 Route::post('/loginme','Auth\LoginController@login');
-
-Route::post('/create','ProjectController@create');
 
 Route::post('/register','Auth\RegisterController@register');
 
