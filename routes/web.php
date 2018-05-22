@@ -22,11 +22,13 @@ Route::get('/{userId}/personalInfo', function ($userId) {
 });
 
 Route::get('/{userId}/userProjects', function ($userId) {
+    
     $person=DB::table('users')->find($userId);
-    $created_projects=DB::table('projects')->find($userid);
-    $working_ids=DB::table('project_team')->find($user_id);
-    $working_projects=DB::table('projects')->find($working_ids);
-    return view('pages.userProjects', compact ('person', 'created_projects','working_projects'));
+    $created_projects=DB::table('project')->where('id_coordinator',$userId)->pluck('name');
+    $created_ids=DB::table('project')->where('id_coordinator',$userId)->pluck('id');
+    $working_ids=DB::table('project_team')->where('id_user',$userId)->pluck('id_project');
+
+    return view('pages.userProjects', compact ('person','created_projects', 'created_ids', 'working_ids'));
 });
 
 Route::get('/{userId}/settings', function ($userId) {
