@@ -78,7 +78,7 @@
                                         <div class="card-content" align="center">
                                             <div class="card-header">
                                                 <h4>
-                                                    <strong>{{ $project=DB::table('project')->where('id',$id)->value('name') }}</strong>
+                                                    <strong>{{ $project=DB::table('projects')->where('id',$id)->value('name') }}</strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
@@ -111,7 +111,7 @@
                                         <div class="card-content" align="center">
                                             <div class="card-header">
                                                 <h4>
-                                                    <strong> {{ $project=DB::table('project')->where('id',$id)->value('name') }} </strong>
+                                                    <strong> {{ $project=DB::table('projects')->where('id',$id)->value('name') }} </strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
@@ -148,7 +148,21 @@
                 <div id="div-forms">
                     
                     <!-- Begin # Create project Form -->
-                    <form id="login-form" action="/create" method="post">
+                    @if(count($errors)>0)
+                        <div class="alert alert-danger">
+                            <ul>
+                            @foreach($errors->all() as $error)
+                                <li> {{$error}} </li>
+                            @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if(\Session::has('success'))
+                        <div class="alert alert-success">
+                            <p> {{\Session::get('success') }} </p>
+                        </div>
+                    @endif
+                    <form id="login-form" action="/project" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                         <div class="modal-body">
@@ -156,27 +170,27 @@
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Name</span>
                             </div>
-                            <input name="create_name" id="project_name" class="form-control" type="text" placeholder="Project name" required>
+                            <input name="project_name" id="project_name" class="form-control" type="text" placeholder="Project name" required>
                             
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Description</span>
                             </div>
-                            <input name="create_description" id="project_name" class="form-control" type="text" placeholder="Project description">
+                            <input name="project_description" id="project_name" class="form-control" type="text" placeholder="Project description">
 
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Start date</span>
                             </div>
-                            <input name="create_date" type="date" value="start_date" > 
+                            <input name="project_date" type="date" value="start_date" > 
 
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Deadline</span>
                             </div>
-                            <input name="create_deadline" type="date" value="start_date" > 
+                            <input name="project_deadline" type="date" value="start_date" > 
                             
-                            <input type="checkbox" name="create_public" value="public" > Public project
+                            <input type="checkbox" name="project_public" value="true" default="false"> Public project
                         </div>
 
                         <div class="modal-footer">

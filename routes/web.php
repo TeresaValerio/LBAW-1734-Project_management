@@ -24,7 +24,7 @@ Route::get('/{userId}/personalInfo', function ($userId) {
 Route::get('/{userId}/userProjects', function ($userId) {
     
     $person=DB::table('users')->find($userId);
-    $created_ids=DB::table('project')->where('id_coordinator',$userId)->pluck('id');
+    $created_ids=DB::table('projects')->where('id_coordinator',$userId)->pluck('id');
     $working_ids=DB::table('project_team')->where('id_user',$userId)->pluck('id_project');
 
     return view('pages.userProjects', compact ('person', 'created_ids', 'working_ids'));
@@ -34,6 +34,8 @@ Route::get('/{userId}/settings', function ($userId) {
     $person = DB::table('users')->find($userId);
     return view('pages.settings', compact('person'));
 });
+
+Route::post('/project','ProjectsController@store');
 
 Route::post('/loginme','Auth\LoginController@login');
 
