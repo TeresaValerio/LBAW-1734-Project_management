@@ -162,7 +162,7 @@
                             <p> {{\Session::get('success') }} </p>
                         </div>
                     @endif
-                    <form id="login-form" action="/project" method="post">
+                    <form id="login-form" action= "/project" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                         <div class="modal-body">
@@ -191,6 +191,7 @@
                             <input name="project_deadline" type="date" value="start_date" > 
                             
                             <input type="checkbox" name="project_public" value="true" default="false"> Public project
+
                         </div>
 
                         <div class="modal-footer">
