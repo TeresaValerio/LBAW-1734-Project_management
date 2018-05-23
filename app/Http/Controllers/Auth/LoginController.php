@@ -41,6 +41,14 @@ class LoginController extends Controller
 	}	
 
     }
+
+
+    public function destroy(){
+        auth()->logout();
+        return redirect()->to('/welcome');
+    }
+
+    
     use AuthenticatesUsers;
 
     /**
