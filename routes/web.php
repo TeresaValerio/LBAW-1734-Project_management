@@ -39,12 +39,14 @@ Route::get('/{userId}/settings', function ($userId) {
 
 Route::get('/{projectId}/projectBoards', function ($projectId) {
     $project = DB::table('projects')->find($projectId);
-    return view('pages.projectBoard', compact('project'));
+    $boards_ids = DB::table('board')->where('id_project',$projectId)->pluck('id');
+    return view('pages.projectBoard', compact('project', 'boards_ids'));
 });
 
 Route::get('/{projectId}/projectTeam', function ($projectId) {
     $project = DB::table('projects')->find($projectId);
-    return view('pages.projectTeam', compact('project'));
+    $team_ids = DB::table('project_team')->where('id_project',$projectId)->pluck('id_user');
+    return view('pages.projectTeam', compact('project', 'team_ids'));
 });
 
 Route::post('/project','ProjectsController@store');

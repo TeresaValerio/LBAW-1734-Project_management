@@ -9,7 +9,9 @@
                 <a href="user.html">Inês Gonçalves</a>
             </li>
             <li>
-                <a href="project.html">Hive</a>
+                <a href="project.html">
+                {{ $project->name }}
+                </a>
             </li>
             <li class="active">
                 Team
@@ -26,7 +28,7 @@
                 <div class="navi">
                     <ul>
                         <li>
-                            <a href="project.html">
+                            <a href={{ url($project->id.'/projectBoards') }}>
                                 <i class="fa fa-home" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Boards</span>
                             </a>
@@ -38,7 +40,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a href="projectTeam.html">
+                            <a href={{ url($project->id.'/projectTeam') }}>
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Team</span>
                             </a>
@@ -83,81 +85,31 @@
 								</div>
                             </div>
                             <div class="row ">
+                            @foreach ($team_ids as $id)
                                 <div class="col-sm-3">
                                     <div class="card">
                                         <div class="card-content" align="center">
                                             <div class="card-header">
                                                 <h4>
-                                                    <strong>Inês Gonçalves</strong>
+                                                    <strong>{{ $member=DB::table('users')->where('id',$id)->value('full_name') }}</strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                                <img src="img/profile.jpg" class="img-circle" alt="User Picture" style="padding: px; width:80px;height:80px;">
+                                                <img src="/img/profile.jpg" class="img-circle" alt="User Picture" style="padding: px; width:80px;height:80px;">
                                                 <hr />
                                                 <p>
                                                     <strong>Username:</strong>
-                                                    <br />m.ines.ggoncalves
+                                                    <br />{{ $member=DB::table('users')->where('id',$id)->value('username')}}
 												</p>
                                                 <p>
                                                     <strong>Email:</strong>
-                                                    <br />m.ines.ggoncalves@gmail.com
+                                                    <br /> {{ $member=DB::table('users')->where('id',$id)->value('e_mail') }}
 												</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
-                                    <div class="card">
-                                        <div class="card-content" align="center">
-                                            <div class="card-header">
-                                                <h4>
-                                                    <strong>Teresa Valério</strong>
-                                                </h4>
-                                            </div>
-                                            <div class="card-body">
-                                                <img src="img/maya.jpg" class="img-circle" alt="User Picture" style="padding: px; width:80px;height:80px;">
-                                                <hr />
-                                                <p>
-                                                    <strong>Username: </strong>
-                                                    <br />teresa.gsvalerio
-												</p>
-                                                <p>
-                                                    <strong>Email: </strong>
-                                                    <br />This user does not have a public email address
-                                                </p>
-                                                    <a href="#">
-                                                        <span class="glyphicon glyphicon-envelope"></span>
-                                                        <strong>Ask for email</strong>
-                                                    </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col-sm-3">
-                                        <div class="card">
-                                            <div class="card-content" align="center">
-                                                <div class="card-header">
-                                                    <h4>
-                                                        <strong>Sara Gomes</strong>
-                                                    </h4>
-                                                </div>
-                                                <div class="card-body">
-                                                    <img src="img/bolota.jpg" class="img-circle" alt="User Picture" style="padding: px; width:80px;height:80px;">
-                                                    <hr />
-                                                    <p>
-                                                        <strong>Username:</strong>
-                                                        <br />saraggomes26
-													</p>
-                                                    <p>
-                                                        <strong>Email:</strong>
-                                                        <br />saraggomes@gmail.com / up20140394@fe.up.pt
-													</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

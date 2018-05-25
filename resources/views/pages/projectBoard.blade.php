@@ -9,7 +9,7 @@
                 <a href="user.html">Inês Gonçalves</a>
             </li>
             <li class="active">
-                Hive
+            {{ $project->name }}
             </li>
         </ol>
     </div>
@@ -78,12 +78,13 @@
 								
                             </div>
                             <div class="row text-center">
+                                @foreach ($boards_ids as $id)
                                 <div class="col-sm-3">
                                     <div class="card">
                                         <div class="card-content">
                                             <div class="card-header">
                                                 <h3>
-                                                    <strong>Marketing</strong>
+                                                    <strong>{{ $board=DB::table('board')->where('id',$id)->value('name') }}</strong>
                                                 </h3>
                                             </div>
                                             <div class="card-body">
@@ -118,59 +119,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
-                                    <div class="card">
-                                        <div class="card-content">
-                                            <div class="card-header">
-                                                <h3>
-                                                    <strong>Gathering</strong>
-                                                </h3>
-                                                <p>
-                                                    Team responsible for purchases
-                                                </p>
-                                            </div>
-                                            <div class="card-body">
-                                                <h4>
-                                                    Recent activity:
-                                                </h4>
-                                                <div>
-                                                    <p>
-                                                        <strong>Teresa Valério</strong> added the task
-                                                        <em>Buy honey</em> on 28-02-2018.
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p>
-                                                        <strong>Sara Gomes</strong> completed the task
-                                                        <em>Buy fields</em> on 27-02-2018.
-                                                    </p>
-                                                </div>
-                                                <hr />
-                                                <p>
-                                                    <strong>
-                                                        <h4>Board Members</h4>
-                                                    </strong>
-                                                </p>
-
-                                                <div class="row">
-                                                    <div class="column-md-1">
-                                                        <img src="/img/profile.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
-                                                    </div>
-                                                    <div class="column-md-1">
-                                                        <img src="/img/bolota.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
-                                                    </div>
-                                                    <div class="column-md-1">
-                                                        <img src="/img/maya.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
-                                                    </div>
-                                                </div>
-                                                <hr />
-                                                <a href="projectBoard.html">
-                                                    <button id="see_more_tasks_btn" type="button" class="btn btn-link">See more</button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
