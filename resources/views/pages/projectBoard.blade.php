@@ -67,12 +67,14 @@
                     <div class="row">
                         <div class="well" style="margin:0">
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-10">
                                     <a href="#" data-toggle="modal" data-target="#new-board-modal">
                                         <button type="button" class="btn btn-info btn-circle">
                                             <i class="glyphicon glyphicon-plus"></i>
                                         </button>
-                                        Create board
+									        <h4> <font color="#7ABED3">
+                                                <strong>Create board</strong> </font>
+									        </h4>
                                     </a>
                                 </div>
 								
