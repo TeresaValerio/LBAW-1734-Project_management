@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('/{userId}/personalInfo', function ($userId) {
 
     $person = DB::table('users')->find($userId);
-    $picture=DB::table('profile_picture')->where('id_user',$userId)->pluck('path');
+    $picture=DB::table('profile_picture')->where('id_user',$userId)->value('path');
 
     return view('pages.userInfo', compact('person','picture'));
 });
