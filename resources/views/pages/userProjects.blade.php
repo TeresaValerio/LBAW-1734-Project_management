@@ -84,7 +84,7 @@
                                             <div class="card-body">
                                                 <img src="https://cdn2.f-cdn.com/contestentries/951618/21545865/58a20f1ed47c4_thumb900.jpg" alt="User Picture" style="height:110px;">
                                                 <hr />
-                                                <a href="project.html">
+                                                <a href={{ url($id.'/projectBoards') }}>
                                                     <p>See more</p>
                                                 </a>
                                             </div>

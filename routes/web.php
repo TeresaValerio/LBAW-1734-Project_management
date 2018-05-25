@@ -37,6 +37,16 @@ Route::get('/{userId}/settings', function ($userId) {
     return view('pages.settings', compact('person'));
 });
 
+Route::get('/{projectId}/projectBoards', function ($projectId) {
+    $project = DB::table('projects')->find($projectId);
+    return view('pages.projectBoard', compact('project'));
+});
+
+Route::get('/{projectId}/projectTeam', function ($projectId) {
+    $project = DB::table('projects')->find($projectId);
+    return view('pages.projectTeam', compact('project'));
+});
+
 Route::post('/project','ProjectsController@store');
 
 Route::post('/loginme','Auth\LoginController@login');
