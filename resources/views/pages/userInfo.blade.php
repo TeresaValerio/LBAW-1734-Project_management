@@ -47,7 +47,7 @@
                 <div class="col-md-10 col-sm-11 display-table-cell v-align">
                     <div class="col-md-2 col-sm-3 display-table-cell v-align">
                         <a href="#" class="profile-pic">
-                            <div class="profile-pic" style="background-image: url(/img/profile.jpg)">
+                            <div class="profile-pic" style="background-image: url({{$picture}})">
                                 <span class="glyphicon glyphicon-camera"></span>
                                 <span>Change Image</span>
                             </div>
