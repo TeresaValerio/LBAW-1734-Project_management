@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS Notification CASCADE;
 DROP TABLE IF EXISTS Personal_event CASCADE;
 DROP TABLE IF EXISTS Profile_picture CASCADE;
 DROP TABLE IF EXISTS Progress_update CASCADE;
-DROP TABLE IF EXISTS Project CASCADE;
+DROP TABLE IF EXISTS Projects CASCADE;
 DROP TABLE IF EXISTS Project_picture CASCADE;
 DROP TABLE IF EXISTS Project_team CASCADE;
 DROP TABLE IF EXISTS Task CASCADE;
@@ -118,7 +118,7 @@ CREATE TABLE Progress_update (
     CONSTRAINT CK2 CHECK ((new_value <= 100))
 );
 
-CREATE TABLE Project (
+CREATE TABLE Projects (
     created_at timestamp without time zone,
     id SERIAL NOT NULL,
     description text,
@@ -219,8 +219,8 @@ ALTER TABLE ONLY Project_picture
 ALTER TABLE ONLY Project_picture
     ADD CONSTRAINT Project_picture_key PRIMARY KEY (id);
 
-ALTER TABLE ONLY Project
-    ADD CONSTRAINT Project_key PRIMARY KEY (id);
+ALTER TABLE ONLY Projects
+    ADD CONSTRAINT Projects_key PRIMARY KEY (id);
 
 ALTER TABLE ONLY Project_team
     ADD CONSTRAINT Project_team_key PRIMARY KEY (id_user, id_project);
@@ -248,7 +248,7 @@ ALTER TABLE ONLY Board
     ADD CONSTRAINT Board_id_creator_fkey FOREIGN KEY (id_creator) REFERENCES Users(id);
 
 ALTER TABLE ONLY Board
-    ADD CONSTRAINT Board_id_project_fkey FOREIGN KEY (id_project) REFERENCES Project(id);
+    ADD CONSTRAINT Board_id_project_fkey FOREIGN KEY (id_project) REFERENCES Projects(id);
 
 ALTER TABLE ONLY Board_team
     ADD CONSTRAINT Board_team_id_board_fkey FOREIGN KEY (id_board) REFERENCES Board(id);
@@ -278,7 +278,7 @@ ALTER TABLE ONLY Meeting
     ADD CONSTRAINT Meeting_id_board_fkey FOREIGN KEY (id_board) REFERENCES Board(id);
 
 ALTER TABLE ONLY Message
-    ADD CONSTRAINT Message_id_project_fkey FOREIGN KEY (id_project) REFERENCES Project(id);
+    ADD CONSTRAINT Message_id_project_fkey FOREIGN KEY (id_project) REFERENCES Projects(id);
 
 ALTER TABLE ONLY Message
     ADD CONSTRAINT Message_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
@@ -298,17 +298,17 @@ ALTER TABLE ONLY Progress_update
 ALTER TABLE ONLY Progress_update
     ADD CONSTRAINT Progress_update_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
 
-ALTER TABLE ONLY Project
+ALTER TABLE ONLY Projects
     ADD CONSTRAINT Project_id_coordinator_fkey FOREIGN KEY (id_coordinator) REFERENCES Users(id);
 
-ALTER TABLE ONLY Project
+ALTER TABLE ONLY Projects
     ADD CONSTRAINT Project_user_archived_fkey FOREIGN KEY (user_archived) REFERENCES Users(id);
 
 ALTER TABLE ONLY Project_picture
-    ADD CONSTRAINT Project_picture_id_project_fkey FOREIGN KEY (id_project) REFERENCES Project(id);
+    ADD CONSTRAINT Project_picture_id_project_fkey FOREIGN KEY (id_project) REFERENCES Projects(id);
 
 ALTER TABLE ONLY Project_team
-    ADD CONSTRAINT Project_team_id_project_fkey FOREIGN KEY (id_project) REFERENCES Project(id);
+    ADD CONSTRAINT Project_team_id_project_fkey FOREIGN KEY (id_project) REFERENCES Projects(id);
 
 ALTER TABLE ONLY Project_team
     ADD CONSTRAINT Project_team_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
@@ -349,7 +349,7 @@ CREATE INDEX message_date ON Message USING btree(date, id_project);
 -- Search projects
 -- Index relation: project; index attribute: title
 -- Type: GiST; clustering: no
-CREATE INDEX search_project ON Project USING GIST (to_tsvector('english', name || ' ' || description));
+CREATE INDEX search_project ON Projects USING GIST (to_tsvector('english', name || ' ' || description));
 
 -- Search users
 -- Index relation: user; index attribute: username
@@ -388,11 +388,11 @@ INSERT INTO Users (e_mail, full_name, password, url, username) VALUES ('fi1996@g
 --- PROJECTS ---
 ----------------
 
-INSERT INTO Project (description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES ('Projeto de LIEB para deteção de apneia do sono', TIMESTAMP '2018/03/04', timestamp '2019/05/18', 'Hypnos', 1, 'In_progress', true);
-INSERT INTO Project (start_date, end_date, name, id_coordinator, project_state) VALUES (TIMESTAMP '2018/02/20', TIMESTAMP '2019/05/25 24:00:00', 'Fotopletismógrafo portátil', 2, 'In_progress');
-INSERT INTO Project (start_date, end_date, name, id_coordinator) VALUES (TIMESTAMP '2018/03/1', TIMESTAMP '2019/06/10 9:00:00', 'Estudo da doença de Alzheimer através de análise de imagens do cérebro', 3);
-INSERT INTO Project (description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES ('Deteção de emoções através da análise de sinais de EEG', TIMESTAMP '2018/03/14', timestamp '2019/09/18', 'EEG feelings', 4, 'In_progress', true);
-INSERT INTO Project (start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (TIMESTAMP '2018/02/15', TIMESTAMP '2019/05/30', 'Projeto MINV', 20, 'In_progress', false);
+INSERT INTO Projects (description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES ('Projeto de LIEB para deteção de apneia do sono', TIMESTAMP '2018/03/04', timestamp '2019/05/18', 'Hypnos', 1, 'In_progress', true);
+INSERT INTO Projects (start_date, end_date, name, id_coordinator, project_state) VALUES (TIMESTAMP '2018/02/20', TIMESTAMP '2019/05/25 24:00:00', 'Fotopletismógrafo portátil', 2, 'In_progress');
+INSERT INTO Projects (start_date, end_date, name, id_coordinator) VALUES (TIMESTAMP '2018/03/1', TIMESTAMP '2019/06/10 9:00:00', 'Estudo da doença de Alzheimer através de análise de imagens do cérebro', 3);
+INSERT INTO Projects (description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES ('Deteção de emoções através da análise de sinais de EEG', TIMESTAMP '2018/03/14', timestamp '2019/09/18', 'EEG feelings', 4, 'In_progress', true);
+INSERT INTO Projects (start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (TIMESTAMP '2018/02/15', TIMESTAMP '2019/05/30', 'Projeto MINV', 20, 'In_progress', false);
 
 --- PROJECT'S TEAMS ---
 -----------------------
