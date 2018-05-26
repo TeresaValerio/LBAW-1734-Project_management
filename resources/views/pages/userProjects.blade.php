@@ -82,9 +82,10 @@
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                                <img src="https://cdn2.f-cdn.com/contestentries/951618/21545865/58a20f1ed47c4_thumb900.jpg" alt="User Picture" style="height:110px;">
+                                                <?php $picture = DB::table('project_picture')->where('id_project',$id)->value('path') ?>
+                                                <img src=url('https://image.flaticon.com/icons/svg/490/490348.svg') alt="User Picture" style="height:125px;">
                                                 <hr />
-                                                <a href="project.html">
+                                                <a href={{ url($id.'/projectBoards') }}>
                                                     <p>See more</p>
                                                 </a>
                                             </div>
@@ -115,7 +116,8 @@
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                                <img src="https://thumbs.dreamstime.com/b/best-bee-hive-logo-design-84149860.jpg" alt="User Picture" style="height:125px;">
+                                                <?php $picture = DB::table('project_picture')->where('id_project',$id)->value('path') ?>
+                                                <img src=url({{$picture}}) alt="User Picture" style="height:125px;">
                                                 <hr />
                                                 <a href="project.html">
                                                     <p>See more</p>
@@ -162,7 +164,7 @@
                             <p> {{\Session::get('success') }} </p>
                         </div>
                     @endif
-                    <form id="login-form" action="/project" method="post">
+                    <form id="login-form" action= "/project" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                         <div class="modal-body">
@@ -191,6 +193,7 @@
                             <input name="project_deadline" type="date" value="start_date" > 
                             
                             <input type="checkbox" name="project_public" value="true" default="false"> Public project
+
                         </div>
 
                         <div class="modal-footer">
