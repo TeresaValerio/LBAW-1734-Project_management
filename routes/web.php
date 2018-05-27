@@ -55,6 +55,30 @@ Route::get('/{userId}/personalInfo', function ($userId){
 
 
 /////////////////////////
+///// USER CALENDAR /////
+/////////////////////////
+
+Route::get('/{userId}/userCalendar', function ($userId){
+    try{
+    $userAuth = auth()->user()->id;
+    }
+    catch (\Exception $e){
+        return redirect ('/');
+    }
+    
+    if ($userAuth == $userId){
+    $person = DB::table('users')->find($userId);
+    return view('pages.userCalendar', compact('person','picture'));
+    }
+    else{
+    $userId=$userAuth;
+    $person = DB::table('users')->find($userId);
+    return redirect ($userAuth.'/userCalendar');
+    }
+});
+
+
+/////////////////////////
 ///// USER PROJECTS /////
 /////////////////////////
 
