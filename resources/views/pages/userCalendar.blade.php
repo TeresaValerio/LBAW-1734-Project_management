@@ -1,8 +1,79 @@
-@extends('layouts.user')
+<@extends('layouts.user')
 
 
 @section('content')
- <link rel="stylesheet" href="/CSS/userCalendar.css">
+ <link rel="stylesheet" href="/CSS/calendar.css">
+
+<?php
+// Set your timezone!!
+date_default_timezone_set('Europe/Lisbon');
+ 
+// Get prev & next month
+if (isset($_GET['ym'])) {
+    $ym = $_GET['ym'];
+} else {
+    // This month
+    $ym = date('Y-m');
+}
+ 
+// Check format
+$timestamp = strtotime($ym . '-01');
+if ($timestamp === false) {
+    $timestamp = time();
+}
+ 
+// Today
+$today = date('Y-m-j', time());
+ 
+// For H3 title
+$html_title = date('Y / m', $timestamp);
+ 
+// Create prev & next month link     mktime(hour,minute,second,month,day,year)
+$prev = date('Y-m', mktime(0, 0, 0, date('m', $timestamp)-1, 1, date('Y', $timestamp)));
+$next = date('Y-m', mktime(0, 0, 0, date('m', $timestamp)+1, 1, date('Y', $timestamp)));
+ 
+// Number of days in the month
+$day_count = date('t', $timestamp);
+ 
+// 0:Sun 1:Mon 2:Tue ...
+$str = date('w', mktime(0, 0, 0, date('m', $timestamp), 0, date('Y', $timestamp)));
+ 
+ 
+// Create Calendar!!
+$weeks = array();
+$week = '';
+ 
+// Add empty cell
+$week .= str_repeat('<td></td>', $str);
+ 
+for ( $day = 1; $day <= $day_count; $day++, $str++) {
+     
+    $date = $ym.'-'.$day;
+     
+    if ($today == $date) {
+        $week .= '<td class="current-day"><span class="date">'.$day.'</span></td>';
+    } else {
+        $week .= '<td><span class="date">'.$day.'</span></td>';
+    }
+    $week .= '</td>';
+     
+    // End of the week OR End of the month
+    if ($str % 7 == 6 || $day == $day_count) {
+         
+        if($day == $day_count) {
+            // Add empty cell
+            $week .= str_repeat('<td></td>', 6 - ($str % 7));
+        }
+         
+        $weeks[] = '<tr>'.$week.'</tr>';
+         
+        // Prepare for new week
+        $week = '';
+         
+    }
+}
+?>
+ 
 
     <!-- Header -->
     <div class="header container-fluid main-color-bg">
@@ -51,9 +122,10 @@
                     <div class="user-dashboard">
                         <table>
                             <summary>
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                                <strong>February 2014</strong>
-                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <a href="?ym=<?php echo $prev; ?>"<span class="glyphicon glyphicon-chevron-left"></span></a> 
+                                <?php echo $html_title; ?> 
+                                <a href="?ym=<?php echo $next; ?>"<span class="glyphicon glyphicon-chevron-right"></span></a>
+                                
                             </summary>
                             <thead>
                                 <tr>
@@ -67,6 +139,16 @@
                                 </tr>
                             </thead>
                             <tr>
+                            <?php
+                                foreach ($weeks as $week) {
+                                    echo $week;
+                            }   
+                            ?>
+
+                            </tr>
+                            
+
+                            <!-- <tr>
                                 <td class="meeting">
                                     <span class="date">
                                         27
@@ -218,7 +300,7 @@
                                 <td class="not-month">
                                     <span class="date">2</span>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </table>
                     </div>
                 </div>
@@ -236,4 +318,4 @@
     <script src="bootstrap.min.js"></script>
 </body>
 
-</html>
+@endsection>
