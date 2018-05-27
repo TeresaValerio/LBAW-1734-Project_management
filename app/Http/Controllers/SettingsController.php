@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use DB;
+use App\Http\Controllers\Controller;
 
 class SettingsController extends Controller
 {
@@ -26,43 +27,42 @@ class SettingsController extends Controller
 
 
 
-    public function changePassword(Request $request){
+    public function changePassword(Request $request, User $user){
 
         $userId = auth()->user()->id;
-        //$userId = Auth::user()->id;
 
-        $user = DB::table('users') -> where ('id',$userId);
-        
-        $this->authorize('update', $user);
+        //$user = DB::table('users') -> where ('id',$userId)->get();
+        $user = User::where('id',$userId)->first();
 
         $this->validate($request, [
             'password' => 'required|confirmed'
         ]);
 
-        $user->password=$request->input('password');
+        $user_new_password = $request -> input('password');
+        $user -> password = $user_new_password;
+
         $user->save();
-        echo ($userId);
-        //return redirect($userId.'/settings')->with('success', 'Password changed');   
+
+        return redirect($userId.'/settings')->with('success', 'Password changed');   
     }
 
     public function changeFullName(Request $request){
 
-        //Change Password
-        //$User=User::find(Auth::user()->id);
-        //echo $User;
-        $userId = User::find($id);
+        $userId = auth()->user()->id;
 
-        $this->authorize('update', $user);
+        //$user = DB::table('users') -> where ('id',$userId)->get();
+        $user = User::where('id',$userId)->first();
 
         $this->validate($request, [
             'full_name' => 'required'
         ]);
 
-        $user->full_name=$request->input('full_name');
+        $user_new_full_name = $request -> input('full_name');
+        $user -> full_name = $user_new_full_name;
+
         $user->save();
 
-        return redirect($userId.'/settings')->with('success', 'Full name changed');
-
+        return redirect($userId.'/settings')->with('success', 'Password changed'); 
         
     }
 
