@@ -11,6 +11,10 @@
 |
 */
 
+////////////////////
+///// HOMEPAGE /////
+////////////////////
+
 Route::get('/', function () {
     try{
     $userAuth = auth()->user()->id;
@@ -19,11 +23,13 @@ Route::get('/', function () {
     catch (\Exception $e){
    
     return view('pages.welcome');
-    }
-    
-
-    
+    }  
 });
+
+
+/////////////////////////
+///// PERSONAL INFO /////
+/////////////////////////
 
 Route::get('/{userId}/personalInfo', function ($userId){
     try{
@@ -40,12 +46,17 @@ Route::get('/{userId}/personalInfo', function ($userId){
     return view('pages.userInfo', compact('person','picture'));
     }
     else{
-        $userId=$userAuth;
-        $person = DB::table('users')->find($userId);
+    $userId=$userAuth;
+    $person = DB::table('users')->find($userId);
     $picture=DB::table('profile_picture')->where('id_user',$userId)->value('path');
     return redirect ($userAuth.'/personalInfo');
     }
 });
+
+
+/////////////////////////
+///// USER PROJECTS /////
+/////////////////////////
 
 Route::get('/{userId}/userProjects', function ($userId) {
     try{
@@ -63,9 +74,18 @@ Route::get('/{userId}/userProjects', function ($userId) {
     return view('pages.userProjects', compact ('person', 'created_ids', 'working_ids'));
     }
     else{
-    return redirect ('/');
+    $userId=$userAuth;
+    $person=DB::table('users')->find($userId);
+    $created_ids=DB::table('projects')->where('id_coordinator',$userId)->pluck('id');
+    $working_ids=DB::table('project_team')->where('id_user',$userId)->pluck('id_project');
+    return redirect ($userAuth.'/userProjects');
     }
 });
+
+
+////////////////////
+///// SETTINGS /////
+////////////////////
 
 Route::get('/{userId}/settings', function ($userId) {
     try{
@@ -81,47 +101,33 @@ Route::get('/{userId}/settings', function ($userId) {
     return view('pages.settings', compact('person'));
     }
     else{
-    return redirect ('/');    
+        $userId=$userAuth;
+        $person = DB::table('users')->find($userId);
+    return redirect ($userAuth.'/settings');    
     }
 
 });
+
+
+//////////////////////////
+///// PROJECT BOARDS /////
+//////////////////////////
 
 Route::get('/{projectId}/projectBoards', function ($projectId) {
-    try{
-    $userAuth = auth()->user()->id;
-    }
-    catch (\Exception $e){
-        return redirect ('/');
-    }
-
-    if ($userAuth == $userId){ 
     $project = DB::table('projects')->find($projectId);
     $boards_ids = DB::table('board')->where('id_project',$projectId)->pluck('id');
-    
     return view('pages.projectBoard', compact('project', 'boards_ids'));
-    }
-    else{
-    return redirect ('/');    
-    }
 });
 
-Route::get('/{projectId}/projectTeam', function ($projectId) {
-    try{
-    $userAuth = auth()->user()->id;
-    }
-    catch (\Exception $e){
-        return redirect ('/');
-    }
 
-    if ($userAuth == $userId){
+////////////////////////
+///// PROJECT TEAM /////
+////////////////////////
+
+Route::get('/{projectId}/projectTeam', function ($projectId) {
     $project = DB::table('projects')->find($projectId);
     $team_ids = DB::table('project_team')->where('id_project',$projectId)->pluck('id_user');
-    
     return view('pages.projectTeam', compact('project', 'team_ids'));
-    }
-    else{
-    return redirect ('/');    
-    }
 });
 
 Route::post('/project','ProjectsController@store');
