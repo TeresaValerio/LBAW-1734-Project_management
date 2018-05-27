@@ -90,7 +90,7 @@
                             <input name="login_password" class="form-control" type="password" placeholder="Password">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> Remember me
+                                    <input type="checkbox" name = "remember_me" unchecked> Remember me
                                 </label>
                             </div>
                         </div>

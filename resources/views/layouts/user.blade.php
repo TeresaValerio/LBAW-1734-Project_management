@@ -47,10 +47,10 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href={{ url('/settings') }}>Account Settings</a>
+                            <a href={{ url($person->id.'/settings') }}>Account Settings</a>
                             </li>
                             <li>
-                                <a href={{ url('/') }}>Log Out</a>
+                                <a href={{ url('/logout') }}>Log Out</a>
                             </li>
                             <li>
                                 <a href="administration.html">Administration</a>

@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
-Route::get('/{userId}/personalInfo', function ($userId) {
+Route::get('/{userId}/personalInfo', function ($userId){
 
     $person = DB::table('users')->find($userId);
     $picture=DB::table('profile_picture')->where('id_user',$userId)->value('path');
@@ -55,9 +55,11 @@ Route::post('/loginme','Auth\LoginController@login');
 
 Route::post('/register','Auth\RegisterController@register');
 
-Route::post('logout','Auth\LoginController@destroy');
+Route::get('/logout','Auth\LogoutController@logout');
 
-Route::post('/changePassword','SettingsController@change');
+Route::post('/changePassword','SettingsController@changePassword');
+Route::post('/changeFullName','SettingsController@changeFullName');
+Route::post('/changePrivacy','SettingsController@changePrivacy');
 
 Auth::routes();
 

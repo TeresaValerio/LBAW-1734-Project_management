@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 
-class LoginController extends Controller
+class LogoutController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -20,27 +20,11 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-    public function login (Request $req)
+    public function logout (Request $req)
     {
-	$login_email = $req -> input('login_email');
-    $login_password = $req -> input('login_password');
-
-
-    $checkLogin = DB::table('users') -> where ('e_mail',$login_email) -> where ('password',$login_password)-> value('id');
-    $userId = $checkLogin;
-
-	if(count($checkLogin)>0)
-	{
-        Auth::loginUsingId($userId);
-        return redirect ($userId.'/personalInfo');
-
-
-	}
-	else
-	{
-		return back() -> withErrors([
-            'message' => 'Check your credentials and try again']);
-	}	
+        Auth::logout();
+        return redirect('/');
+        
 
     }
 
@@ -52,7 +36,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/{userId}/personalInfo';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -61,6 +45,6 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('auth');
     }
 }

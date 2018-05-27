@@ -68,46 +68,49 @@
                     <div class="col-md-5 col-sm-6 display-table-cell v-align" >
 
                     
-                    <form action= "/changePassword" method="post" id="change-password-form">
-                            {{ csrf_field() }}
-                            <fieldset><legend class="text-left"><h2> Password </h2></legend>
 
-                            <div class="form-group">
-                                <label for="password"><span class="req"></span> New password: </label>
-                                <input required id="password" name="password" class="form-control" type="password" placeholder="New password">
-                            </div>
-                            <div class="form-group">    
-                                <label for="password_confirmation"><span class="req"></span> Confirm new password: </label>
-                                <input required id="password_conformation" name="password_confirmation" class="form-control" type="password" placeholder="Repeat new password">
-                            </div>
-                            <div class= "form-group">
-                                @include ('layouts.errors')
-                            </div>
-                            <div class="form-group">
-                                <div>
-                                    <input class="btn btn-primary" type="submit" name="submit_reg" value="Submit">
-                                </div> 
-                            </div>
+                    <form action= "/changePassword" method="post" id="password-form">
+			        <input type="hidden" name="_token" value="{{csrf_token()}}">
+
+                        <fieldset><legend class="text-left"><h2> Password </h2></legend>
+
+                        <div class="form-group">
+                            <label for="password"><span class="req"></span> New password: </label>
+                            <input required id="password" name="password" class="form-control" type="password" placeholder="New password">
+                        </div>
+                        <div class="form-group">    
+                            <label for="password_confirmation"><span class="req"></span> Confirm new password: </label>
+                            <input required id="password_confirmation" name="password_confirmation" class="form-control" type="password" placeholder="Repeat new password">
+                        </div>
+                        <div class= "form-group">
+                            @include ('layouts.errors')
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <input class="btn btn-primary" type="submit" value="Submit">
+                            </div> 
+                        </div>
 
                             
 
-                        </form>    
+                    </form>    
 
-                        
-                        
-                        <form action="" method="post" id="fileForm" role="form">
+                    <form action= "/changeFullName" method="post" id="name-form">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+
                         <fieldset><legend class="text-left"><h2> Full name </h2></legend>
                         <div class="form-group">
-                            <label for="password"><span class="req"></span> New name: </label>
-                                <input required name="password" type="text" class="form-control inputpass" placeholder="Input new full name" id="pass1" /> </p>
+                            <label for="full_name"><span class="req"></span> New name: </label>
+                                <input required name="full_name" type="text" class="form-control inputpass" placeholder="Input new full name" id="pass1" /> </p>
                         </div>
                         <div class="form-group">
-                            <input class="btn btn-primary" type="submit" name="submit_reg" value="Submit"> 
+                            <input class="btn btn-primary" type="submit" value="Submit"> 
                             <h6>You will receive an email to complete the registration and validation process. 
                                 Be sure to check your spam folders.</h6>
                         </div>
+                    </form>
                         
-                        <form action="" method="post" id="fileForm" role="form">
+                    <form action="/changePrivacy" method="post" id="privacy-form" role="form">
                         <fieldset><legend class="text-left"><h2> E-mail </h2></legend>
                         <div class="form-group">
                             <b>Change privacy: </b><input type="checkbox" name="email" value="email">Public <br>
@@ -117,6 +120,7 @@
                             <h6>You will receive an email to complete the registration and validation process. 
                                 Be sure to check your spam folders.</h6>
                         </div>
+                    </form>
 
 
                             

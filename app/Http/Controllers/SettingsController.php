@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Auth;
+use DB;
 
 class SettingsController extends Controller
 {
@@ -11,30 +14,65 @@ class SettingsController extends Controller
         $this->middleware('auth');
     }
 
-
-
-    protected function validator(array $data)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        return Validator::make($data, [
-	    'password' => 'required|confirmed'
-        ]);
-        
+        return view('settings');
     }
 
-    public function change(Request $request){
+
+
+    public function changePassword(Request $request){
+
+        $userId = auth()->user()->id;
+        //$userId = Auth::user()->id;
+
+        $user = DB::table('users') -> where ('id',$userId);
+        
+        $this->authorize('update', $user);
+
+        $this->validate($request, [
+            'password' => 'required|confirmed'
+        ]);
+
+        $user->password=$request->input('password');
+        $user->save();
+        echo ($userId);
+        //return redirect($userId.'/settings')->with('success', 'Password changed');   
+    }
+
+    public function changeFullName(Request $request){
 
         //Change Password
-        return User::create([
-        'password'=>$data['new_password']
+        //$User=User::find(Auth::user()->id);
+        //echo $User;
+        $userId = User::find($id);
+
+        $this->authorize('update', $user);
+
+        $this->validate($request, [
+            'full_name' => 'required'
         ]);
+
+        $user->full_name=$request->input('full_name');
+        $user->save();
+
+        return redirect($userId.'/settings')->with('success', 'Full name changed');
 
         
     }
 
+
+    
+
         /**
-     * Where to redirect users after login.
+     * Where to redirect users after change password.
      *
      * @var string
      */
-    protected $redirectTo = '/settings';
+    protected $redirectTo = '/{userId}/settings';
 }
