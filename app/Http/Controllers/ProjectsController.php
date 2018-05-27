@@ -37,7 +37,7 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
         //$userId=Auth::id();
-        $userId=3;
+        $userId = auth()->user()->id;
 
         $this->validate($request, [
             'project_name' => 'required'
