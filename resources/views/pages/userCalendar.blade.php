@@ -49,12 +49,36 @@ $week .= str_repeat('<td></td>', $str);
 for ( $day = 1; $day <= $day_count; $day++, $str++) {
      
     $date = $ym.'-'.$day;
-     
-    if ($today == $date) {
-        $week .= '<td class="current-day"><span class="date">'.$day.'</span></td>';
-    } else {
-        $week .= '<td><span class="date">'.$day.'</span></td>';
-    }
+
+        foreach ($tasks_deadlines as $task_deadline){
+            if ($task_deadline == $date){
+                $week .= '<td class="deadline">
+                            <span class="date">'
+                            .$day.
+                            '<ul>
+                            <li>
+                            <span class="event">
+                            CODE deadline
+                            </span>
+                            </li>
+                            </ul>
+                            </span>
+                            </td>';
+                
+                $day++;
+                $str++;
+                $date = $ym.'-'.$day;
+                break;
+            }
+            
+        }
+        if ($today == $date) {
+            $week .= '<td class="current-day"><span class="date">'.$day.'</span></td>';
+        }
+        else {
+            $week .= '<td><span class="date">'.$day.'</span></td>';
+        }
+
     $week .= '</td>';
      
     // End of the week OR End of the month
@@ -142,7 +166,10 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                             <?php
                                 foreach ($weeks as $week) {
                                     echo $week;
-                            }   
+                            } 
+                            
+                            
+
                             ?>
 
                             </tr>

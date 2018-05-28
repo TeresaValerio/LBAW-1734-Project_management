@@ -68,7 +68,48 @@ Route::get('/{userId}/userCalendar', function ($userId){
     
     if ($userAuth == $userId){
     $person = DB::table('users')->find($userId);
-    return view('pages.userCalendar', compact('person','picture'));
+    
+    $tasks_deadlines = DB::table('task')->where('id_creator',$userId)->pluck('deadline');
+    echo("TASKS DEADLINES: ");
+    echo ($tasks_deadlines);
+
+
+    //foreach ($tasks_deadlines as $task_deadline) {
+        //echo $task_deadline;
+        //echo $tasks_deadlines()->where('deadline',$task_deadline)->pluck('deadline');
+    //}
+
+
+
+
+
+
+    
+    
+    
+
+    
+
+
+    /*$personal_events = DB::table('personal_event')->where('id_user',$userId)->pluck('date','name','place');
+    echo("PERSONAL EVENTS: ");
+    echo ($personal_events);
+
+
+    $projects_deadlines = DB::table('projects')->where('id_coordinator',$userId)->pluck('end_date','name');
+    echo("PROJECTS DEADLINES: ");
+    echo ($projects_deadlines);
+
+    $projects_deadlines2 = DB::table('projects')->join('project_team','projects.id','=','project_team.id_project')->where('id_user',$userId)->pluck('end_date','name');
+    echo("PROJECTS DEADLINES 2: ");
+    echo ($projects_deadlines2);
+
+    $meetings = DB::table('meeting')->join('board_team','meeting.id_board','=','board_team.id_board')->where('id_user',$userId)->pluck('date','place');
+    echo("MEETINGS: ");
+    echo ($meetings);*/
+
+
+    return view('pages.userCalendar', compact('person','picture','tasks_deadlines'));
     }
     else{
     $userId=$userAuth;
