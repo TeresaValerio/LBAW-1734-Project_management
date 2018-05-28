@@ -46,11 +46,15 @@
                 <div class="user-dashboard">
                     <!-- /input-group -->
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search projects...">
+                        <input type="text" name="search" id="search" class="form-control" placeholder="Search projects...">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">Search</button>
                         </span>
                     </div>
+                    <table class="table table-striped table-bordered">
+                        
+                    </table>
+
                     <!-- /input-group -->
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12 gutter">
@@ -212,3 +216,29 @@
     <!-- END # MODAL LOGIN -->
 
 @endsection
+
+<script>
+$(document).ready(function(){
+
+    fetch_project_data();
+
+    function fetch_project_data(query=''){
+        $.ajax({
+            url:"{{route('userProjects.search')}}",
+            method:'GET',
+            data:{query:query},
+            dataType:'json',
+            success:function(data){
+                $('table').html(data.table_data);
+                $('#total_records').text(data.total_data);
+            }
+        })
+    }
+
+    $(document).on('keyup','#search',function(){
+        var query=$(this).val();
+        fetch_customer_data(query);
+    })
+
+})
+</script>

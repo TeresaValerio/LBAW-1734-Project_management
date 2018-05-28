@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/{userId}/userProjects', 'SearchProjectsController@index');
+Route::get('/userProjects/search','SearchProjectsController@action')->name('userProjects.search');
+
 ////////////////////
 ///// HOMEPAGE /////
 ////////////////////
