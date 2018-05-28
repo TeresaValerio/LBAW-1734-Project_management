@@ -74,16 +74,16 @@
                             <div class="row text-center">
                             @foreach ($created_ids as $id)
                                 <div class="col-sm-3">
-                                    <div class="card">
+                                    <div class="card" style="width:250px;">
                                         <div class="card-content" align="center">
-                                            <div class="card-header">
+                                            <div class="card-header" style="width:250px;">
                                                 <h4>
-                                                    <strong>{{ $project=DB::table('projects')->where('id',$id)->value('name') }}</strong>
+                                                    <strong>{{ $project=DB::table('projects')->where('id',$id)->value('name') }} </strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                                <?php $picture = DB::table('project_picture')->where('id_project',$id)->value('path') ?>
-                                                <img src=url('https://image.flaticon.com/icons/svg/490/490348.svg') alt="User Picture" style="height:125px;">
+                                                <?php {{$picture=DB::table("project_picture")->where("id_project",$id)->value("path");}} ?>
+                                                <img src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <a href={{ url($id.'/projectBoards') }}>
                                                     <p>See more</p>
@@ -108,19 +108,19 @@
                             <div class="row text-center">
                             @foreach($working_ids as $id)
                                 <div class="col-sm-3">
-                                    <div class="card">
+                                    <div class="card" style="width:250px;">
                                         <div class="card-content" align="center">
-                                            <div class="card-header">
+                                            <div class="card-header" style="width:250px;">
                                                 <h4>
-                                                    <strong> {{ $project=DB::table('projects')->where('id',$id)->value('name') }} </strong>
+                                                    <strong> {{ $project=DB::table('projects')->where('id',$id)->value('name') }}</strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                                <?php $picture = DB::table('project_picture')->where('id_project',$id)->value('path') ?>
-                                                <img src=url({{$picture}}) alt="User Picture" style="height:125px;">
+                                                <?php {{$picture=DB::table("project_picture")->where("id_project",$id)->value("path");}} ?>
+                                                <img src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <a href="project.html">
-                                                    <p>See more</p>
+                                                    <p>See more </p>
                                                 </a>
                                             </div>
                                         </div>
