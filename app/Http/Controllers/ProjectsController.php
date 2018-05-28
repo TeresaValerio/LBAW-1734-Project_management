@@ -25,8 +25,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        $userId = auth()->user()->id;
-        return view($userId.'/userProjects');
+        return view('/userProjects');
     }
 
     /**
