@@ -70,46 +70,35 @@ Route::get('/{userId}/userCalendar', function ($userId){
     $person = DB::table('users')->find($userId);
     
     $tasks_deadlines = DB::table('task')->where('id_creator',$userId)->pluck('deadline');
-    echo("TASKS DEADLINES: ");
-    echo ($tasks_deadlines);
+    $tasks_names = DB::table('task')->where('id_creator',$userId)->pluck('name');
 
+    $projects_deadlines = DB::table('projects')->where('id_coordinator',$userId)->pluck('end_date');
+    $projects_names = DB::table('projects')->where('id_coordinator',$userId)->pluck('name');
 
-    //foreach ($tasks_deadlines as $task_deadline) {
-        //echo $task_deadline;
-        //echo $tasks_deadlines()->where('deadline',$task_deadline)->pluck('deadline');
-    //}
-
-
-
-
-
-
-    
-    
-    
-
-    
-
-
-    /*$personal_events = DB::table('personal_event')->where('id_user',$userId)->pluck('date','name','place');
-    echo("PERSONAL EVENTS: ");
-    echo ($personal_events);
-
-
-    $projects_deadlines = DB::table('projects')->where('id_coordinator',$userId)->pluck('end_date','name');
-    echo("PROJECTS DEADLINES: ");
-    echo ($projects_deadlines);
-
-    $projects_deadlines2 = DB::table('projects')->join('project_team','projects.id','=','project_team.id_project')->where('id_user',$userId)->pluck('end_date','name');
+    $projects_deadlines2 = DB::table('projects')->join('project_team','projects.id','=','project_team.id_project')->where('id_user',$userId)->pluck('end_date');
     echo("PROJECTS DEADLINES 2: ");
     echo ($projects_deadlines2);
+    $projects_names2 = DB::table('projects')->join('project_team','projects.id','=','project_team.id_project')->where('id_user',$userId)->pluck('name');
+    echo("PROJECTS DEADLINES 2: ");
+    echo ($projects_names2);
 
-    $meetings = DB::table('meeting')->join('board_team','meeting.id_board','=','board_team.id_board')->where('id_user',$userId)->pluck('date','place');
+    /*$personal_events_date = DB::table('personal_event')->where('id_user',$userId)->pluck('date');
+    echo("PERSONAL EVENTS DATE: ");
+    echo ($personal_events_date);
+    $personal_events_name= DB::table('personal_event')->where('id_user',$userId)->pluck('name');
+    echo("PERSONAL EVENTS NAME: ");
+    echo ($personal_events_name);
+    $personal_events_place = DB::table('personal_event')->where('id_user',$userId)->pluck('place');
+    echo("PERSONAL EVENTS PLACE: ");
+    echo ($personal_events_place);*/
+
+
+    /*$meetings = DB::table('meeting')->join('board_team','meeting.id_board','=','board_team.id_board')->where('id_user',$userId)->pluck('date','place');
     echo("MEETINGS: ");
     echo ($meetings);*/
 
 
-    return view('pages.userCalendar', compact('person','picture','tasks_deadlines'));
+    return view('pages.userCalendar', compact('person','picture','tasks_deadlines','tasks_names','projects_deadlines','projects_names','projects_deadlines2','projects_names2'));
     }
     else{
     $userId=$userAuth;

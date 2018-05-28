@@ -5,6 +5,51 @@
   *:after {
     box-sizing: border-box;
   }
+
+  .navbar {
+    margin-bottom: 0;
+    z-index: 9999;
+    border: 0;
+    border-radius: 0;
+  }
+  
+  .body {
+    font-family: 'Roboto', sans-serif !important;
+  }
+  
+  .header {
+    padding-top: 50px;
+    
+  }
+  
+  .breadcrumb {
+    padding-bottom: 0;
+    background: #7ABED3;
+    border: 0px solid rgba(245, 245, 245, 1);
+    border-radius: 0px;
+  }
+  
+  .breadcrumb li {
+    font-size: 20px;
+  }
+  
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 1);
+  }
+  
+  .breadcrumb a:hover {
+    color: rgb(224, 224, 224);
+  }
+  
+  .breadcrumb>.active {
+    color: rgba(255, 255, 255, 1);
+  }
+  
+  .breadcrumb>li+li:before {
+    color: rgba(255, 255, 255, 1);
+    content: "\003E\00a0";
+  }
+
   table {
     float:both;
     border-collapse: collapse;
