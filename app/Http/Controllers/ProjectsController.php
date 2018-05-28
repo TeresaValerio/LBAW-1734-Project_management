@@ -25,7 +25,8 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('userProjects');
+        $userId = auth()->user()->id;
+        return view($userId.'/userProjects');
     }
 
     /**
@@ -36,7 +37,6 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //$userId=Auth::id();
         $userId = auth()->user()->id;
 
         $this->validate($request, [
