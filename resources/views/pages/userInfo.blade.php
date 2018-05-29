@@ -39,7 +39,7 @@
                         <li>
                             <a href={{ url($person->id.'/userCalendar') }}>
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
-                                <span class="hidden-xs hidden-sm">My Calendar</span>
+                                <span class="hidden-xs hidden-sm">Calendar</span>
                             </a>
                         </li>
                         <li>
