@@ -2,6 +2,7 @@
 
 
 @section('content')
+<title>Boards | {{$project->name}}</title>
 
 <style>
 .img_title {
@@ -208,65 +209,6 @@
                                 <span id="text-register-msg">Description</span>
                             </div>
                             <input name="board_description" id="board_description" class="form-control" type="description" placeholder="Board description"> 
-                        
-                            <div id="div-register-msg">
-                                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Add members</span>
-                                <div class="row" style="padding-left:15px" style="padding-left:5px">
-                                    
-                                    <?php
-                                        $team_ids = DB::table('project_team')->where('id_project',$project->id)->pluck('id_user');
-                                        $me=auth()->user()->id;
-                                        $coordinator=DB::table('projects')->where('id',$project->id)->value('id_coordinator');
-                                    ?>
-                                                
-                                    @if ($coordinator != $me)
-                                    <?php
-                                        if (DB::table("profile_picture")->where("id_user",$coordinator)->value("path")){
-                                            $picture=DB::table("profile_picture")->where("id_user",$coordinator)->value("path");
-                                        }
-                                        else{
-                                            $picture='https://visit.nemedic.com/storage/default.jpg';
-                                        }
-                                    ?>
-                                    <p>
-                                        <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$coordinator)->value('full_name')}}">
-                                        {{$name=DB::table('users')->where('id',$coordinator)->value('full_name')}}
-                                    </p>
-                                    @endif
-                                                
-                                    <?php
-                                        if (DB::table("profile_picture")->where("id_user",$me)->value("path")){
-                                            $picture=DB::table("profile_picture")->where("id_user",$me)->value("path");
-                                        }
-                                        else{
-                                            $picture='https://visit.nemedic.com/storage/default.jpg';
-                                        }
-                                    ?>
-                                    <p> 
-                                        <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$me)->value('full_name')}}">
-                                        {{$name=DB::table('users')->where('id',$me)->value('full_name')}}
-                                    </p>
-                                                
-                                    @foreach ($team_ids as $t_id)
-                                    @if ($t_id != $me)
-                                    <?php
-                                        if (DB::table("profile_picture")->where("id_user",$t_id)->value("path")){
-                                            $picture=DB::table("profile_picture")->where("id_user",$t_id)->value("path");
-                                        }
-                                        else{
-                                            $picture='https://visit.nemedic.com/storage/default.jpg';
-                                        }
-                                    ?>
-                                    <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$t_id)->value('full_name')}}">
-                                    <input type="checkbox" name="member"> {{$name=DB::table('users')->where('id',$t_id)->value('full_name')}}
-                                    @endif
-                                    @endforeach
-
-                                </div>
-                            </div>
-                            
-
                         </div>
 
                         <div class="modal-footer">

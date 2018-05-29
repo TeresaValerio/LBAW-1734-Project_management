@@ -2,6 +2,7 @@
 
 
 @section('content')
+<title>Info | {{$userAuth=auth()->user()->full_name}}</title>
  <link rel="stylesheet" href="/CSS/userInfo.css">
  <!-- Header -->
     <div class="header container-fluid main-color-bg">

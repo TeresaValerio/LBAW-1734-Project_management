@@ -2,6 +2,8 @@
 
 
 @section('content')
+
+ <title>Team | {{$project->name}}</title>
 <!-- Header -->
 <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb ">

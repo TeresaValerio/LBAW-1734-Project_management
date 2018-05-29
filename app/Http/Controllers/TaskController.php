@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Board;
-use App\BoardTeam;
+use App\Task;
 use Auth;
 
-class BoardController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +25,7 @@ class BoardController extends Controller
      */
     public function create()
     {
-        return view('/projectBoard');
+        return view('/tasks');
     }
 
     /**
@@ -40,35 +39,26 @@ class BoardController extends Controller
         $userId = auth()->user()->id;
 
         $this->validate($request, [
-            'board_name' => 'required',
-            'id_project'=>'required'
+            'task_name' => 'required',
+            'id_board'=>'required',
         ]);
-
-        $projectId=$request->get('id_project');
-
-        $board=Board::create([
-            'name' => $request->get('board_name'),
-            'description' => $request->get('board_description'),
-            'board_state' => 'In_progress',
-            'id_creator' => $userId,
-            'id_project'=>$projectId,
-        ]);
-
-        return redirect($projectId.'/projectBoards')->with('success', 'Board Created!');
-    }
-
-    public function team(Request $request){
         
-        $this->validate($request,[
-            'userID'=>'required',
-            'boardID'=>'required'
+        $boardId=$request->get('id_board');
+
+        $task=Task::create([
+            'budget'=>$request->get('task_budget'),
+            'name' => $request->get('task_name'),
+            'description' => $request->get('task_description'),
+            'deadline' => $request->get('task_deadline'),
+            'progress' => 0,
+            'task_state' => 'In_progress',
+            'id_creator' => $userId,
+            'id_board'=>$boardId
         ]);
 
-        $team=BoardTeam::create([
-            'id_user'=>$request->get('userID'),
-            'id_board'=>$request->get('boardID')
-        ]);
+        return redirect($boardId.'/tasks')->with('success', 'Task Created!');
     }
+
 
     /**
      * Display the specified resource.

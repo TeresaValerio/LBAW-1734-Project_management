@@ -221,6 +221,15 @@ Route::get('/{boardId}/tasks', function ($boardId) {
     return view('pages.tasks', compact('board', 'tasks_ids'));
 });
 
+//////////////////////////
+///////// EXPLORE ////////
+//////////////////////////
+
+Route::get('/explore', function () {
+    return view('pages.explore');
+});
+
+
 Route::post('/project','ProjectsController@store');
 
 Route::post('/loginme','Auth\LoginController@login');
@@ -237,6 +246,8 @@ Route::post('/deleteAccount','SettingsController@deleteAccount');
 Route::post('/addContact', 'ContactsController@add');
 
 Route::post('/addBoard', 'BoardController@store');
+
+Route::post('/addTask', 'TaskController@store');
 
 Auth::routes();
 
