@@ -139,6 +139,7 @@ Route::get('/{userId}/userProjects', function ($userId) {
 });
 
 
+
 ////////////////////
 ///// SETTINGS /////
 ////////////////////
@@ -184,6 +185,24 @@ Route::get('/{projectId}/projectTeam', function ($projectId) {
     $project = DB::table('projects')->find($projectId);
     $team_ids = DB::table('project_team')->where('id_project',$projectId)->pluck('id_user');
     return view('pages.projectTeam', compact('project', 'team_ids'));
+});
+
+////////////////////////
+///// PROJECT INFO /////
+////////////////////////
+
+Route::get('/{projectId}/projectInfo', function ($projectId) {
+    $project = DB::table('projects')->find($projectId);
+    return view('pages.projectInfo', compact('project'));
+});
+
+////////////////////////
+///// PROJECT CAL /////
+////////////////////////
+
+Route::get('/{projectId}/projectCalendar', function ($projectId) {
+    $project = DB::table('projects')->find($projectId);
+    return view('pages.projectCalendar', compact('project'));
 });
 
 Route::post('/project','ProjectsController@store');

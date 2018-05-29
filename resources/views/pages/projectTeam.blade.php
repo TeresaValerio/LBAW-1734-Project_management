@@ -5,8 +5,9 @@
 <!-- Header -->
 <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb ">
-            <li>
-                <a href={{ url($userAuth=auth()->user()->id.'/personalInfo')}}>Inês Gonçalves</a>
+        <li>
+                <?php  $userAuth=auth()->user()->id  ?>
+                <a href={{ url($userAuth.'/personalInfo')}}> {{ $member=DB::table('users')->where('id',$userAuth)->value('full_name') }}</a>
             </li>
             <li>
                 <a href="{{ url($project->id.'/projectBoards') }}">
@@ -34,7 +35,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="projectInfo.html">
+                        <a href={{ url($project->id.'/projectInfo') }}>
                                 <i class="fa fa-info" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Info</span>
                             </a>
@@ -46,10 +47,10 @@
                             </a>
                         </li>
                         <li>
-                            <a href="projectCalendar.html">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                <span class="hidden-xs hidden-sm">Calendar</span>
-                            </a>
+                        <a href={{ url($project->id.'/projectCalendar') }}>
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <span class="hidden-xs hidden-sm">Calendar</span>
+              </a>
                         </li>
                         <li>
                             <a href="projectForum.html">
@@ -85,7 +86,7 @@
 								</div>
                             </div>
                             <div class="row ">
-                            {{ $userAuth = auth()->user()->id}}
+                            <?php  $userAuth = auth()->user()->id ?>
                             <div class="col-sm-3">
                                     <div class="card" style="width:250px;">
                                         <div class="card-content" align="center">

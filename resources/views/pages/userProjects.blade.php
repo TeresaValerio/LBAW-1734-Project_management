@@ -5,8 +5,9 @@
 <!-- Header -->
     <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb">
-            <li>
-            <a href={{ url($person->id.'/personalInfo') }}>  {{ $person->full_name }} </a>
+        <li>
+                <?php  $userAuth=auth()->user()->id  ?>
+                <a href={{ url($userAuth.'/personalInfo')}}> {{ $member=DB::table('users')->where('id',$userAuth)->value('full_name') }}</a>
             </li>
             <li class="active">
                 Projects

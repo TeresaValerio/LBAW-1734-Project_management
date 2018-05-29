@@ -18,7 +18,8 @@
 <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb ">
             <li>
-                <a href={{ url($userAuth=auth()->user()->id.'/personalInfo')}}>Inês Gonçalves</a>
+                <?php  $userAuth=auth()->user()->id  ?>
+                <a href={{ url($userAuth.'/personalInfo')}}> {{ $member=DB::table('users')->where('id',$userAuth)->value('full_name') }}</a>
             </li>
             <li class="active">
             {{ $project->name }}
@@ -34,13 +35,13 @@
                 <div class="navi">
                     <ul>
                         <li class="active">
-                            <a href="project.html">
+                            <a href={{ url($project->id.'/projectBoards') }}>
                                 <i class="fa fa-home" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Boards</span>
                             </a>
                         </li>
                         <li>
-                            <a href="projectInfo.html">
+                            <a href={{ url($project->id.'/projectInfo') }}>
                                 <i class="fa fa-info" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Info</span>
                             </a>
@@ -52,10 +53,10 @@
                             </a>
                         </li>
                         <li>
-                            <a href="projectCalendar.html">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                <span class="hidden-xs hidden-sm">Calendar</span>
-                            </a>
+                        <a href={{ url($project->id.'/projectCalendar') }}>
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <span class="hidden-xs hidden-sm">Calendar</span>
+              </a>
                         </li>
                         <li>
                             <a href="projectForum.html">

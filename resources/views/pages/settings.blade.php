@@ -9,6 +9,10 @@
 <!-- Header -->
     <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb">
+        <li>
+                <?php  $userAuth=auth()->user()->id  ?>
+                <a href={{ url($userAuth.'/personalInfo')}}> {{ $member=DB::table('users')->where('id',$userAuth)->value('full_name') }}</a>
+            </li>
             <li>
                 Settings
             </li>
