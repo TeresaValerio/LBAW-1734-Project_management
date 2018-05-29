@@ -26,13 +26,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <img src="img/navbarLogo.png" height="30" alt="Vici">
+                    <img src="/img/navbarLogo.png" height="30" alt="Vici">
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"> 
-                    <a href={{ url($userAuth=auth()->user()->id.'/personalInfo')}} > {{ auth()->user()->full_name}}</a>
+                    <a href={{ url($userAuth=auth()->user()->id.'/personalInfo')}}> {{ auth()->user()->full_name}}</a>
                     </li>
                     <li>
                         <a href="explore.html">Explore</a>

@@ -53,17 +53,129 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
     } else {
         $date = $ym.'-'.$day;
     }
+        ////////////////////////////////////
+        $i=0;
+        $j=0;
+        foreach ($tasks_deadlines as $task_deadline){
+            $i++;
+            if ($task_deadline == $date){
+                foreach ($tasks_names as $task_name){
+                    $j++;
+                    if ($i == $j){
 
-    $week .= '<td class="deadline">
-                <span class="date">
-                    @foreach ($tasks_deadlines as $task_deadline)
-                        <ul>
-                        $task_deadline
-                        </ul>
-                    @endforeach
-                </span>
-              </td>';
-    
+                    
+                $week .= '<td class="deadline">
+                            <span class="date">'
+                            .$day.
+                            '<ul>
+                            <li>
+                            <span class="event">'
+                            .$task_name.
+                            '</span>
+                            <span class="time">
+                            Task
+                            </span>
+                            </li>
+                            </ul>
+                            </span>
+                            </td>';
+                    }
+                }
+                $day++;
+                $str++;
+                if ($day >0 && $day < 10){
+                $date = $ym.'-0'.$day;
+                } else {
+                    $date = $ym.'-'.$day;
+                }
+                break;
+            }
+        }
+
+        ////////////////////////////////////
+        $i=0;
+        $j=0;
+        foreach ($projects_deadlines as $project_deadline){
+            $i++;
+            if ($project_deadline == $date){
+                foreach ($projects_names as $project_name){
+                    $j++;
+                    if ($i == $j){
+
+                    
+                $week .= '<td class="deadline">
+                            <span class="date">'
+                            .$day.
+                            '<ul>
+                            <li>
+                            <span class="event">'
+                            .$project_name.
+                            '</span>
+                            <span class="time">
+                            Project
+                            </span>
+                            </li>
+                            </ul>
+                            </span>
+                            </td>';
+                    }
+                }
+                $day++;
+                $str++;
+                if ($day >0 && $day < 10){
+                $date = $ym.'-0'.$day;
+                } else {
+                    $date = $ym.'-'.$day;
+                }
+                break;
+            }
+        }
+        ////////////////////////////////////
+        $i=0;
+        $j=0;
+        foreach ($projects_deadlines2 as $project_deadline2){
+            $i++;
+            if ($project_deadline2 == $date){
+                foreach ($projects_names2 as $project_name2){
+                    $j++;
+                    if ($i == $j){
+
+                    
+                $week .= '<td class="deadline">
+                            <span class="date">'
+                            .$day.
+                            '<ul>
+                            <li>
+                            <span class="event">'
+                            .$project_name2.
+                            '</span>
+                            <span class="time">
+                            Project
+                            </span>
+                            </li>
+                            </ul>
+                            </span>
+                            </td>';
+                    }
+                }
+                $day++;
+                $str++;
+                if ($day >0 && $day < 10){
+                $date = $ym.'-0'.$day;
+                } else {
+                    $date = $ym.'-'.$day;
+                }
+                break;
+            }
+        }
+        ////////////////////////////////////
+        if ($today == $date) {
+            $week .= '<td class="current-day"><span class="date">'.$day.'</span></td>';
+        }
+        else {
+            $week .= '<td><span class="date">'.$day.'</span></td>';
+        }
+
     $week .= '</td>';
      
     // End of the week OR End of the month
@@ -78,10 +190,9 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
          
         // Prepare for new week
         $week = '';
+         
     }
 }
-
-      
 ?>
  
 
@@ -154,11 +265,12 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                                     echo $week;
                             } 
                             
+                            
+
                             ?>
 
                             </tr>
                             
-
 
                             <!-- <tr>
                                 <td class="meeting">
