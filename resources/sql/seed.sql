@@ -435,7 +435,7 @@ INSERT INTO Task (deadline, description, name, progress, task_state, id_creator,
 INSERT INTO Task (deadline, description, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/05/10', 'Pesquisa sobre o que é a doença de Alzheimer e que efeitos tem no cérebro humano' , 'Pesquisa sobre Alzheimer', 30, 'In_progress', 3, 3);
 INSERT INTO Task (deadline, description, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/05/20', 'Pesquisa sobre possíveis técnicas de análise de imagem a adotar e base de dados a utilizar' , 'Técnicas de análise de imagem', 20, 'In_progress', 3, 3);
 INSERT INTO Task (deadline, description, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/06/24', 'O que é o EEG, como é obtido e que informação nos dá?', 'Fundamentos EEG', 60, 'In_progress', 8, 4);
-INSERT INTO Task (deadline, description, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/06/30', 'Pesquisa de processamentos a adotar para analisar o sinal EEG', 'Processamento EEG', 10, 'In_progress', 6, 4);
+INSERT INTO Task (deadline, description, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/06/29', 'Pesquisa de processamentos a adotar para analisar o sinal EEG', 'Processamento EEG', 10, 'In_progress', 6, 4);
 INSERT INTO Task (deadline, description, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/04/22', 'Pesquisa sobre a estrutura que um questionário deve ter (quantidade/tipo de perguntas, etc)', 'Estrutura questionário', 40, 'In_progress', 1, 8);
 INSERT INTO Task (deadline, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/04/30', 'Elaboração questionário', 10, 'In_progress', 20, 8);
 INSERT INTO Task (deadline, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/04/25', 'Como fazer uma entrevista?', 50, 'In_progress', 3, 9);
@@ -473,10 +473,10 @@ INSERT INTO Comment (comment, date, id_user, id_task) VALUES ('Ver apontamentos 
 
 INSERT INTO Meeting (date, place, id_board) VALUES (TIMESTAMP '2019/04/10 11:00:00', 'Departamento de Bioenganheria', 1);
 INSERT INTO Meeting (date, place, id_board) VALUES (TIMESTAMP '2019/04/17 09:30:00', 'Departamento de Bioenganheria', 1);
-INSERT INTO Meeting (date, place, id_board) VALUES (TIMESTAMP '2019/04/07 14:00:00', 'I007', 2);
+INSERT INTO Meeting (date, place, id_board) VALUES (TIMESTAMP '2019/04/05 14:00:00', 'I007', 2);
 INSERT INTO Meeting (date, place, id_board) VALUES (TIMESTAMP '2019/06/20 14:00:00', 'I007', 3);
 INSERT INTO Meeting (date, place, id_board) VALUES (TIMESTAMP '2019/04/20 15:30:00', 'INESC', 4);
-INSERT INTO Meeting (date, place, id_board) VALUES (TIMESTAMP '2019/04/23 10:30:00', 'B118', 5);
+INSERT INTO Meeting (date, place, id_board) VALUES (TIMESTAMP '2019/04/24 10:30:00', 'B118', 5);
 INSERT INTO Meeting (date, place, id_board) VALUES (TIMESTAMP '2019/04/20 10:00:00', 'B005', 6);
 INSERT INTO Meeting (date, place, id_board) VALUES (TIMESTAMP '2019/04/06 17:00:00', 'Sala de bio', 7);
 INSERT INTO Meeting (date, place, id_board) VALUES (TIMESTAMP '2019/04/10 15:00:00', 'B223', 8);
@@ -493,14 +493,14 @@ INSERT INTO Message (date, message, id_user, id_project) VALUES (TIMESTAMP '2018
 --- PERSONAL EVENTS ---
 -----------------------
 
-INSERT INTO Personal_event (date, name, id_user) VALUES (TIMESTAMP '2019/04/14', 'Aniversário mãe', 1);
+INSERT INTO Personal_event (date, name, id_user) VALUES (TIMESTAMP '2019/04/12', 'Aniversário mãe', 1);
 INSERT INTO Personal_event (date, name, place, id_user) VALUES (TIMESTAMP '2019/04/10', 'Almoço com o António', 'Casa do António', 2);
 INSERT INTO Personal_event (date, name, id_user) VALUES (TIMESTAMP '2019/04/17 13:20:00', 'Ir buscar o João ao Aeroporto', 7);
-INSERT INTO Personal_event (date, name, id_user) VALUES (TIMESTAMP '2019/04/21 18:00:00', 'Levar o João ao Aeroporto', 7);
+INSERT INTO Personal_event (date, name, id_user) VALUES (TIMESTAMP '2019/04/20 18:00:00', 'Levar o João ao Aeroporto', 7);
 INSERT INTO Personal_event (date, name, id_user) VALUES (TIMESTAMP '2019/04/10 18:30:00', 'Café com a Maria', 5);
 INSERT INTO Personal_event (date, name, id_user) VALUES (TIMESTAMP '2019/05/18', 'Visitar a Joana', 5);
 INSERT INTO Personal_event (date, name, id_user) VALUES (TIMESTAMP '2019/05/06', 'Dia da mãe!!', 8);
-INSERT INTO Personal_event (date, name, id_user) VALUES (TIMESTAMP '2019/05/05', 'Aniversário da Maya', 3);
+INSERT INTO Personal_event (date, name, id_user) VALUES (TIMESTAMP '2019/05/07', 'Aniversário da Maya', 3);
 
 
 --- CONTACT ---

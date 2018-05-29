@@ -146,6 +146,12 @@
     border-top: 4px solid #e84343;
   }
 
+  .personal {
+    color: #333;
+    background: #c8c8c8;
+    border-top: 4px solid #c8c8c8;;
+  }
+
   .previous-week .date {
     border: none;
   }
