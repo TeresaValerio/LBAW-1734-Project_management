@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="CSS/frontPage.css">
+    <link rel="stylesheet" href="/CSS/frontPage.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="JS/welcome.js"></script>
+    <link rel="shortcut icon" href="/img/favicon.ico" />
     <style>
     </style>
 </head>
@@ -88,11 +89,6 @@
                             </div>
                             <input name="login_email" class="form-control" type="email" placeholder="Email">
                             <input name="login_password" class="form-control" type="password" placeholder="Password">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name = "remember_me" unchecked> Remember me
-                                </label>
-                            </div>
                         </div>
                         <div class="modal-footer">
                             <div>
@@ -181,63 +177,41 @@
         <h2>Projects</h2>
         <h4>Check what other people have achieved with the Vici app</h4>
         <div class="row text-center">
+            @for ($i = 1; $i < 5; $i++)
             <div class="col-sm-3">
-                <div class="card">
+                <div class="card" style="width:250px;">
                     <div class="card-content" align="center">
-                        <div class="card-header">
+                        <div class="card-header" style="width:250px;">
                             <h4>
-                                <strong>Hive</strong>
+                                <strong>{{ $project=DB::table('projects')->where('id',$i)->value('name') }}</strong>
                             </h4>
                         </div>
                         <div class="card-body">
-                            <img src="https://thumbs.dreamstime.com/b/best-bee-hive-logo-design-84149860.jpg" alt="User Picture" style="height:125px;">
+                        <?php
+                            if (DB::table("project_picture")->where("id_project",$i)->value("path")){
+                                $picture=DB::table("project_picture")->where("id_project",$i)->value("path");
+                            }
+                            else{
+                                $picture='https://cdn2.iconfinder.com/data/icons/medicine-3-1/512/checklist-512.png';
+                            }    
+                            ?>
+                            <img src="{{URL::asset($picture)}}" style="height:125px;">
                             <hr />
                             <h4>
                                 <strong>Description</strong>
                             </h4>
                             <p>
-                                Teresa Valério uses Vici to manage her honey factory.
+                            {{ $project=DB::table('projects')->where('id',$i)->value('description') }}
                             </p>
-                            <p>
-                                When she started using our app, she truly became the Queen of the Hive!
-                            </p>
-                            <hr />
-                            <a href="project.html">
-                                <p>See more</p>
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card">
-                    <div class="card-content" align="center">
-                        <div class="card-header">
-                            <h4>
-                                <strong>ACORN</strong>
-                            </h4>
-                        </div>
-                        <div class="card-body">
-                            <img src="https://i.pinimg.com/originals/61/08/5b/61085bf8f325fe5e0a99b4259564e44a.jpg" alt="User Picture" style="height:142px;">
-                            <hr />
-                            <h4>
-                                <strong>Description</strong>
-                            </h4>
-                            <p>
-                                Preparing for winter can be hard, with limited budget and many frenetic workers.
-                            </p>
-                            <p>
-                                With Vici, Sara can manage her stock without goint nuts!
-                            </p>
-                            <hr />
-                            <a href="project.html">
-                                <p>See more</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endfor
         </div>
+        <button class="text-center btn btn-info" type="submit" align="center" style="margin-top: 30px; width: 100px">
+            See More
+        </button>
     </div>
     <!-- Contact Container -->
     <div id="contacts" class="container-fluid bg-darkgrey">

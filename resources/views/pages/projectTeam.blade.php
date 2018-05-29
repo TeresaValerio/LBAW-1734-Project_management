@@ -111,6 +111,53 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <?php $coordinator=$project->id_coordinator; ?>
+                                @if ($userAuth != $coordinator)
+                                <div class="col-sm-3">
+                                    <div class="card" style="width:250px;" align="center">
+                                        <div class="card-content" style="width:250px;" align="center">
+                                            <div class="card-header" style="width:250px;" align="center">
+                                                <h4>
+                                                    <strong>{{ $member=DB::table('users')->where('id',$coordinator)->value('full_name') }}</strong>
+                                                </h4>
+                                            </div>
+                                            <div class="card-body">
+                                            <?php
+                                                 if (DB::table("profile_picture")->where("id_user",$coordinator)->value("path")){
+                                                    $picture=DB::table("profile_picture")->where("id_user",$coordinator)->value("path");
+                                                }
+                                                else{
+                                                    $picture='https://visit.nemedic.com/storage/default.jpg';
+                                                }
+                                            ?>
+                                                <img src="{{URL::asset($picture)}}" style="height:125px;">
+                                                <hr />
+                                                <p>
+                                                    <strong>Username:</strong>
+                                                    <br />{{ $member=DB::table('users')->where('id',$coordinator)->value('username')}}
+												</p>
+                                                <p>
+                                                    <strong>Email:</strong>
+                                                    <br /> {{ $member=DB::table('users')->where('id',$coordinator)->value('e_mail') }}
+												</p>
+                                                @if ($contact=DB::table('contact')->where('id_user',$userAuth)->where('id_contact', $coordinator)->count() > 0)
+                                                @else
+                                                <form action="/addContact" id="add_contact" method="post">
+                                                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                                                    <input type="hidden" name="project" value="{{$project->id}}"/>
+                                                    <input type="hidden" name="contact2" id="contact2" value="{{$coordinator}}"/>
+                                                    <button type="submit" class="btn btn-info btn-lg btn-block">
+                                                    Add Contact
+                                                    </button>
+                                                </form>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+
                                 @foreach ($team_ids as $id)
                                 @if ($id != $userAuth)
                                 <div class="col-sm-3">
