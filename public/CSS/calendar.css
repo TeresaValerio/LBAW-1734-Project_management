@@ -146,6 +146,12 @@
     border-top: 4px solid #e84343;
   }
 
+  .deadline_task {
+    color: #333;
+    background-color:#fcaf8c;
+    border-top: 4px solid #ff8725;
+  }
+
   .personal {
     color: #333;
     background: #c8c8c8;

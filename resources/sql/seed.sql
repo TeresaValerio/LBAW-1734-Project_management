@@ -387,7 +387,7 @@ INSERT INTO Users (e_mail, full_name, password, url, username) VALUES ('fi1996@g
 ----------------
 
 INSERT INTO Projects (description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES ('Projeto de LIEB para deteção de apneia do sono', TIMESTAMP '2018/03/04', timestamp '2019/05/18', 'Hypnos', 1, 'In_progress', true);
-INSERT INTO Projects (start_date, end_date, name, id_coordinator, project_state) VALUES (TIMESTAMP '2018/02/20', TIMESTAMP '2019/05/25 24:00:00', 'Fotopletismógrafo portátil', 2, 'In_progress');
+INSERT INTO Projects (start_date, end_date, name, id_coordinator, project_state) VALUES (TIMESTAMP '2018/02/20', TIMESTAMP '2019/05/25 23:59:00', 'Fotopletismógrafo portátil', 2, 'In_progress');
 INSERT INTO Projects (start_date, end_date, name, id_coordinator) VALUES (TIMESTAMP '2018/03/1', TIMESTAMP '2019/06/10 9:00:00', 'Estudo da doença de Alzheimer através de análise de imagens do cérebro', 3);
 INSERT INTO Projects (description, start_date, end_date, name, id_coordinator, project_state, privacy) VALUES ('Deteção de emoções através da análise de sinais de EEG', TIMESTAMP '2018/03/14', timestamp '2019/09/18', 'EEG feelings', 4, 'In_progress', true);
 INSERT INTO Projects (start_date, end_date, name, id_coordinator, project_state, privacy) VALUES (TIMESTAMP '2018/02/15', TIMESTAMP '2019/05/30', 'Projeto MINV', 20, 'In_progress', false);
@@ -437,7 +437,7 @@ INSERT INTO Task (deadline, description, name, progress, task_state, id_creator,
 INSERT INTO Task (deadline, description, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/04/22', 'Pesquisa sobre a estrutura que um questionário deve ter (quantidade/tipo de perguntas, etc)', 'Estrutura questionário', 40, 'In_progress', 1, 8);
 INSERT INTO Task (deadline, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/04/30', 'Elaboração questionário', 10, 'In_progress', 20, 8);
 INSERT INTO Task (deadline, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/04/25', 'Como fazer uma entrevista?', 50, 'In_progress', 3, 9);
-INSERT INTO Task (deadline, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/04/27', 'Guião da entervista', 10, 'In_progress', 1, 9);
+INSERT INTO Task (deadline, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/04/29', 'Guião da entervista', 10, 'In_progress', 1, 9);
 INSERT INTO Task (deadline, name, progress, task_state, id_creator, id_board) VALUES(TIMESTAMP '2019/05/10', 'Realização das entervista', 10, 'In_progress', 20, 9);
 
 
