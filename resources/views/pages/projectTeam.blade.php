@@ -87,15 +87,16 @@
                             <div class="row ">
                             {{ $userAuth = auth()->user()->id}}
                             <div class="col-sm-3">
-                                    <div class="card">
+                                    <div class="card" style="width:250px;">
                                         <div class="card-content" align="center">
-                                            <div class="card-header">
+                                            <div class="card-header" style="width:250px;">
                                                 <h4>
                                                     <strong>{{ $member=DB::table('users')->where('id',$userAuth)->value('full_name') }}</strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                                <img src="" class="img-circle" alt="User Picture" style="padding: px; width:80px;height:80px;">
+                                            <?php {{$picture=DB::table("profile_picture")->where("id_user",$userAuth)->value("path");}} ?>
+                                                <img src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <p>
                                                     <strong>Username:</strong>
@@ -112,15 +113,16 @@
                             @foreach ($team_ids as $id)
                             @if ($id != $userAuth)
                                 <div class="col-sm-3">
-                                    <div class="card">
+                                    <div class="card" style="width:250px;">
                                         <div class="card-content" align="center">
-                                            <div class="card-header">
+                                            <div class="card-header" style="width:250px;">
                                                 <h4>
                                                     <strong>{{ $member=DB::table('users')->where('id',$id)->value('full_name') }}</strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                                <img src="" class="img-circle" alt="User Picture" style="padding: px; width:80px;height:80px;">
+                                            <?php {{$picture=DB::table("profile_picture")->where("id_user",$id)->value("path");}} ?>
+                                                <img src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <p>
                                                     <strong>Username:</strong>

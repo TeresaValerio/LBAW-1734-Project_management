@@ -2,6 +2,18 @@
 
 
 @section('content')
+
+<style>
+.img_title {
+    display: table;
+    background: #888888;
+    position: absolute;
+}
+.image_container {
+    cursor: none;
+    display: table;    
+}
+</style>
 <!-- Header -->
 <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb ">
@@ -106,12 +118,11 @@
                                                 </p>
 
                                                 <div class="row">
-                                                    <div class="column-md-1">
-                                                        <img src="/img/profile.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
-                                                    </div>
-                                                    <div class="column-md-1">
-                                                        <img src="/img/maya.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
-                                                    </div>
+                                                <?php {{ $team_ids = DB::table('board_team')->where('id_board',$id)->pluck('id_user'); }}?>
+                                                @foreach ($team_ids as $t_id)
+                                                    <?php {{$picture=DB::table("profile_picture")->where("id_user",$t_id)->value("path");}} ?>
+                                                    <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$t_id)->value('full_name')}}">
+                                                @endforeach
                                                 </div>
                                                 <hr />
                                                 <a href="projectBoard.html">
