@@ -67,6 +67,12 @@
                         <p>
                             <strong>Email: </strong> <br />
                             {{ $person->e_mail}}</p>
+
+                        <a href="#" data-toggle="modal" data-target="#delete-account-modal">
+                            <input class="btn btn" type="button" value="Delete account"> 
+                        </a>
+
+
                     </div>
                     
                     <div class="col-md-5 col-sm-6 display-table-cell v-align" >
@@ -91,7 +97,7 @@
                         </div>
                         <div class="form-group">
                             <div>
-                                <input class="btn btn-primary" type="submit" value="Submit">
+                                <input class="btn btn-info" type="submit" value="Submit">
                             </div> 
                         </div>
 
@@ -108,7 +114,7 @@
                                 <input required name="full_name" type="text" class="form-control inputpass" placeholder="Input new full name" id="pass1" /> </p>
                         </div>
                         <div class="form-group">
-                            <input class="btn btn-primary" type="submit" value="Submit"> 
+                            <input class="btn btn-info" type="submit" value="Submit"> 
                             <h6>You will receive an email to complete the registration and validation process. 
                                 Be sure to check your spam folders.</h6>
                         </div>
@@ -120,7 +126,7 @@
                             <b>Change privacy: </b><input type="checkbox" name="email" value="email">Public <br>
                         </div>
                         <div class="form-group">
-                            <input class="btn btn-primary" type="submit" name="submit_reg" value="Submit"> 
+                            <input class="btn btn-info" type="submit" name="submit_reg" value="Submit"> 
                             <h6>You will receive an email to complete the registration and validation process. 
                                 Be sure to check your spam folders.</h6>
                         </div>
@@ -139,4 +145,45 @@
             
         </div>
     </div>
+
+    <!-- Modal New Project -->
+    <div class="modal fade" id="delete-account-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #7ABED3; color: #fff">
+                    <strong>Delete account</strong>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <!-- Begin # DIV Form -->
+                <div id="div-forms">
+                    
+                    <!-- Begin # Create project Form -->
+                    
+                    <form id="login-form" action= "/deleteAccount" method="post">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <div class="modal-body">
+                                <div class = "row">
+                                    <h5> <b> Are you sure you want to delete your account? </b> </h5>
+                                </div>
+                                <div class = "row">
+                                    <h6>You will  not be able to reverse this action! </h6>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="col-sm-4">
+                                <button type="submit" class="btn btn-info btn-lg btn-block">Yes</button>
+                                </div> 
+                            </div>
+                        </form>
+
+                    <!-- End # Login Form -->
+                </div>
+                <!-- End # DIV Form -->
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
+
 @endsection
