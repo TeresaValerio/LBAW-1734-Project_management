@@ -86,8 +86,8 @@
 								</div>
                             </div>
                             <div class="row ">
-                            <?php  $userAuth = auth()->user()->id ?>
-                            <div class="col-sm-3">
+                                <?php  $userAuth = auth()->user()->id ?>
+                                <div class="col-sm-3">
                                     <div class="card" style="width:250px;">
                                         <div class="card-content" align="center">
                                             <div class="card-header" style="width:250px;">
@@ -111,18 +111,25 @@
                                         </div>
                                     </div>
                                 </div>
-                            @foreach ($team_ids as $id)
-                            @if ($id != $userAuth)
+                                @foreach ($team_ids as $id)
+                                @if ($id != $userAuth)
                                 <div class="col-sm-3">
-                                    <div class="card" style="width:250px;">
-                                        <div class="card-content" align="center">
-                                            <div class="card-header" style="width:250px;">
+                                    <div class="card" style="width:250px;" align="center">
+                                        <div class="card-content" style="width:250px;" align="center">
+                                            <div class="card-header" style="width:250px;" align="center">
                                                 <h4>
                                                     <strong>{{ $member=DB::table('users')->where('id',$id)->value('full_name') }}</strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                            <?php {{$picture=DB::table("profile_picture")->where("id_user",$id)->value("path");}} ?>
+                                            <?php
+                                                 if (DB::table("profile_picture")->where("id_user",$id)->value("path")){
+                                                    $picture=DB::table("profile_picture")->where("id_user",$id)->value("path");
+                                                }
+                                                else{
+                                                    $picture='https://visit.nemedic.com/storage/default.jpg';
+                                                }
+                                            ?>
                                                 <img src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <p>
@@ -135,9 +142,10 @@
 												</p>
                                                 @if ($contact=DB::table('contact')->where('id_user',$userAuth)->where('id_contact', $id)->count() > 0)
                                                 @else
-                                                <form action="/addContact" method="post">
-                                                    <input type="hidden" name="contact1" value="$userAuth"/>
-                                                    <input type="hidden" name="contact2" value="$id"/>
+                                                <form action="/addContact" id="add_contact" method="post">
+                                                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                                                    <input type="hidden" name="project" value="{{$project->id}}"/>
+                                                    <input type="hidden" name="contact2" id="contact2" value="{{$id}}"/>
                                                     <button type="submit" class="btn btn-info btn-lg btn-block">
                                                     Add Contact
                                                     </button>

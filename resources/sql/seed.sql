@@ -119,7 +119,6 @@ CREATE TABLE Progress_update (
 );
 
 CREATE TABLE Projects (
-    created_at timestamp without time zone,
     id SERIAL NOT NULL,
     description text,
     start_date timestamp without time zone DEFAULT now() NOT NULL,
@@ -128,7 +127,6 @@ CREATE TABLE Projects (
     id_coordinator integer NOT NULL,
     project_state state DEFAULT 'In_progress' NOT NULL,
     privacy boolean DEFAULT false NOT NULL,
-    updated_at timestamp without time zone,
     user_archived integer,
     CONSTRAINT CK1 CHECK ((end_date > start_date))
 );

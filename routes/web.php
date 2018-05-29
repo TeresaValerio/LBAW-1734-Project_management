@@ -176,6 +176,12 @@ Route::get('/{projectId}/projectTeam', function ($projectId) {
     return view('pages.projectTeam', compact('project', 'team_ids'));
 });
 
+Route::get('/{userId}/userContacts', function ($userId) {
+    $person = DB::table('users')->find($userId);
+    $contact_ids = DB::table('contact')->where('id_user',$userId)->pluck('id_contact');
+    return view('pages.userContacts', compact('person', 'contact_ids'));
+});
+
 ////////////////////////
 ///// PROJECT INFO /////
 ////////////////////////
@@ -205,6 +211,16 @@ Route::get('/{projectId}/projectCalendar', function ($projectId) {
     return view('pages.projectCalendar', compact('project','projects_deadlines','projects_names','tasks_deadlines','tasks_names','meetings_dates','meetings_names','meetings_places'));
 });
 
+////////////////////////
+///// BOARD TASKS /////
+////////////////////////
+
+Route::get('/{boardId}/tasks', function ($boardId) {
+    $board = DB::table('board')->find($boardId);
+    $tasks_ids = DB::table('task')->where('id_board',$boardId)->pluck('id');
+    return view('pages.tasks', compact('board', 'tasks_ids'));
+});
+
 Route::post('/project','ProjectsController@store');
 
 Route::post('/loginme','Auth\LoginController@login');
@@ -217,7 +233,7 @@ Route::post('/changePassword','SettingsController@changePassword');
 Route::post('/changeFullName','SettingsController@changeFullName');
 Route::post('/changePrivacy','SettingsController@changePrivacy');
 
-Route::post('/addContact', 'ContactController@addContact');
+Route::post('/addContact', 'ContactsController@add');
 
 Auth::routes();
 

@@ -41,6 +41,12 @@
                                 <span class="hidden-xs hidden-sm">My Calendar</span>
                             </a>
                         </li>
+                        <li>
+                            <a href={{ url($person->id.'/userContacts') }}>
+                                <i class="fa fa-info" aria-hidden="true"></i>
+                                <span class="hidden-xs hidden-sm">Contacts</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
