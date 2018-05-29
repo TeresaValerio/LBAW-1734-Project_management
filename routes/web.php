@@ -82,32 +82,15 @@ Route::get('/{userId}/userCalendar', function ($userId){
     $projects_names2 = DB::table('projects')->join('project_team','projects.id','=','project_team.id_project')->where('id_user',$userId)->pluck('name');
 
     $personal_events_dates = DB::table('personal_event')->where('id_user',$userId)->pluck('date');
-    echo("PERSONAL EVENTS DATE: ");
-    echo ($personal_events_dates);
-    foreach ($personal_events_dates as $personal_event_date){
-        $timestamp=str_split($personal_event_date,10);
-        echo ('DATE: ');
-        $date=$timestamp[0];
-        echo $date;
-        echo ('TIME: ');
-        $time=$timestamp[1];
-        echo $time;
-    }
-
     $personal_events_names= DB::table('personal_event')->where('id_user',$userId)->pluck('name');
-    echo("PERSONAL EVENTS NAME: ");
-    echo ($personal_events_names);
     $personal_events_places = DB::table('personal_event')->where('id_user',$userId)->pluck('place');
-    echo("PERSONAL EVENTS PLACE: ");
-    echo ($personal_events_places);
 
 
-    /*$meetings = DB::table('meeting')->join('board_team','meeting.id_board','=','board_team.id_board')->where('id_user',$userId)->pluck('date','place');
-    echo("MEETINGS: ");
-    echo ($meetings);*/
+    $meetings_dates = DB::table('meeting')->join('board_team','meeting.id_board','=','board_team.id_board')->where('id_user',$userId)->pluck('date');
+    $meetings_places = DB::table('meeting')->join('board_team','meeting.id_board','=','board_team.id_board')->where('id_user',$userId)->pluck('place');
+    $meetings_names = DB::table('meeting')->join('board','meeting.id_board','=','board.id')->join('board_team','meeting.id_board','=','board_team.id_board')->where('id_user',$userId)->pluck('board.name');
 
-
-    return view('pages.userCalendar', compact('person','picture','tasks_deadlines','tasks_names','projects_deadlines','projects_names','projects_deadlines2','projects_names2','personal_events_dates','personal_events_names','personal_events_places'));
+    return view('pages.userCalendar', compact('person','picture','tasks_deadlines','tasks_names','projects_deadlines','projects_names','projects_deadlines2','projects_names2','personal_events_dates','personal_events_names','personal_events_places','meetings_dates','meetings_places','meetings_names'));
     }
     else{
     $userId=$userAuth;

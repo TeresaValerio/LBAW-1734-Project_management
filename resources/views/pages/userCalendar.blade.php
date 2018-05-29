@@ -54,33 +54,240 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
         $date = $ym.'-'.$day;
     }
 
-    $week .= '<td class="deadline">
-                <span class="date">
-                    @foreach ($tasks_deadlines as $task_deadline)
-                        <ul>
-                        $task_deadline
-                        </ul>
-                    @endforeach
-                </span>
-              </td>';
-    
-    $week .= '</td>';
-     
-    // End of the week OR End of the month
-    if ($str % 7 == 6 || $day == $day_count) {
-         
-        if($day == $day_count) {
-            // Add empty cell
-            $week .= str_repeat('<td></td>', 6 - ($str % 7));
-        }
-         
-        $weeks[] = '<tr>'.$week.'</tr>';
-         
-        // Prepare for new week
-        $week = '';
-    }
-}
+    ////////////////////////////////////
+        $i=0;
+        $j=0;
+        foreach ($tasks_deadlines as $task_deadline){
+            $i++;
+            if ($task_deadline == $date){
+                foreach ($tasks_names as $task_name){
+                    $j++;
+                    if ($i == $j){
 
+                    
+                $week .= '<td class="deadline">
+                            <span class="date">'
+                            .$day.
+                            '<ul>
+                            <li>
+                            <span class="event">'
+                            .$task_name.
+                            '</span>
+                            <span class="time">
+                            Task
+                            </span>
+                            </li>
+                            </ul>
+                            </span>
+                            </td>';
+                    }
+                }
+                $day++;
+                $str++;
+                if ($day >0 && $day < 10){
+                $date = $ym.'-0'.$day;
+                } else {
+                    $date = $ym.'-'.$day;
+                }
+                break;
+            }
+        }
+
+        ////////////////////////////////////
+        $i=0;
+        $j=0;
+        foreach ($projects_deadlines as $project_deadline){
+            $i++;
+            if ($project_deadline == $date){
+                foreach ($projects_names as $project_name){
+                    $j++;
+                    if ($i == $j){
+
+                    
+                $week .= '<td class="deadline">
+                            <span class="date">'
+                            .$day.
+                            '<ul>
+                            <li>
+                            <span class="event">'
+                            .$project_name.
+                            '</span>
+                            <span class="time">
+                            Project
+                            </span>
+                            </li>
+                            </ul>
+                            </span>
+                            </td>';
+                    }
+                }
+                $day++;
+                $str++;
+                if ($day >0 && $day < 10){
+                $date = $ym.'-0'.$day;
+                } else {
+                    $date = $ym.'-'.$day;
+                }
+                break;
+            }
+        }
+        ////////////////////////////////////
+        $i=0;
+        $j=0;
+        foreach ($projects_deadlines2 as $project_deadline2){
+            $i++;
+            if ($project_deadline2 == $date){
+                foreach ($projects_names2 as $project_name2){
+                    $j++;
+                    if ($i == $j){
+
+                    
+                $week .= '<td class="deadline">
+                            <span class="date">'
+                            .$day.
+                            '<ul>
+                            <li>
+                            <span class="event">'
+                            .$project_name2.
+                            '</span>
+                            <span class="time">
+                            Project
+                            </span>
+                           </li>
+                            </ul>
+                            </span>
+                            </td>';
+                    }
+                }
+                $day++;
+                $str++;
+                if ($day >0 && $day < 10){
+                $date = $ym.'-0'.$day;
+                } else {
+                    $date = $ym.'-'.$day;
+                }
+                break;
+            }
+        }
+        ////////////////////////////////////
+     
+        ////////////////////////////////////
+        $i=0;
+        $j=0;
+        $k=0;
+        foreach ($personal_events_dates as $personal_event_date){
+            $i++;
+            $timestamp=str_split($personal_event_date,10);
+            $event_date=$timestamp[0];
+            $event_time=$timestamp[1];
+
+            if ($event_date == $date){
+                foreach ($personal_events_names as $personal_event_name){
+                    $j++;
+                    foreach ($personal_events_places as $personal_event_place){
+                        $k++;
+                    if ($i == $j && $i==$k){
+                        $week .= '<td class="personal">
+                                    <span class="date">'
+                                    .$day.
+                                        '<ul>
+                                            <li>
+                                                <span class="event">'
+                                                .$personal_event_name.
+                                                '</span>
+                                                <span class="time">'
+                                                .$event_time.','.$personal_event_place.
+                                                '</span>
+                                            </li>
+                                    </span>
+                                </td>';
+                            }
+                        }
+                    }
+                
+                $day++;
+                $str++;
+                if ($day >0 && $day < 10){
+                $date = $ym.'-0'.$day;
+                } else {
+                    $date = $ym.'-'.$day;
+                }
+                break;
+            }
+        }
+        ////////////////////////////////////
+
+        ////////////////////////////////////
+        $i=0;
+        $j=0;
+        $k=0;
+        foreach ($meetings_dates as $meeting_date){
+            $i++;
+            $timestamp=str_split($meeting_date,10);
+            $meet_date=$timestamp[0];
+            $meet_time=$timestamp[1];
+
+            if ($meet_date == $date){
+                foreach ($meetings_places as $meeting_place){
+                    $j++;
+                    foreach ($meetings_names as $meeting_name){
+                        $k++;
+                    if ($i == $j && $i==$k){
+
+                    
+                        $week .= '<td class="meeting">
+                                     <span class="date">'
+                                    .$day.
+                                        '<ul>
+                                            <li>
+                                                <span class="event">'
+                                                .$meeting_name.
+                                                '</span>
+                                                <span class="time">'
+                                                .$meet_time.','.$meeting_place.
+                                                '</span>
+                                            </li>
+                                        </ul>   
+                                    </span>
+                                </td>';
+                            }
+                        }
+                    }
+                
+                $day++;
+                $str++;
+                if ($day >0 && $day < 10){
+                $date = $ym.'-0'.$day;
+                } else {
+                    $date = $ym.'-'.$day;
+                }
+                break;
+            }
+        }
+        ////////////////////////////////////
+
+
+        if ($today == $date) {
+                    $week .= '<td class="current-day"><span class="date">'.$day.'</span></td>';
+                }
+                else {
+                    $week .= '<td><span class="date">'.$day.'</span></td>';
+                }
+
+        // End of the week OR End of the month
+        if ($str % 7 == 6 || $day == $day_count) {
+            
+            if($day == $day_count) {
+                // Add empty cell
+                $week .= str_repeat('<td></td>', 6 - ($str % 7));
+            }
+            
+            $weeks[] = '<tr>'.$week.'</tr>';
+            
+            // Prepare for new week
+            $week = '';
+        }
+    }
       
 ?>
  
