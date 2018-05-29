@@ -31,8 +31,8 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active">
-                        <a href={{ url('/userInfo')}} > {{ $person->full_name}}</a>
+                    <li class="active"> 
+                    <a href={{ url($userAuth=auth()->user()->id.'/personalInfo')}} > {{ auth()->user()->full_name}}</a>
                     </li>
                     <li>
                         <a href="explore.html">Explore</a>
@@ -47,7 +47,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account</a>
                         <ul class="dropdown-menu">
                             <li>
-                            <a href={{ url($person->id.'/settings') }}>Account Settings</a>
+                                <a href={{ url($userAuth=auth()->user()->id.'/settings') }}>Account Settings</a>
                             </li>
                             <li>
                                 <a href={{ url('/logout') }}>Log Out</a>
