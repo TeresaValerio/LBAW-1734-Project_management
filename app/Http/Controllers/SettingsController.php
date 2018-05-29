@@ -66,6 +66,17 @@ class SettingsController extends Controller
         
     }
 
+    public function deleteAccount(Request $request){
+
+        $userId = auth()->user()->id;
+
+        $user = User::where('id',$userId)->first();
+        $user->delete();
+
+        return view('pages.welcome'); 
+        
+    }
+
 
     
 
