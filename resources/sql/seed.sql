@@ -152,7 +152,7 @@ CREATE TABLE Task (
     task_state state DEFAULT 'In_progress' NOT NULL,
     id_creator integer NOT NULL,
     id_board integer NOT NULL,
-    CONSTRAINT CK1 CHECK ((progress > 0)),
+    CONSTRAINT CK1 CHECK ((progress >= 0)),
     CONSTRAINT CK2 CHECK ((progress <= 100))
 );
 

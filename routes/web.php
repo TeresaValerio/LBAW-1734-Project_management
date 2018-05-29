@@ -237,6 +237,8 @@ Route::post('/addContact', 'ContactsController@add');
 
 Route::post('/addBoard', 'BoardController@store');
 
+Route::post('/addTask', 'TaskController@store');
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
