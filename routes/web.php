@@ -229,6 +229,16 @@ Route::get('/explore', function () {
     return view('pages.explore');
 });
 
+////////////////////////
+///// PROJECT FORUM ////
+////////////////////////
+
+Route::get('/{projectId}/projectForum', function ($projectId) {
+    $project = DB::table('projects')->find($projectId);
+    $messages_ids = DB::table('message')->where('id_project',$projectId)->pluck('id');
+    return view('pages.projectForum', compact('project', 'messages_ids'));
+});
+
 
 Route::post('/project','ProjectsController@store');
 

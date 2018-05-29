@@ -56,7 +56,7 @@
               </a>
                         </li>
                         <li>
-                            <a href="projectForum.html">
+                            <a href={{ url($project->id.'/projectForum') }}>
                                 <i class="fa fa-comments" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Forum</span>
                             </a>

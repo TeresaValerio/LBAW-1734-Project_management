@@ -3,7 +3,6 @@
 
 @section('content')
  <link rel="stylesheet" href="/CSS/calendar.css">
- <title>Calendar | {{$project->name}}</title>
 
 <?php
 // Set your timezone!!
@@ -58,6 +57,45 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
     ////////////////////////////////////
         $i=0;
         $j=0;
+        foreach ($tasks_deadlines as $task_deadline){
+            $i++;
+            if ($task_deadline == $date){
+                foreach ($tasks_names as $task_name){
+                    $j++;
+                    if ($i == $j){
+
+                    
+                $week .= '<td class="deadline_task">
+                            <span class="date">'
+                            .$day.
+                            '<ul>
+                            <li>
+                            <span class="event">'
+                            .$task_name.
+                            '</span>
+                            <span class="time">
+                            Task
+                            </span>
+                            </li>
+                            </ul>
+                            </span>
+                            </td>';
+                    }
+                }
+                $day++;
+                $str++;
+                if ($day >0 && $day < 10){
+                $date = $ym.'-0'.$day;
+                } else {
+                    $date = $ym.'-'.$day;
+                }
+                break;
+            }
+        }
+
+        ////////////////////////////////////
+        $i=0;
+        $j=0;
         foreach ($projects_deadlines as $project_deadline){
             $i++;
             if ($project_deadline == $date){
@@ -93,29 +131,29 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                 break;
             }
         }
-
-        ///////////////////////////////////
-
         ////////////////////////////////////
         $i=0;
         $j=0;
-        foreach ($tasks_deadlines as $task_deadline){
+        foreach ($projects_deadlines2 as $project_deadline2){
             $i++;
-            if ($task_deadline == $date){
-                foreach ($tasks_names as $task_name){
+            if ($project_deadline2 == $date){
+                foreach ($projects_names2 as $project_name2){
                     $j++;
                     if ($i == $j){
 
                     
-                $week .= '<td class="deadline_task">
+                $week .= '<td class="deadline">
                             <span class="date">'
                             .$day.
                             '<ul>
                             <li>
                             <span class="event">'
-                            .$task_name.
+                            .$project_name2.
                             '</span>
-                            </li>
+                            <span class="time">
+                            Project
+                            </span>
+                           </li>
                             </ul>
                             </span>
                             </td>';
@@ -131,9 +169,55 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                 break;
             }
         }
+        ////////////////////////////////////
+     
+        ////////////////////////////////////
+        $i=0;
+        $j=0;
+        $k=0;
+        foreach ($personal_events_dates as $personal_event_date){
+            $i++;
+            $timestamp=str_split($personal_event_date,10);
+            $event_date=$timestamp[0];
+            $event_time=$timestamp[1];
 
-        ///////////////////////////////////
+            if ($event_date == $date){
+                foreach ($personal_events_names as $personal_event_name){
+                    $j++;
+                    foreach ($personal_events_places as $personal_event_place){
+                        $k++;
+                    if ($i == $j && $i==$k){
+                        $week .= '<td class="personal">
+                                    <span class="date">'
+                                    .$day.
+                                        '<ul>
+                                            <li>
+                                                <span class="event">'
+                                                .$personal_event_name.
+                                                '</span>
+                                                <span class="time">'
+                                                .$event_time.','.$personal_event_place.
+                                                '</span>
+                                            </li>
+                                    </span>
+                                </td>';
+                            }
+                        }
+                    }
+                
+                $day++;
+                $str++;
+                if ($day >0 && $day < 10){
+                $date = $ym.'-0'.$day;
+                } else {
+                    $date = $ym.'-'.$day;
+                }
+                break;
+            }
+        }
+        ////////////////////////////////////
 
+        ////////////////////////////////////
         $i=0;
         $j=0;
         $k=0;
@@ -182,6 +266,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
         }
         ////////////////////////////////////
 
+
         if ($today == $date) {
                     $week .= '<td class="current-day"><span class="date">'.$day.'</span></td>';
                 }
@@ -211,7 +296,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
     <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb">
             <li>
-            <a href={{ url($project->id.'/projectInfo') }}>  {{ $project->name }} </a>
+            <a href={{ url($person->id.'/personalInfo') }}>  {{ $person->full_name }} </a>
             </li>
             <li class="active">
                 Calendar
@@ -227,34 +312,22 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
             <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
                 <div class="navi">
                     <ul>
-                    <li>
-                            <a href={{ url($project->id.'/projectBoards') }}>
+                        <li>
+                            <a href={{ url($person->id.'/userProjects') }}>
                                 <i class="fa fa-home" aria-hidden="true"></i>
-                                <span class="hidden-xs hidden-sm">Boards</span>
+                                <span class="hidden-xs hidden-sm">My Projects</span>
                             </a>
                         </li>
                         <li>
-                        <a href={{ url($project->id.'/projectInfo') }}>
+                            <a href={{ url($person->id.'/personalInfo') }}>
                                 <i class="fa fa-info" aria-hidden="true"></i>
-                                <span class="hidden-xs hidden-sm">Info</span>
+                                <span class="hidden-xs hidden-sm">Personal Info</span>
                             </a>
                         </li>
-                        <li>
-                            <a href={{ url($project->id.'/projectTeam') }}>
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hidden-xs hidden-sm">Team</span>
-                            </a>
-                        </li>
-                        <li  class="active">
-                        <a href={{ url($project->id.'/projectCalendar') }}>
-                <i class="fa fa-calendar" aria-hidden="true"></i>
-                <span class="hidden-xs hidden-sm">Calendar</span>
-              </a>
-                        </li>
-                        <li>
-                        <a href={{ url($project->id.'/projectForum') }}>
-                                <i class="fa fa-comments" aria-hidden="true"></i>
-                                <span class="hidden-xs hidden-sm">Forum</span>
+                        <li class="active">
+                            <a href={{ url($person->id.'/userCalendar') }}>
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                <span class="hidden-xs hidden-sm">My Calendar</span>
                             </a>
                         </li>
                     </ul>
