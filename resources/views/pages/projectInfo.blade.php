@@ -67,7 +67,14 @@
                 <div class="col-md-10 col-sm-11 display-table-cell v-align">
                     <div class="col-md-2 col-sm-3 display-table-cell v-align">
                         <a href="#" class="profile-pic">
-                        <?php {{$picture=DB::table("project_picture")->where("id_project",$project->id)->value("path");}} ?>
+                        <?php
+                            if (DB::table("project_picture")->where("id_project",$project->id)->value("path")){
+                                $picture=DB::table("project_picture")->where("id_project",$project->id)->value("path");
+                            }
+                            else{
+                                $picture='https://cdn2.iconfinder.com/data/icons/medicine-3-1/512/checklist-512.png';
+                            }
+                        ?>
                             <div class="profile-pic" style="background-image: url({{URL::asset($picture)}})">
                                 <span class="glyphicon glyphicon-camera"></span>
                                 <span>Change Image</span>

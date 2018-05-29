@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Project;
+use App\Contact;
 use Auth;
 
-class ProjectsController extends Controller
+class ContactsController extends Controller
 {
-    /**
+
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -25,7 +26,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('/userProjects');
+        return view('/projectTeam');
     }
 
     /**
@@ -34,31 +35,16 @@ class ProjectsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function add(Request $request)
     {
         $userId = auth()->user()->id;
+        
+        $contact=Contact::create([
+            'id_user' => $userId,
+            'id_contact' => $request->get('contact2')
+       ]);
 
-        $this->validate($request, [
-            'project_name' => 'required'
-        ]);
-
-        if ($request->get('project_public')==NULL){
-            $privacy='true';
-        }
-        else{
-            $privacy='false';
-        }
-
-        $project=Project::create([
-            'name' => $request->get('project_name'),
-            'description' => $request->get('project_description'),
-            'start_date' => $request->get('project_date'),
-            'end_date' => $request->get('project_deadline'),
-            'privacy' => $privacy,
-            'id_coordinator' => $userId
-        ]);
-
-        return redirect($userId.'/userProjects')->with('success', 'Project Created!');
+       return redirect($userId.'/userContacts')->with('success', 'Contact added!');
     }
 
     /**

@@ -191,6 +191,12 @@ Route::get('/{projectId}/projectTeam', function ($projectId) {
     return view('pages.projectTeam', compact('project', 'team_ids'));
 });
 
+Route::get('/{userId}/userContacts', function ($userId) {
+    $person = DB::table('users')->find($userId);
+    $contact_ids = DB::table('contact')->where('id_user',$userId)->pluck('id_contact');
+    return view('pages.userContacts', compact('person', 'contact_ids'));
+});
+
 ////////////////////////
 ///// PROJECT INFO /////
 ////////////////////////
@@ -231,7 +237,7 @@ Route::post('/changePassword','SettingsController@changePassword');
 Route::post('/changeFullName','SettingsController@changeFullName');
 Route::post('/changePrivacy','SettingsController@changePrivacy');
 
-Route::post('/addContact', 'ContactController@addContact');
+Route::post('/addContact', 'ContactsController@add');
 
 Auth::routes();
 

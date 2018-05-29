@@ -121,7 +121,14 @@
                                                 <div class="row">
                                                 <?php {{ $team_ids = DB::table('board_team')->where('id_board',$id)->pluck('id_user'); }}?>
                                                 @foreach ($team_ids as $t_id)
-                                                    <?php {{$picture=DB::table("profile_picture")->where("id_user",$t_id)->value("path");}} ?>
+                                                    <?php
+                                                         if (DB::table("profile_picture")->where("id_user",$id)->value("path")){
+                                                            $picture=DB::table("profile_picture")->where("id_user",$id)->value("path");
+                                                        }
+                                                        else{
+                                                            $picture='https://visit.nemedic.com/storage/default.jpg';
+                                                        }
+                                                    ?>
                                                     <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$t_id)->value('full_name')}}">
                                                 @endforeach
                                                 </div>

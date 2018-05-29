@@ -40,6 +40,12 @@
                                 <span class="hidden-xs hidden-sm">My Calendar</span>
                             </a>
                         </li>
+                        <li>
+                            <a href={{ url($person->id.'/userContacts') }}>
+                                <i class="fa fa-info" aria-hidden="true"></i>
+                                <span class="hidden-xs hidden-sm">Contacts</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -87,7 +93,14 @@
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                                <?php {{$picture=DB::table("project_picture")->where("id_project",$id)->value("path");}} ?>
+                                                <?php
+                                                if (DB::table("project_picture")->where("id_project",$id)->value("path")){
+                                                    $picture=DB::table("project_picture")->where("id_project",$id)->value("path");
+                                                }
+                                                else{
+                                                    $picture='https://cdn2.iconfinder.com/data/icons/medicine-3-1/512/checklist-512.png';
+                                                }
+                                                ?>
                                                 <img src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <a href={{ url($id.'/projectBoards') }}>
@@ -121,10 +134,17 @@
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                                <?php {{$picture=DB::table("project_picture")->where("id_project",$id)->value("path");}} ?>
+                                                <?php
+                                                    if (DB::table("project_picture")->where("id_project",$id)->value("path")){
+                                                        $picture=DB::table("project_picture")->where("id_project",$id)->value("path");
+                                                    }
+                                                    else{
+                                                        $picture='https://cdn2.iconfinder.com/data/icons/medicine-3-1/512/checklist-512.png';
+                                                    }    
+                                                ?>
                                                 <img src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
-                                                <a href="project.html">
+                                                <a href={{ url($id.'/projectBoards') }}>
                                                     <p>See more </p>
                                                 </a>
                                             </div>
@@ -171,7 +191,6 @@
                     @endif
                     <form id="login-form" action= "/project" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-
                         <div class="modal-body">
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
