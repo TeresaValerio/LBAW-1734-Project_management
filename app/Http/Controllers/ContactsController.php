@@ -44,7 +44,9 @@ class ContactsController extends Controller
             'id_contact' => $request->get('contact2')
        ]);
 
-       return redirect($userId.'/userContacts')->with('success', 'Contact added!');
+       $project=$request->get('project');
+
+       return redirect($project.'/projectTeam')->with('success', 'Contact added!');
     }
 
     /**

@@ -144,7 +144,8 @@
                                                 @else
                                                 <form action="/addContact" id="add_contact" method="post">
                                                     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                                                    <input type="hidden" name="contact2" id="contact2" default="$id"/>
+                                                    <input type="hidden" name="project" value="{{$project->id}}"/>
+                                                    <input type="hidden" name="contact2" id="contact2" value="{{$id}}"/>
                                                     <button type="submit" class="btn btn-info btn-lg btn-block">
                                                     Add Contact
                                                     </button>
