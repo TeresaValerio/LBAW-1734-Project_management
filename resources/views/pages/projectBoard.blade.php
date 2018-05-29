@@ -119,11 +119,38 @@
                                                 </p>
 
                                                 <div class="row">
-                                                <?php {{ $team_ids = DB::table('board_team')->where('id_board',$id)->pluck('id_user'); }}?>
+                                                <?php
+                                                    $team_ids = DB::table('board_team')->where('id_board',$id)->pluck('id_user');
+                                                    $me=auth()->user()->id;
+                                                    $coordinator=DB::table('projects')->where('id',$project->id)->value('id_coordinator');
+                                                ?>
+                                                
+                                                @if ($coordinator != $me)
+                                                    <?php
+                                                        if (DB::table("profile_picture")->where("id_user",$coordinator)->value("path")){
+                                                            $picture=DB::table("profile_picture")->where("id_user",$coordinator)->value("path");
+                                                        }
+                                                        else{
+                                                            $picture='https://visit.nemedic.com/storage/default.jpg';
+                                                        }
+                                                    ?>
+                                                    <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$coordinator)->value('full_name')}}">
+                                                @endif
+                                                
+                                                    <?php
+                                                        if (DB::table("profile_picture")->where("id_user",$me)->value("path")){
+                                                            $picture=DB::table("profile_picture")->where("id_user",$me)->value("path");
+                                                        }
+                                                        else{
+                                                            $picture='https://visit.nemedic.com/storage/default.jpg';
+                                                        }
+                                                    ?>
+                                                    <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$me)->value('full_name')}}">
+                                                
                                                 @foreach ($team_ids as $t_id)
                                                     <?php
-                                                         if (DB::table("profile_picture")->where("id_user",$id)->value("path")){
-                                                            $picture=DB::table("profile_picture")->where("id_user",$id)->value("path");
+                                                         if (DB::table("profile_picture")->where("id_user",$t_id)->value("path")){
+                                                            $picture=DB::table("profile_picture")->where("id_user",$t_id)->value("path");
                                                         }
                                                         else{
                                                             $picture='https://visit.nemedic.com/storage/default.jpg';
@@ -131,6 +158,7 @@
                                                     ?>
                                                     <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$t_id)->value('full_name')}}">
                                                 @endforeach
+
                                                 </div>
                                                 <hr />
                                                 <a href={{ url($id.'/tasks') }}>
@@ -164,42 +192,81 @@
                 <div id="div-forms">
                     <!-- Begin # Login Form -->
 
-                    <form id="login-form">
+                    <form id="login-form" action='/addBoard' method='post'>
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="hidden" name="id_project" value="{{$project->id}}">
+                        
                         <div class="modal-body">
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Name</span>
                             </div>
-                            <input id="project_name" class="form-control" type="name" placeholder="Board name">
+                            <input name="board_name" id="board_name" class="form-control" type="name" placeholder="Board name">
                             
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Description</span>
                             </div>
-                            <input id="project_name" class="form-control" type="description" placeholder="Board description"> 
-                            
+                            <input name="board_description" id="board_description" class="form-control" type="description" placeholder="Board description"> 
+                        
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Add member</span>
+                                <span id="text-register-msg">Add members</span>
                                 <div class="row" style="padding-left:15px" style="padding-left:5px">
-                                    <div class="column-md-3">
-                                        <img src="img/profile.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
-                                    </div>
-                                    <div class="column-md-1">
-                                        <img src="img/bolota.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
-                                    </div>
-                                    <a href="#" data-toggle="modal" data-target="#">
-                                        <button type="button" class="btn btn-info  btn-xs">
-                                            <i class="glyphicon glyphicon-plus"></i>
-                                        </button>
-                                    </a>
+                                    
+                                    <?php
+                                        $team_ids = DB::table('project_team')->where('id_project',$project->id)->pluck('id_user');
+                                        $me=auth()->user()->id;
+                                        $coordinator=DB::table('projects')->where('id',$project->id)->value('id_coordinator');
+                                    ?>
+                                                
+                                    @if ($coordinator != $me)
+                                    <?php
+                                        if (DB::table("profile_picture")->where("id_user",$coordinator)->value("path")){
+                                            $picture=DB::table("profile_picture")->where("id_user",$coordinator)->value("path");
+                                        }
+                                        else{
+                                            $picture='https://visit.nemedic.com/storage/default.jpg';
+                                        }
+                                    ?>
+                                    <p>
+                                        <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$coordinator)->value('full_name')}}">
+                                        {{$name=DB::table('users')->where('id',$coordinator)->value('full_name')}}
+                                    </p>
+                                    @endif
+                                                
+                                    <?php
+                                        if (DB::table("profile_picture")->where("id_user",$me)->value("path")){
+                                            $picture=DB::table("profile_picture")->where("id_user",$me)->value("path");
+                                        }
+                                        else{
+                                            $picture='https://visit.nemedic.com/storage/default.jpg';
+                                        }
+                                    ?>
+                                    <p> 
+                                        <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$me)->value('full_name')}}">
+                                        {{$name=DB::table('users')->where('id',$me)->value('full_name')}}
+                                    </p>
+                                                
+                                    @foreach ($team_ids as $t_id)
+                                    @if ($t_id != $me)
+                                    <?php
+                                        if (DB::table("profile_picture")->where("id_user",$t_id)->value("path")){
+                                            $picture=DB::table("profile_picture")->where("id_user",$t_id)->value("path");
+                                        }
+                                        else{
+                                            $picture='https://visit.nemedic.com/storage/default.jpg';
+                                        }
+                                    ?>
+                                    <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$t_id)->value('full_name')}}">
+                                    <input type="checkbox" name="member"> {{$name=DB::table('users')->where('id',$t_id)->value('full_name')}}
+                                    @endif
+                                    @endforeach
+
                                 </div>
-
-                                
-
                             </div>
+                            
 
-                            <input type="checkbox" name="public" value="public" > Public board
                         </div>
 
                         <div class="modal-footer">
@@ -207,6 +274,7 @@
                                 <button type="submit" class="btn btn-info btn-lg btn-block">Create board</button>
                             </div>
                         </div>
+
                     </form>
 
                     <!-- End # Login Form -->
