@@ -126,7 +126,7 @@
                                                 @endforeach
                                                 </div>
                                                 <hr />
-                                                <a href="projectBoard.html">
+                                                <a href={{ url($id.'/tasks') }}>
                                                     <button id="see_more_tasks_btn" type="button" class="btn btn-link">See more</button>
                                                 </a>
                                             </div>
