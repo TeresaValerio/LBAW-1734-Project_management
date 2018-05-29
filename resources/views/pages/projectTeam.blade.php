@@ -2,6 +2,8 @@
 
 
 @section('content')
+
+ <title>Team | {{$project->name}}</title>
 <!-- Header -->
 <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb ">
@@ -53,7 +55,7 @@
               </a>
                         </li>
                         <li>
-                            <a href="projectForum.html">
+                        <a href={{ url($project->id.'/projectForum') }}>
                                 <i class="fa fa-comments" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Forum</span>
                             </a>

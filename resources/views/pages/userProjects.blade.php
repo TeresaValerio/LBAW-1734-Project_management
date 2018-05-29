@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
-
+<title>Projects | {{$userAuth=auth()->user()->full_name}}</title>
 <!-- Header -->
     <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb">
@@ -103,7 +103,7 @@
                                                 ?>
                                                 <img src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
-                                                <a href={{ url($id.'/projectBoards') }}>
+                                                <a href={{ url($id.'/projectInfo') }}>
                                                     <p>See more</p>
                                                 </a>
                                             </div>
@@ -144,7 +144,7 @@
                                                 ?>
                                                 <img src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
-                                                <a href={{ url($id.'/projectBoards') }}>
+                                                <a href={{ url($id.'/projectInfo') }}>
                                                     <p>See more </p>
                                                 </a>
                                             </div>

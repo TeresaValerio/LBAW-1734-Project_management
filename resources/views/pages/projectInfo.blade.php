@@ -4,6 +4,7 @@
 @section('content')
 
 <link rel="stylesheet" href="/CSS/userInfo.css">
+<title>Info | {{$project->name}}</title>
 
 <!-- Header -->
 <div class="header container-fluid main-color-bg">
@@ -55,7 +56,7 @@
               </a>
                         </li>
                         <li>
-                            <a href="projectForum.html">
+                            <a href={{ url($project->id.'/projectForum') }}>
                                 <i class="fa fa-comments" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Forum</span>
                             </a>

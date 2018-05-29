@@ -38,7 +38,8 @@ class RegisterController extends Controller
 	    'register_email' => 'required',
         'register_username' => 'required',
         'register_fullname' => 'required',
-        'register_password' => 'required'
+        'register_password' => 'required',
+        'register_email_public' => 'required'
         ]);
         
     }
@@ -51,13 +52,17 @@ class RegisterController extends Controller
      * @return \App\User
      */
 
+
     protected function create (array $data)
     {
+
+    
 	return User::create([
         'e_mail' => $data['register_email'],
         'username' => $data['register_username'],
         'full_name' => $data['register_fullname'],
-        'password' => $data['register_password']
+        'password' => $data['register_password'],
+        'public_email' => $data['register_email_public']
              
 	]);
 	
