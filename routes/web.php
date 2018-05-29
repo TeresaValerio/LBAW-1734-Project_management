@@ -160,8 +160,19 @@ Route::get('/{userId}/settings', function ($userId) {
 //////////////////////////
 
 Route::get('/{projectId}/projectBoards', function ($projectId) {
+    try{
+    $userAuth = auth()->user()->id;
+    }
+    catch (\Exception $e){
+        return redirect ('/');
+    }
+    
+    $
     $project = DB::table('projects')->find($projectId);
     $boards_ids = DB::table('board')->where('id_project',$projectId)->pluck('id');
+
+
+
     return view('pages.projectBoard', compact('project', 'boards_ids'));
 });
 
@@ -171,12 +182,26 @@ Route::get('/{projectId}/projectBoards', function ($projectId) {
 ////////////////////////
 
 Route::get('/{projectId}/projectTeam', function ($projectId) {
+    try{
+    $userAuth = auth()->user()->id;
+    }
+    catch (\Exception $e){
+        return redirect ('/');
+    }
+    
     $project = DB::table('projects')->find($projectId);
     $team_ids = DB::table('project_team')->where('id_project',$projectId)->pluck('id_user');
     return view('pages.projectTeam', compact('project', 'team_ids'));
 });
 
 Route::get('/{userId}/userContacts', function ($userId) {
+    try{
+    $userAuth = auth()->user()->id;
+    }
+    catch (\Exception $e){
+        return redirect ('/');
+    }
+    
     $person = DB::table('users')->find($userId);
     $contact_ids = DB::table('contact')->where('id_user',$userId)->pluck('id_contact');
     return view('pages.userContacts', compact('person', 'contact_ids'));
@@ -187,6 +212,13 @@ Route::get('/{userId}/userContacts', function ($userId) {
 ////////////////////////
 
 Route::get('/{projectId}/projectInfo', function ($projectId) {
+    try{
+    $userAuth = auth()->user()->id;
+    }
+    catch (\Exception $e){
+        return redirect ('/');
+    }
+    
     $project = DB::table('projects')->find($projectId);
     return view('pages.projectInfo', compact('project'));
 });
@@ -196,6 +228,13 @@ Route::get('/{projectId}/projectInfo', function ($projectId) {
 ////////////////////////////
 
 Route::get('/{projectId}/projectCalendar', function ($projectId) {
+    try{
+    $userAuth = auth()->user()->id;
+    }
+    catch (\Exception $e){
+        return redirect ('/');
+    }
+    
     $project = DB::table('projects')->find($projectId);
 
     $projects_deadlines = DB::table('projects')->where('id',$projectId)->pluck('end_date');
@@ -216,6 +255,13 @@ Route::get('/{projectId}/projectCalendar', function ($projectId) {
 ////////////////////////
 
 Route::get('/{boardId}/tasks', function ($boardId) {
+    try{
+    $userAuth = auth()->user()->id;
+    }
+    catch (\Exception $e){
+        return redirect ('/');
+    }
+    
     $board = DB::table('board')->find($boardId);
     $tasks_ids = DB::table('task')->where('id_board',$boardId)->pluck('id');
     return view('pages.tasks', compact('board', 'tasks_ids'));
@@ -227,16 +273,6 @@ Route::get('/{boardId}/tasks', function ($boardId) {
 
 Route::get('/explore', function () {
     return view('pages.explore');
-});
-
-////////////////////////
-///// PROJECT FORUM ////
-////////////////////////
-
-Route::get('/{projectId}/projectForum', function ($projectId) {
-    $project = DB::table('projects')->find($projectId);
-    $messages_ids = DB::table('message')->where('id_project',$projectId)->pluck('id');
-    return view('pages.projectForum', compact('project', 'messages_ids'));
 });
 
 

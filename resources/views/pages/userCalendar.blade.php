@@ -330,15 +330,12 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                                 <span class="hidden-xs hidden-sm">My Calendar</span>
                             </a>
                         </li>
-<<<<<<< HEAD
-=======
                         <li>
                             <a href={{ url($person->id.'/userContacts') }}>
                                 <i class="fa fa-info" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Contacts</span>
                             </a>
                         </li>
->>>>>>> a85f91e87ae46c0009e6a8bf3d464fcdc9769e66
                     </ul>
                 </div>
             </div>
