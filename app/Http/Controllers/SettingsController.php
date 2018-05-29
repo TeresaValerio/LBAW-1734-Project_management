@@ -73,7 +73,8 @@ class SettingsController extends Controller
         $user = User::where('id',$userId)->first();
         $user->delete();
 
-        return view('pages.welcome'); 
+        Auth::logout();
+        return redirect('/');
         
     }
 
