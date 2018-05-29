@@ -85,7 +85,32 @@
 								</div>
                             </div>
                             <div class="row ">
+                            {{ $userAuth = auth()->user()->id}}
+                            <div class="col-sm-3">
+                                    <div class="card">
+                                        <div class="card-content" align="center">
+                                            <div class="card-header">
+                                                <h4>
+                                                    <strong>{{ $member=DB::table('users')->where('id',$userAuth)->value('full_name') }}</strong>
+                                                </h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <img src="" class="img-circle" alt="User Picture" style="padding: px; width:80px;height:80px;">
+                                                <hr />
+                                                <p>
+                                                    <strong>Username:</strong>
+                                                    <br />{{ $member=DB::table('users')->where('id',$userAuth)->value('username')}}
+												</p>
+                                                <p>
+                                                    <strong>Email:</strong>
+                                                    <br /> {{ $member=DB::table('users')->where('id',$userAuth)->value('e_mail') }}
+												</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             @foreach ($team_ids as $id)
+                            @if ($id != $userAuth)
                                 <div class="col-sm-3">
                                     <div class="card">
                                         <div class="card-content" align="center">
@@ -95,7 +120,7 @@
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                                <img src="/img/profile.jpg" class="img-circle" alt="User Picture" style="padding: px; width:80px;height:80px;">
+                                                <img src="" class="img-circle" alt="User Picture" style="padding: px; width:80px;height:80px;">
                                                 <hr />
                                                 <p>
                                                     <strong>Username:</strong>
@@ -105,10 +130,21 @@
                                                     <strong>Email:</strong>
                                                     <br /> {{ $member=DB::table('users')->where('id',$id)->value('e_mail') }}
 												</p>
+                                                @if ($contact=DB::table('contact')->where('id_user',$userAuth)->where('id_contact', $id)->count() > 0)
+                                                @else
+                                                <form action="/addContact" method="post">
+                                                    <input type="hidden" name="contact1" value="$userAuth"/>
+                                                    <input type="hidden" name="contact2" value="$id"/>
+                                                    <button type="submit" class="btn btn-info btn-lg btn-block">
+                                                    Add Contact
+                                                    </button>
+                                                </form>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                                 @endforeach
                             </div>
                         </div>

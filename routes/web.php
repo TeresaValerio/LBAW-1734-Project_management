@@ -196,6 +196,8 @@ Route::post('/changePassword','SettingsController@changePassword');
 Route::post('/changeFullName','SettingsController@changeFullName');
 Route::post('/changePrivacy','SettingsController@changePrivacy');
 
+Route::post('/addContact', 'ContactController@addContact');
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
