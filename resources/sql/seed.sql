@@ -162,7 +162,6 @@ CREATE TABLE Users (
     public_email boolean NOT NULL,
     full_name text NOT NULL,
     password text NOT NULL,
-    url SERIAL NOT NULL,
     username text NOT NULL,
     administrator boolean DEFAULT false NOT NULL,
     user_ban integer
@@ -226,9 +225,6 @@ ALTER TABLE ONLY Project_team
 
 ALTER TABLE ONLY Task
     ADD CONSTRAINT Task_key PRIMARY KEY (id);
-
-ALTER TABLE ONLY Users
-    ADD CONSTRAINT User_url_key UNIQUE (url);
 
 ALTER TABLE ONLY Users
     ADD CONSTRAINT User_e_mail_key UNIQUE (e_mail);
@@ -362,26 +358,26 @@ CREATE INDEX search_user ON Users USING btree(username);
 --- USERS ---
 -------------
 
-INSERT INTO Users (e_mail, full_name, password, url, username, administrator,public_email) VALUES ('up201405655@fe.up.pt', 'Teresa Valério', 'teresaMaya19', 444, 'TeresaValerio', true, true);
-INSERT INTO Users (e_mail, full_name, password, url, username, administrator,public_email) VALUES ('up201402784@fe.up.pt', 'Inês Gonçalves', 'inesggtunafe8', 123, 'InesGoncalves', true, true);
-INSERT INTO Users (e_mail, full_name, password, url, username, administrator,public_email) VALUES ('up201405085@fe.up.pt', 'Sara Gomes', 'sara23bolota', 635,'SaraGomes', true, true);
-INSERT INTO Users (e_mail, full_name, password, url, username, administrator,public_email) VALUES ('joana.monteiro@hotmail.com', 'Joana Monteiro', 'QWERTY', 883,'JoanaMonteiro45', false, true);
-INSERT INTO Users (e_mail, full_name, password, url, username,public_email) VALUES ('maria.costa12@hotmail.com', 'Maria João Costa', 'palavrapasse123', 713,'MJCosta14', false);
-INSERT INTO Users (e_mail, full_name, password, url, username,public_email) VALUES ('joaoo_santos@hotmail.com', 'João Costa Santos', 'SG234StbtQ', 790,'JoaoCS18', true);
-INSERT INTO Users (e_mail, full_name, password, url, username,public_email) VALUES ('luis134castro@hotmail.com', 'Luís Castro', 'BB13fsRg6', 253,'LuisCastro', false);
-INSERT INTO Users (e_mail, full_name, password, url, username,public_email) VALUES ('up201404541@fe.up.pt', 'Francisca Seabra', 'BETHDDD', 662,'FSeabra', true);
-INSERT INTO Users (e_mail, full_name, password, url, username, administrator,public_email) VALUES ('lacinia.orci.consectetuer@velarcu.ca','Noelle Moran','PMR97BRV5EC', 621,'NoelleMoran44', false, false);
-INSERT INTO Users (e_mail, full_name, password, url, username, administrator,public_email) VALUES ('ipsum.nunc.id@scelerisquemollis.edu' ,'MacKenzie Garrison', 'YUY23IUO9RC', 412,'MKenzieG', false, true);
-INSERT INTO Users (e_mail, full_name, password, url, username,public_email) VALUES ('urna.Vivamus.molestie@Fusce.net', 'Isadora Hewitt', 'BUE71FOD5OI', 914,'HIsadora23', true);
-INSERT INTO Users (e_mail, full_name, password, url, username, administrator,public_email) VALUES ('tincidunt@tinciduntduiaugue.com', 'Lacota Page', 'GPB35FPL2TB', 515,'LacotaPagee', false, true);
-INSERT INTO Users (e_mail, full_name, password, url, username, administrator,public_email) VALUES ('ac.risus.Morbi@mauris.co.uk', 'Priscilla Silva', 'UPK14PEJ2DZ',328 ,'SilvaP47', false, true);
-INSERT INTO Users (e_mail, full_name, password, url, username, administrator,public_email) VALUES ('eu@tellus.net', 'Lynn Burch', 'IGU81EUU7UB', 555,'lynn29', false, false);
-INSERT INTO Users (e_mail, full_name, password, url, username,public_email) VALUES ('nascetur.ridiculus@nonmassa.net', 'Jocelyn Fulton', 'IEV88RCI7LT', 181,'Fulton', false);
-INSERT INTO Users (e_mail, full_name, password, url, username, administrator,public_email) VALUES ('sem@consequatauctornunc.co.uk', 'Tashya Deleon', 'LZJ76NCB9QP', 741,'deleonTashya', false, true);
-INSERT INTO Users (e_mail, full_name, password, url, username, administrator,public_email) VALUES ('et.euismod.et@pharetraNamac.net', 'Lillian Snow', 'MYX34BPA2RK', 301,'lillian', false, true);
-INSERT INTO Users (e_mail, full_name, password, url, username,public_email) VALUES ('cursus.Nunc@vitaeeratVivamus.edu', 'Margaret Mack', 'NRZ16ICN4NL', 215,'Margarety', true);
-INSERT INTO Users (e_mail, full_name, password, url, username,public_email) VALUES ('vel.faucibus.id@lacinia.edu' ,'Martha Cain', 'OGM48BTU8UO',590 ,'MarthaCain', true);
-INSERT INTO Users (e_mail, full_name, password, url, username,public_email) VALUES ('fi1996@gmail.com' ,'Filipa Soares', 'GLsn36d',506 ,'FiSoares45', true);
+INSERT INTO Users (e_mail, full_name, password, username, administrator,public_email) VALUES ('up201405655@fe.up.pt', 'Teresa Valério', 'teresaMaya19', 'TeresaValerio', true, true);
+INSERT INTO Users (e_mail, full_name, password, username, administrator,public_email) VALUES ('up201402784@fe.up.pt', 'Inês Gonçalves', 'inesggtunafe8', 'InesGoncalves', true, true);
+INSERT INTO Users (e_mail, full_name, password, username, administrator,public_email) VALUES ('up201405085@fe.up.pt', 'Sara Gomes', 'sara23bolota','SaraGomes', true, true);
+INSERT INTO Users (e_mail, full_name, password, username, administrator,public_email) VALUES ('joana.monteiro@hotmail.com', 'Joana Monteiro', 'QWERTY','JoanaMonteiro45', false, true);
+INSERT INTO Users (e_mail, full_name, password, username,public_email) VALUES ('maria.costa12@hotmail.com', 'Maria João Costa', 'palavrapasse123','MJCosta14', false);
+INSERT INTO Users (e_mail, full_name, password, username,public_email) VALUES ('joaoo_santos@hotmail.com', 'João Costa Santos', 'SG234StbtQ','JoaoCS18', true);
+INSERT INTO Users (e_mail, full_name, password, username,public_email) VALUES ('luis134castro@hotmail.com', 'Luís Castro', 'BB13fsRg6','LuisCastro', false);
+INSERT INTO Users (e_mail, full_name, password, username,public_email) VALUES ('up201404541@fe.up.pt', 'Francisca Seabra', 'BETHDDD','FSeabra', true);
+INSERT INTO Users (e_mail, full_name, password, username, administrator,public_email) VALUES ('lacinia.orci.consectetuer@velarcu.ca','Noelle Moran','PMR97BRV5EC','NoelleMoran44', false, false);
+INSERT INTO Users (e_mail, full_name, password, username, administrator,public_email) VALUES ('ipsum.nunc.id@scelerisquemollis.edu' ,'MacKenzie Garrison', 'YUY23IUO9RC','MKenzieG', false, true);
+INSERT INTO Users (e_mail, full_name, password, username,public_email) VALUES ('urna.Vivamus.molestie@Fusce.net', 'Isadora Hewitt', 'BUE71FOD5OI','HIsadora23', true);
+INSERT INTO Users (e_mail, full_name, password, username, administrator,public_email) VALUES ('tincidunt@tinciduntduiaugue.com', 'Lacota Page', 'GPB35FPL2TB','LacotaPagee', false, true);
+INSERT INTO Users (e_mail, full_name, password, username, administrator,public_email) VALUES ('ac.risus.Morbi@mauris.co.uk', 'Priscilla Silva', 'UPK14PEJ2DZ' ,'SilvaP47', false, true);
+INSERT INTO Users (e_mail, full_name, password, username, administrator,public_email) VALUES ('eu@tellus.net', 'Lynn Burch', 'IGU81EUU7UB','lynn29', false, false);
+INSERT INTO Users (e_mail, full_name, password, username,public_email) VALUES ('nascetur.ridiculus@nonmassa.net', 'Jocelyn Fulton', 'IEV88RCI7LT','Fulton', false);
+INSERT INTO Users (e_mail, full_name, password, username, administrator,public_email) VALUES ('sem@consequatauctornunc.co.uk', 'Tashya Deleon', 'LZJ76NCB9QP','deleonTashya', false, true);
+INSERT INTO Users (e_mail, full_name, password, username, administrator,public_email) VALUES ('et.euismod.et@pharetraNamac.net', 'Lillian Snow', 'MYX34BPA2RK','lillian', false, true);
+INSERT INTO Users (e_mail, full_name, password, username,public_email) VALUES ('cursus.Nunc@vitaeeratVivamus.edu', 'Margaret Mack', 'NRZ16ICN4NL','Margarety', true);
+INSERT INTO Users (e_mail, full_name, password, username,public_email) VALUES ('vel.faucibus.id@lacinia.edu' ,'Martha Cain', 'OGM48BTU8UO' ,'MarthaCain', true);
+INSERT INTO Users (e_mail, full_name, password, username,public_email) VALUES ('fi1996@gmail.com' ,'Filipa Soares', 'GLsn36d' ,'FiSoares45', true);
 
 
 --- PROJECTS ---
