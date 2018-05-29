@@ -3,6 +3,7 @@
 
 @section('content')
 
+<title>Tasks | {{$board->name}}</title>
 <style>
 .img_title {
     display: table;

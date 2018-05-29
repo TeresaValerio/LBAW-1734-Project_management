@@ -2,6 +2,7 @@
 
 
 @section('content')
+<title>Boards | {{$project->name}}</title>
 
 <style>
 .img_title {

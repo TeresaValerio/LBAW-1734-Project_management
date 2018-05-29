@@ -2,6 +2,8 @@
 
 
 @section('content')
+
+<title>Contacts | {{$userAuth=auth()->user()->full_name}}</title>
 <!-- Header -->
     <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb">

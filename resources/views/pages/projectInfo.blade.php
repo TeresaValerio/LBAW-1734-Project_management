@@ -4,6 +4,7 @@
 @section('content')
 
 <link rel="stylesheet" href="/CSS/userInfo.css">
+<title>Info | {{$project->name}}</title>
 
 <!-- Header -->
 <div class="header container-fluid main-color-bg">

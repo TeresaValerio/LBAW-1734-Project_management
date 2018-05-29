@@ -221,6 +221,15 @@ Route::get('/{boardId}/tasks', function ($boardId) {
     return view('pages.tasks', compact('board', 'tasks_ids'));
 });
 
+//////////////////////////
+///////// EXPLORE ////////
+//////////////////////////
+
+Route::get('/explore', function () {
+    return view('pages.explore');
+});
+
+
 Route::post('/project','ProjectsController@store');
 
 Route::post('/loginme','Auth\LoginController@login');

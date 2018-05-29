@@ -3,7 +3,7 @@
 @section('content')
 
 
-
+ <title>Settings | {{$userAuth=auth()->user()->full_name}}</title>
 <link rel="stylesheet" href="CSS/userInfo.css">
 
 <!-- Header -->
@@ -28,21 +28,27 @@
                 <div class="navi">
                     <ul>
                         <li>
-                            <a href="user.html">
+                        <a href={{ url($person->id.'/userProjects') }}>
                                 <i class="fa fa-home" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">My Projects</span>
                             </a>
                         </li>
                         <li>
-                            <a href="userInfo.html">
+                        <a href={{ url($person->id.'/personalInfo') }}>
                                 <i class="fa fa-info" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Personal Info</span>
                             </a>
                         </li>
                         <li>
-                            <a href="userCalendar.html">
+                        <a href={{ url($person->id.'/userCalendar') }}>
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">My Calendar</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href={{ url($person->id.'/userContacts') }}>
+                                <i class="fa fa-info" aria-hidden="true"></i>
+                                <span class="hidden-xs hidden-sm">Contacts</span>
                             </a>
                         </li>
                     </ul>

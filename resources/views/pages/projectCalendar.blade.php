@@ -3,6 +3,7 @@
 
 @section('content')
  <link rel="stylesheet" href="/CSS/calendar.css">
+ <title>Calendar | {{$project->name}}</title>
 
 <?php
 // Set your timezone!!
