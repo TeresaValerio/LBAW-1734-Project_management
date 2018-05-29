@@ -8,27 +8,36 @@ use DB;
 class SearchProjectsController extends Controller
 {
     public function index() {
-        //
+        return view('userProjects');
     }
 
     public function action(Request $request) {
         if($request->ajax()){
             $query=$request->get('query');
             if($query!=''){
-                $data=DB::query(" SELECT id, name, description, start_date, ts_rank_cd(textsearch, query) AS rank
-                FROM Projects, to_tsquery($query) AS query, to_tsvector(name || ‘ ‘ || description) AS textsearch
-                WHERE query @@ textsearch\\ ORDER BY rank DESC;");
+                $data = DB::query('SELECT id, name, description, start_date, ts_rank_cd(textsearch, query) AS rank
+                FROM Project, to_tsquery($search) AS query, to_tsvector(name || ‘ ‘ || description) AS textsearch
+                WHERE query @@ textsearch\\ ORDER BY rank DESC;');
             }
             $total_row=$data->count();
 
             if ($total_row>0){
                     foreach($data as $row){
                         $output.='
-                        <tr>
-                            <td>'.$row->name.'</td>
-                            <td>'.$row->description.'</td>
-                            <td>'.$row->start_date.'</td>
-                        </tr>';
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                                <th>Description</th>
+                                <th>Start date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>'.$row->name.'</td>
+                                <td>'.$row->description.'</td>
+                                <td>'.$row->start_date.'</td>
+                            </tr>
+                        </tbody>';
                     }
             }
             else{
@@ -46,8 +55,6 @@ class SearchProjectsController extends Controller
             echo json_encode($data);
 
         }
-
-        return Response($output);
     }
 }
 

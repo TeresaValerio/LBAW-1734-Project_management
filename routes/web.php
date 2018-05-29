@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/{userId}/userProjects', 'SearchProjectsController@index');
+Route::get('/userProjects/search','SearchProjectsController@action')->name('userProjects.search');
+
 ////////////////////
 ///// HOMEPAGE /////
 ////////////////////
@@ -127,11 +130,10 @@ Route::get('/{userId}/userProjects', function ($userId) {
 
     return view('pages.userProjects', compact ('person', 'created_ids', 'working_ids'));
     }
+
     else{
     $userId=$userAuth;
-    $person=DB::table('users')->find($userId);
-    $created_ids=DB::table('projects')->where('id_coordinator',$userId)->pluck('id');
-    $working_ids=DB::table('project_team')->where('id_user',$userId)->pluck('id_project');
+    
     return redirect ($userAuth.'/userProjects');
     }
 });
