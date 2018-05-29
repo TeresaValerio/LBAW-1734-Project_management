@@ -48,12 +48,28 @@
             <div class="row">
                 <div class="well">
                     <div class="row">
-                        <div class="col-sm-3">
+                        <div class="col-sm-3" align="left">
                             <a href="#" data-toggle="modal" data-target="#new-task-modal">
                                 <button type="button" class="btn btn-info btn-circle">
                                     <i class="glyphicon glyphicon-plus"></i> 
                                 </button>
                                 Create task
+                            </a>
+                        </div>
+                        <div class="col-sm-3" align="center">
+                            <a href="#" data-toggle="modal" data-target="#new-member-modal">
+                                <button type="button" class="btn btn-info btn-circle">
+                                    <i class="glyphicon glyphicon-plus"></i> 
+                                </button>
+                                Add team member
+                            </a>
+                        </div>
+                        <div class="col-sm-3" align="right">
+                            <a href="#" data-toggle="modal" data-target="#new-meeting-modal">
+                                <button type="button" class="btn btn-info btn-circle">
+                                    <i class="glyphicon glyphicon-plus"></i> 
+                                </button>
+                                Schedule meeting
                             </a>
                         </div>
                     </div>
@@ -356,5 +372,61 @@
         </div>
     </div>
     <!-- END # MODAL LOGIN -->
+
+     <!-- Modal New team member -->
+     <div class="modal fade" id="new-member-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #7ABED3; color: #fff">
+                        <strong>Add new team member</strong>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <!-- Begin # DIV Form -->
+                    <div id="div-forms">
+                        <!-- Begin # Login Form -->
+    
+                        <form id="login-form" action="/addTeamTask" method='post'>
+                            <div class="modal-body">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <input type="hidden" name="id_board" value="{{$board->id}}">
+                            <?php
+                                
+                                $team_project=DB::table('project_team')->where('id_project',$project)->pluck('id_user');
+                            ?>
+                            @foreach($team_project as $person)
+                                <?php $team_board=DB::table('board_team')->where('id_user',$person)->pluck('id_user'); ?>
+                                @if ($team_board == NULL )
+                                <div class=row>
+                                <?php
+                                    if (DB::table("profile_picture")->where("id_user",$person)->value("path")){
+                                        $picture=DB::table("profile_picture")->where("id_user",$person)->value("path");
+                                    }
+                                    else{
+                                        $picture='https://visit.nemedic.com/storage/default.jpg';
+                                    }
+                                ?>
+                                <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$person)->value('full_name')}}">
+                                <input type="checkbox" name="teamMember[{{$person}}]" value="counter_{{$id}}"> {{$user=DB::table('users')->where('id',$person)->value('full_name')}}
+                                </div>
+                                @endif
+                            @endforeach
+                            </div>
+    
+                            <div class="modal-footer">
+                                <div>
+                                    <button type="submit" class="btn btn-info btn-lg btn-block">Add</button>
+                                </div>
+                            </div>
+                        </form>
+    
+                        <!-- End # Login Form -->
+                    </div>
+                    <!-- End # DIV Form -->
+                </div>
+            </div>
+        </div>
+        <!-- END # MODAL LOGIN -->
 
 @endsection

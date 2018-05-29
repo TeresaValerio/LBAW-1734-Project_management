@@ -93,7 +93,12 @@
 								
                             </div>
                             <div class="row text-center">
-                                @foreach ($boards_ids as $id)
+                            @foreach ($boards_ids as $id)
+                            <?php
+                                $belongs=DB::table('board_team')->where('id_board',$id,'AND','id_user',$userAuth);
+                                $coordinator=DB::table('project')->where('id',$project->id,'AND','id_coordinator',$userAuth)
+                            ?>
+                            @if ($belongs != NULL or $coordinator !=NULL)
                                 <div class="col-sm-3">
                                     <div class="card">
                                         <div class="card-content">
@@ -168,6 +173,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                                 @endforeach
                             </div>
                         </div>
