@@ -46,11 +46,15 @@
                 <div class="user-dashboard">
                     <!-- /input-group -->
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search projects...">
+                        <input type="text" name="search" id="search" class="form-control" placeholder="Search projects...">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">Search</button>
                         </span>
                     </div>
+                    <table class="table table-striped table-bordered">
+                        
+                    </table>
+
                     <!-- /input-group -->
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12 gutter">
@@ -74,16 +78,16 @@
                             <div class="row text-center">
                             @foreach ($created_ids as $id)
                                 <div class="col-sm-3">
-                                    <div class="card">
+                                    <div class="card" style="width:250px;">
                                         <div class="card-content" align="center">
-                                            <div class="card-header">
+                                            <div class="card-header" style="width:250px;">
                                                 <h4>
-                                                    <strong>{{ $project=DB::table('projects')->where('id',$id)->value('name') }}</strong>
+                                                    <strong>{{ $project=DB::table('projects')->where('id',$id)->value('name') }} </strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                                <?php $picture = DB::table('project_picture')->where('id_project',$id)->value('path') ?>
-                                                <img src=url('https://image.flaticon.com/icons/svg/490/490348.svg') alt="User Picture" style="height:125px;">
+                                                <?php {{$picture=DB::table("project_picture")->where("id_project",$id)->value("path");}} ?>
+                                                <img src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <a href={{ url($id.'/projectBoards') }}>
                                                     <p>See more</p>
@@ -108,19 +112,19 @@
                             <div class="row text-center">
                             @foreach($working_ids as $id)
                                 <div class="col-sm-3">
-                                    <div class="card">
+                                    <div class="card" style="width:250px;">
                                         <div class="card-content" align="center">
-                                            <div class="card-header">
+                                            <div class="card-header" style="width:250px;">
                                                 <h4>
-                                                    <strong> {{ $project=DB::table('projects')->where('id',$id)->value('name') }} </strong>
+                                                    <strong> {{ $project=DB::table('projects')->where('id',$id)->value('name') }}</strong>
                                                 </h4>
                                             </div>
                                             <div class="card-body">
-                                                <?php $picture = DB::table('project_picture')->where('id_project',$id)->value('path') ?>
-                                                <img src=url({{$picture}}) alt="User Picture" style="height:125px;">
+                                                <?php {{$picture=DB::table("project_picture")->where("id_project",$id)->value("path");}} ?>
+                                                <img src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <a href="project.html">
-                                                    <p>See more</p>
+                                                    <p>See more </p>
                                                 </a>
                                             </div>
                                         </div>
@@ -212,3 +216,29 @@
     <!-- END # MODAL LOGIN -->
 
 @endsection
+
+<script>
+$(document).ready(function(){
+
+    fetch_project_data();
+
+    function fetch_project_data(query=''){
+        $.ajax({
+            url:"{{route('userProjects.search')}}",
+            method:'GET',
+            data:{query:query},
+            dataType:'json',
+            success:function(data){
+                $('table').html(data.table_data);
+                $('#total_records').text(data.total_data);
+            }
+        })
+    }
+
+    $(document).on('keyup','#search',function(){
+        var query=$(this).val();
+        fetch_customer_data(query);
+    })
+
+})
+</script>

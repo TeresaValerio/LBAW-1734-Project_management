@@ -6,7 +6,7 @@
 <div class="header container-fluid main-color-bg">
         <ol class="breadcrumb ">
             <li>
-                <a href="user.html">Inês Gonçalves</a>
+                <a href={{ url($userAuth=auth()->user()->id.'/personalInfo')}}>Inês Gonçalves</a>
             </li>
             <li class="active">
             {{ $project->name }}

@@ -29,11 +29,4 @@ class User extends Authenticatable
     protected $hidden = [
         'password'
     ];
-
-    /**
-     * The cards this user owns.
-     */
-     public function cards() {
-      return $this->hasMany('App\Card');
-    }
 }

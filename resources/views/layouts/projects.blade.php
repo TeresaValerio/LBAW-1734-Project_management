@@ -32,7 +32,8 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active">
-                        <a href="user.html">Inês Gonçalves</a>
+                    
+                    <a href={{ url($userAuth=auth()->user()->id.'/personalInfo')}} > {{ auth()->user()->full_name}}</a>
                     </li>
                     <li>
                         <a href="explore.html">Explore</a>
@@ -47,10 +48,11 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="settings.html">Account Settings</a>
+                            
+                            <a href={{ url($userAuth=auth()->user()->id.'/settings') }}>Account Settings</a>
                             </li>
                             <li>
-                                <a href="index.html">Log Out</a>
+                                <a href={{ url('/logout') }}>Log Out</a>
                             </li>
                             <li>
                                 <a href="administration.html">Administration</a>
