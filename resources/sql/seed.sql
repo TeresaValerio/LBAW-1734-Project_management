@@ -152,7 +152,7 @@ CREATE TABLE Task (
     task_state state DEFAULT 'In_progress' NOT NULL,
     id_creator integer NOT NULL,
     id_board integer NOT NULL,
-    CONSTRAINT CK1 CHECK ((progress > 0)),
+    CONSTRAINT CK1 CHECK ((progress >= 0)),
     CONSTRAINT CK2 CHECK ((progress <= 100))
 );
 
@@ -243,82 +243,82 @@ ALTER TABLE ONLY Users
 --
 
 ALTER TABLE ONLY Board
-    ADD CONSTRAINT Board_id_creator_fkey FOREIGN KEY (id_creator) REFERENCES Users(id);
+    ADD CONSTRAINT Board_id_creator_fkey FOREIGN KEY (id_creator) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Board
-    ADD CONSTRAINT Board_id_project_fkey FOREIGN KEY (id_project) REFERENCES Projects(id);
+    ADD CONSTRAINT Board_id_project_fkey FOREIGN KEY (id_project) REFERENCES Projects(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Board_team
-    ADD CONSTRAINT Board_team_id_board_fkey FOREIGN KEY (id_board) REFERENCES Board(id);
+    ADD CONSTRAINT Board_team_id_board_fkey FOREIGN KEY (id_board) REFERENCES Board(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Board_team
-    ADD CONSTRAINT Board_team_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
+    ADD CONSTRAINT Board_team_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Comment
-    ADD CONSTRAINT Comment_id_task_fkey FOREIGN KEY (id_task) REFERENCES Task(id);
+    ADD CONSTRAINT Comment_id_task_fkey FOREIGN KEY (id_task) REFERENCES Task(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Comment
-    ADD CONSTRAINT Comment_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
+    ADD CONSTRAINT Comment_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Contact
-    ADD CONSTRAINT Contact_id_contact_fkey FOREIGN KEY (id_contact) REFERENCES Users(id);
+    ADD CONSTRAINT Contact_id_contact_fkey FOREIGN KEY (id_contact) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Contact
-    ADD CONSTRAINT Contact_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
+    ADD CONSTRAINT Contact_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY File
-    ADD CONSTRAINT File_id_task_fkey FOREIGN KEY (id_task) REFERENCES Task(id);
+    ADD CONSTRAINT File_id_task_fkey FOREIGN KEY (id_task) REFERENCES Task(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY File
-    ADD CONSTRAINT File_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
+    ADD CONSTRAINT File_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Meeting
-    ADD CONSTRAINT Meeting_id_board_fkey FOREIGN KEY (id_board) REFERENCES Board(id);
+    ADD CONSTRAINT Meeting_id_board_fkey FOREIGN KEY (id_board) REFERENCES Board(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Message
-    ADD CONSTRAINT Message_id_project_fkey FOREIGN KEY (id_project) REFERENCES Projects(id);
+    ADD CONSTRAINT Message_id_project_fkey FOREIGN KEY (id_project) REFERENCES Projects(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Message
-    ADD CONSTRAINT Message_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
+    ADD CONSTRAINT Message_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Notification
-    ADD CONSTRAINT Notification_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
+    ADD CONSTRAINT Notification_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Personal_event
-    ADD CONSTRAINT Personal_event_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
+    ADD CONSTRAINT Personal_event_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Profile_picture
-    ADD CONSTRAINT Profile_picture_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
+    ADD CONSTRAINT Profile_picture_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Progress_update
-    ADD CONSTRAINT Progress_update_id_task_fkey FOREIGN KEY (id_task) REFERENCES Task(id);
+    ADD CONSTRAINT Progress_update_id_task_fkey FOREIGN KEY (id_task) REFERENCES Task(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Progress_update
-    ADD CONSTRAINT Progress_update_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
+    ADD CONSTRAINT Progress_update_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Projects
-    ADD CONSTRAINT Project_id_coordinator_fkey FOREIGN KEY (id_coordinator) REFERENCES Users(id);
+    ADD CONSTRAINT Project_id_coordinator_fkey FOREIGN KEY (id_coordinator) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Projects
-    ADD CONSTRAINT Project_user_archived_fkey FOREIGN KEY (user_archived) REFERENCES Users(id);
+    ADD CONSTRAINT Project_user_archived_fkey FOREIGN KEY (user_archived) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Project_picture
-    ADD CONSTRAINT Project_picture_id_project_fkey FOREIGN KEY (id_project) REFERENCES Projects(id);
+    ADD CONSTRAINT Project_picture_id_project_fkey FOREIGN KEY (id_project) REFERENCES Projects(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Project_team
-    ADD CONSTRAINT Project_team_id_project_fkey FOREIGN KEY (id_project) REFERENCES Projects(id);
+    ADD CONSTRAINT Project_team_id_project_fkey FOREIGN KEY (id_project) REFERENCES Projects(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Project_team
-    ADD CONSTRAINT Project_team_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id);
+    ADD CONSTRAINT Project_team_id_user_fkey FOREIGN KEY (id_user) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Task
-    ADD CONSTRAINT Task_id_board_fkey FOREIGN KEY (id_board) REFERENCES Board(id);
+    ADD CONSTRAINT Task_id_board_fkey FOREIGN KEY (id_board) REFERENCES Board(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Task
-    ADD CONSTRAINT Task_id_creator_fkey FOREIGN KEY (id_creator) REFERENCES Users(id);
+    ADD CONSTRAINT Task_id_creator_fkey FOREIGN KEY (id_creator) REFERENCES Users(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY Users
-    ADD CONSTRAINT User_user_ban_fkey FOREIGN KEY (user_ban) REFERENCES Users(id);
+    ADD CONSTRAINT User_user_ban_fkey FOREIGN KEY (user_ban) REFERENCES Users(id) ON DELETE CASCADE;
 
 --
 -- Indexes

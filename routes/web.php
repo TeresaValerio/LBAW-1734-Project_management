@@ -241,10 +241,13 @@ Route::get('/logout','Auth\LogoutController@logout');
 Route::post('/changePassword','SettingsController@changePassword');
 Route::post('/changeFullName','SettingsController@changeFullName');
 Route::post('/changePrivacy','SettingsController@changePrivacy');
+Route::post('/deleteAccount','SettingsController@deleteAccount');
 
 Route::post('/addContact', 'ContactsController@add');
 
 Route::post('/addBoard', 'BoardController@store');
+
+Route::post('/addTask', 'TaskController@store');
 
 Auth::routes();
 

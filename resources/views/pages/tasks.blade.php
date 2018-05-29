@@ -140,49 +140,34 @@
                     <div id="div-forms">
                         <!-- Begin # Login Form -->
     
-                        <form id="login-form">
+                        <form id="login-form" action="/addTask" method='post'>
                             <div class="modal-body">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <input type="hidden" name="id_board" value="{{$board->id}}">
+
                                 <div id="div-register-msg">
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                     <span id="text-register-msg">Name</span>
                                 </div>
-                                <input id="project_name" class="form-control" type="name" placeholder="Task name">
+                                <input id="task_name" name="task_name" class="form-control" type="name" placeholder="Task name">
                                 
                                 <div id="div-register-msg">
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                     <span id="text-register-msg">Description</span>
                                 </div>
-                                <input id="project_name" class="form-control" type="description" placeholder="Task description"> 
-                                
-                                <div id="div-register-msg">
-                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                    <span id="text-register-msg">Add worker</span>
-                                    <div class="row" style="padding-left:15px" style="padding-left:5px">
-                                        <div class="column-md-3">
-                                            <img src="img/profile.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
-                                        </div>
-                                        <div class="column-md-1">
-                                            <img src="img/bolota.jpg" class="img-circle" alt="User Picture" style="float:left;width:30px;height:30px;">
-                                        </div>
-                                        <a href="#" data-toggle="modal" data-target="#">
-                                            <button type="button" class="btn btn-info  btn-xs">
-                                                <i class="glyphicon glyphicon-plus"></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>
+                                <input id="task_description" name="task_description" class="form-control" type="description" placeholder="Task description"> 
 
                                 <div id="div-register-msg">
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                     <span id="text-register-msg">Budget</span>
                                 </div>
-                                <input id="task_budget" class="form-control" type="number" placeholder="Task Budget"> 
+                                <input id="task_budget" name="task_budget" class="form-control" type="number" placeholder="Task Budget"> 
 
                                 <div id="div-register-msg">
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                     <span id="text-register-msg">Deadline</span>
                                 </div>
-                                <input type="date" name="date" value="task_deadline" > 
+                                <input type="date" name="task_deadline" value="task_deadline" > 
     
                             </div>
     
