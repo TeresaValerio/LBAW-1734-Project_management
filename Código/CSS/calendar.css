@@ -5,6 +5,11 @@
   *:after {
     box-sizing: border-box;
   }
+
+  .header {
+    padding: 20px 50px 20px;
+  }
+
   table {
     float:both;
     border-collapse: collapse;

@@ -263,6 +263,7 @@ Route::get('/{boardId}/tasks', function ($boardId) {
     }
     
     $board = DB::table('board')->find($boardId);
+    $project=DB::table('board')->where('id',$boardId)->pluck('id_project');
     $tasks_ids = DB::table('task')->where('id_board',$boardId)->pluck('id');
     return view('pages.tasks', compact('board', 'tasks_ids'));
 });
@@ -294,6 +295,8 @@ Route::post('/addContact', 'ContactsController@add');
 Route::post('/addBoard', 'BoardController@store');
 
 Route::post('/addTask', 'TaskController@store');
+
+Route::post('/addTeamTask','TaskController@team');
 
 Auth::routes();
 
