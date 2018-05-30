@@ -240,6 +240,7 @@ Route::get('/{projectId}/projectForum', function ($projectId) {
     return view('pages.projectForum', compact('project', 'messages_ids'));
 });
 
+Route::post('/sendMessage','MessageController@store');
 
 Route::post('/project','ProjectsController@store');
 
@@ -261,6 +262,10 @@ Route::post('/addBoard', 'BoardController@store');
 Route::post('/addTask', 'TaskController@store');
 
 Route::post('/addTeamTask','TaskController@team');
+
+Route::post('/addMeeting','MeetingController@store');
+
+Route::post('/sendMessage','MessageController@store');
 
 Auth::routes();
 
