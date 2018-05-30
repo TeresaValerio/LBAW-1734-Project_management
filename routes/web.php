@@ -167,13 +167,18 @@ Route::get('/{projectId}/projectBoards', function ($projectId) {
         return redirect ('/');
     }
     
-    $
     $project = DB::table('projects')->find($projectId);
     $boards_ids = DB::table('board')->where('id_project',$projectId)->pluck('id');
 
-
-
-    return view('pages.projectBoard', compact('project', 'boards_ids'));
+    $users=DB::table('projects')->where('id',$projectId)->where('id_coordinator',$userAuth)->count();
+    $users2=DB::table('project_team')->where('id_project',$projectId)->where('id_user',$userAuth)->count();
+    $users_total=$users + $users2;
+    if ($users_total >0){
+        return view('pages.projectBoard', compact('project', 'boards_ids'));
+    }else{
+        return redirect ($userAuth.'/userProjects');
+    }
+    
 });
 
 
@@ -191,8 +196,20 @@ Route::get('/{projectId}/projectTeam', function ($projectId) {
     
     $project = DB::table('projects')->find($projectId);
     $team_ids = DB::table('project_team')->where('id_project',$projectId)->pluck('id_user');
-    return view('pages.projectTeam', compact('project', 'team_ids'));
+
+    $users=DB::table('projects')->where('id',$projectId)->where('id_coordinator',$userAuth)->count();
+    $users2=DB::table('project_team')->where('id_project',$projectId)->where('id_user',$userAuth)->count();
+    $users_total=$users + $users2;
+    if ($users_total >0){
+        return view('pages.projectTeam', compact('project', 'team_ids'));
+    }else{
+        return redirect ($userAuth.'/userProjects');
+    }
 });
+
+/////////////////////////
+///// USER CONTACTS /////
+/////////////////////////
 
 Route::get('/{userId}/userContacts', function ($userId) {
     try{
@@ -218,9 +235,17 @@ Route::get('/{projectId}/projectInfo', function ($projectId) {
     catch (\Exception $e){
         return redirect ('/');
     }
-    
     $project = DB::table('projects')->find($projectId);
-    return view('pages.projectInfo', compact('project'));
+
+    $users=DB::table('projects')->where('id',$projectId)->where('id_coordinator',$userAuth)->count();
+    $users2=DB::table('project_team')->where('id_project',$projectId)->where('id_user',$userAuth)->count();
+    $users_total=$users + $users2;
+    if ($users_total >0){
+        return view('pages.projectInfo', compact('project'));
+    }else{
+        return redirect ($userAuth.'/userProjects');
+    }
+
 });
 
 ////////////////////////////
@@ -247,7 +272,14 @@ Route::get('/{projectId}/projectCalendar', function ($projectId) {
     $meetings_names = DB::table('meeting')->join('board','meeting.id_board','=','board.id')->join('projects','board.id_project','=','projects.id')->where('projects.id',$projectId)->pluck('board.name');    
     $meetings_places = DB::table('meeting')->join('board','meeting.id_board','=','board.id')->join('projects','board.id_project','=','projects.id')->where('projects.id',$projectId)->pluck('meeting.place');
 
-    return view('pages.projectCalendar', compact('project','projects_deadlines','projects_names','tasks_deadlines','tasks_names','meetings_dates','meetings_names','meetings_places'));
+    $users=DB::table('projects')->where('id',$projectId)->where('id_coordinator',$userAuth)->count();
+    $users2=DB::table('project_team')->where('id_project',$projectId)->where('id_user',$userAuth)->count();
+    $users_total=$users + $users2;
+    if ($users_total >0){
+        return view('pages.projectCalendar', compact('project','projects_deadlines','projects_names','tasks_deadlines','tasks_names','meetings_dates','meetings_names','meetings_places'));
+    }else{
+        return redirect ($userAuth.'/userProjects');
+    }
 });
 
 ////////////////////////
@@ -265,7 +297,16 @@ Route::get('/{boardId}/tasks', function ($boardId) {
     $board = DB::table('board')->find($boardId);
     $project=DB::table('board')->where('id',$boardId)->pluck('id_project');
     $tasks_ids = DB::table('task')->where('id_board',$boardId)->pluck('id');
-    return view('pages.tasks', compact('board', 'tasks_ids'));
+
+    $users=DB::table('board_team')->where('id_board',$boardId)->where('id_user',$userAuth)->count();
+    $users2=DB::table('board')->join('projects','board.id_project','=','projects.id')->where('board.id',$boardId)->where('projects.id_coordinator',$userAuth)->count();
+    $users_total=$users + $users2;
+    if ($users_total >0){
+        return view('pages.tasks', compact('board', 'tasks_ids'));
+    }else{
+        return redirect ($userAuth.'/userProjects');
+    }
+
 });
 
 //////////////////////////
