@@ -211,9 +211,6 @@
             </div>
             @endfor
         </div>
-        <button class="text-center btn btn-info" type="submit" align="center" style="margin-top: 30px; width: 100px">
-            See More
-        </button>
     </div>
     <!-- Contact Container -->
     <div id="contacts" class="container-fluid bg-darkgrey">
