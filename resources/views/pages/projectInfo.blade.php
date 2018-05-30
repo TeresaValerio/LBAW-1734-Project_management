@@ -138,7 +138,7 @@ foreach($boards_names as $label){
 }
 ?>
 
-
+@if($n_boards >=3){
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Chart -->
@@ -201,5 +201,6 @@ foreach($boards_names as $label){
             }
         });
     </script>
+    @endif
 
 @endsection

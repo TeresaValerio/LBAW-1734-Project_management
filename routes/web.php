@@ -72,6 +72,7 @@ Route::get('/{userId}/userCalendar', function ($userId){
     if ($userAuth == $userId){
     $person = DB::table('users')->find($userId);
     
+    
     $tasks_deadlines = DB::table('task')->where('id_creator',$userId)->pluck('deadline');
     $tasks_names = DB::table('task')->where('id_creator',$userId)->pluck('name');
 
