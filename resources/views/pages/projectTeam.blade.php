@@ -25,6 +25,7 @@
 
 
     <!-- Main -->
+    <?php $ids = $team_ids; ?>
     <div class="container-fluid display-table">
         <div class="row display-table-row">
             <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
@@ -65,28 +66,40 @@
             </div>
             <div class="col-md-10 col-sm-11 display-table-cell v-align">
                 <div class="user-dashboard">
-                    <!-- /input-group -->
-                    <div class="input-group" style="padding-bottom:10px">
-                        <input type="text" class="form-control" placeholder="Search workers...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Search</button>
-                        </span>
-                    </div>
-                    <!-- /input-group -->
+                    
+                    <!-- Begin # Create project Form -->
+                    <?php
+                        if( isset($_GET['search_button']) )
+                        {
+                            //be sure to validate and clean your variables
+                            if($_GET['search'] === ""){
+                                $ids = $team_ids;
+                            }
+                            else
+                            //then you can use them in a PHP function. 
+                            {
+                                $val1 = htmlentities($_GET['search']);
+                            
+                                $ids = DB::table('users')
+                                ->whereRaw("to_tsvector(username||' '||full_name||' '||e_mail) @@ to_tsquery('$val1')")
+                                ->pluck('id');
+                            }
+                        }
+                    ?>
+                    <form method="get">
+                        <div class="input-group" style="padding-bottom:10px">
+                        
+                            <input type="text" name="search" id="search" class="form-control" placeholder="Search to find new workers...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit" name="search_button" >Search</button>
+                            </span>
+                            
+                        </div>
+                    </form>
+                    <!-- End # Login Form -->
+
                     <div class="row">
                         <div class="well" style="margin:0">
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-info btn-circle">
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                    </button>
-                                </div>
-								<div>
-									<h4> <font color="#7ABED3">
-										<strong>Add team member</strong> </font>
-									</h4>
-								</div>
-                            </div>
                             <div class="row ">
                                 <?php  $userAuth = auth()->user()->id ?>
                                 <div class="col-sm-3">
@@ -160,7 +173,7 @@
                                 </div>
                                 @endif
 
-                                @foreach ($team_ids as $id)
+                                @foreach ($ids as $id)
                                 @if ($id != $userAuth)
                                 <div class="col-sm-3">
                                     <div class="card" style="width:250px;" align="center">
@@ -200,6 +213,18 @@
                                                     </button>
                                                 </form>
                                                 @endif
+
+                                                @if ($contact=DB::table('project_team')->where('id_project',$project->id)->where('id_user', $id)->count() > 0)
+                                                @else
+                                                <form action="/addTeamProject" id="add_contact" method="post">
+                                                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                                                    <input type="hidden" name="project" value="{{$project->id}}"/>
+                                                    <input type="hidden" name="user" value="{{$id}}"/>
+                                                    <button type="submit" class="btn btn-info btn-lg btn-block">
+                                                    Add Team Member
+                                                    </button>
+                                                </form>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -212,5 +237,6 @@
                 </div>
             </div>
         </div>
+
 
 @endsection
