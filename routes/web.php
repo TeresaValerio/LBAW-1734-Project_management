@@ -361,6 +361,8 @@ Route::post('/addMeeting','MeetingController@store');
 
 Route::post('/sendMessage','MessageController@store');
 
+Route::post('/addTeamProject','ProjectsController@team');
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');

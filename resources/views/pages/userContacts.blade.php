@@ -45,7 +45,7 @@
                         </li>
                         <li class="active">
                             <a href={{ url($person->id.'/userContacts') }}>
-                                <i class="fa fa-info" aria-hidden="true"></i>
+                                <i class="fa fa-address-book" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Contacts</span>
                             </a>
                         </li>
@@ -55,12 +55,41 @@
             <div class="col-md-10 col-sm-11 display-table-cell v-align">
                 <div class="user-dashboard">
                     <!-- /input-group -->
-                    <div class="input-group" style="padding-bottom:10px">
-                        <input type="text" class="form-control" placeholder="Search workers...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Search</button>
-                        </span>
-                    </div>
+                    <?php  $contact_ids = DB::table('contact')->where('id_user',$userAuth)->pluck('id_contact')?>
+                    <?php
+                        if( isset($_GET['search_button']) )
+                        {
+                            //be sure to validate and clean your variables
+                            if($_GET['search'] === ""){
+
+                                $contact_ids = DB::table('users')
+                                    ->join('contact','users.id','=','contact.id_contact')
+                                    ->where('contact.id_user',$userAuth)
+                                    ->pluck('id_contact');
+                            }
+                            else
+                            //then you can use them in a PHP function. 
+                            {
+                                $val1 = htmlentities($_GET['search']);
+                            
+                            $contact_ids = DB::table('users')
+                            ->join('contact','users.id','=','contact.id_contact')
+                            ->where('contact.id_user',$userAuth)
+                            ->whereRaw("to_tsvector(username||' '||full_name||' '||e_mail) @@ to_tsquery('$val1')")
+                            
+                            ->pluck('id_contact');}
+                        }
+                    ?>
+                    <form action="" method="get">
+                        <div class="input-group" style="padding-bottom:10px">
+                        
+                            <input type="text" name="search" id="search" class="form-control" placeholder="Search workers...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit" name="search_button" >Search</button>
+                            </span>
+                            
+                        </div>
+                    </form>
                     <!-- /input-group -->
                     <div class="row">
                         <?php  $userAuth = auth()->user()->id ?>

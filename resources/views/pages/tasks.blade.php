@@ -154,7 +154,7 @@
                                         </div>
 
                                         @if ($creator_ids=DB::table('task')->where('id',$id)->value('progress') < 100 && $today < $deadline_date=DB::table('task')->where('id',$id)->value('deadline'))
-                                        <a href="#" data-toggle="modal" data-target="#update-task-modal">
+                                        <a href="#" data-upid="{{ $id }}" data-toggle="modal" data-target="#update-task-modal">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                             <strong>Update</strong>
                                         </a>
@@ -163,7 +163,7 @@
                                             <i class="fa fa-exclamation-triangle"></i>
                                             <strong>Deadlined Surpassed!</strong>
                                         </p>
-                                        <a href="#" data-toggle="modal" data-target="#update-task-modal">
+                                        <a href="#" data-upid="{{ $id }}" data-toggle="modal" data-target="#update-task-modal">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                             <strong>Update</strong>
                                         </a>
@@ -174,7 +174,7 @@
                                         </p>
                                         @endif
 
-                                        <a href="#" data-identification="{{ $id }}" data-toggle="modal" data-target="#see-more-task-modal">
+                                        <a id="see-more-button" href="#" dir="{{ $id }}" data-toggle="modal" data-target="#see-more-task-modal">
                                             <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
                                         </a>
                                     </div>
@@ -188,8 +188,14 @@
             </div>
         </div>
     </div>
-
-    
+    <script>
+$(document).ready(function() {
+$('#see-more-button').click(function(){
+var record_id = $(this).attr('dir');
+$('.record_id').val(record_id);
+});
+});
+</script>
 
     <!-- Modal New Task -->
     <div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -263,8 +269,9 @@
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
                     <p>
+                    <input type="hidden" name="identification" />
                         <strong>Update
-                            <i>*Task name*</i>
+                            <i>{{ $task=DB::table('task')->where('id',$id)->value('name') }}</i>
                         </strong>
                     </p>
                 </div>
@@ -278,7 +285,7 @@
                                 <p>
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                     <span id="text-register-msg">
-                                        <strong>Update's commentaries *</strong>
+                                        <strong>Comment</strong>
                                     </span>
                                 </p>
                             </div>
@@ -306,19 +313,6 @@
                                 <option value="100">100 %</option>
                             </select>
 
-                            <div>
-                                <p>
-                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                    <span id="text-register-msg">
-                                        <strong>Upload file </strong>
-                                    </span>
-                                    <div id="icon-register-msg" class="glyphicon glyphicon-paperclip"></div>
-                                </p>
-                            </div>
-                            <form action="upload.php" method="post" enctype="multipart/form-data">
-                                <input type="file" name="fileToUpload" id="fileToUpload">
-                            </form>
-
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox"> Close task
@@ -326,17 +320,12 @@
                                 <p>(A message will be sent to the task's coordinator for approval)</p>
                             </div>
 
-                            <div>
-                                <p>
-                                    <strong>NOTE: Sections marked with * are of mandatory filling.</strong>
-                                </p>
-                            </div>
-
+                            <p><strong>NOTE:</strong> You must fill at least one of the fields</p>
                             <div class="modal-footer">
                                 <div>
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
+                                    <button type="submit" class="btn btn-info btn-lg btn-block">Update</button>
                                 </div>
-                            </div>
+                                    </div>
 
 
                         </div>
@@ -357,15 +346,17 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" align="center">
+                <input type="hidden" class="record_id" value="">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
                     <p>
-                        <strong>{{ $task=DB::table('task')->where('id',$id)->value('name') }}</strong>
+                        <strong><input type="hidden" class="record_id" value="">{{ $task=DB::table('task')->where('id',$id)->value('name') }}</strong>
                     </p>
                 </div>
                 <?php 
                     $progress_ids=DB::table('progress_update')->where('id_task',$id)->pluck('id');
+                    $comments_ids=DB::table('comment')->where('id_task',$id)->pluck('id');
                 ?>
                 @foreach ($progress_ids as $p_ids)
                 <div class="thumbnail">
@@ -376,31 +367,26 @@
                         <i>{{$date=DB::table('progress_update')->where('id',$p_ids)->value('date')}}</i> by
                         <i>{{$user=DB::table('users')->where('id',$id_user)->value('full_name')}}</i>
                     </p>
-                    <p>
-                        <strong>Changes made:</strong>
-                    </p>
-                    <p>Progress: <i>{{$progress=DB::table('progress_update')->where('id',$p_ids)->value('new_value')}}</i>%</p>
-                    <p>
-                        <u>Description: </u>Proident enim sint amet exercitation est aliquip ullamco elit proident ea commodo
-                        et pariatur dolore. Laborum eiusmod nostrud esse elit non occaecat duis est. Quis nisi proident nisi
-                        exercitation ut fugiat labore. Do dolore officia officia cillum irure laborum qui quis nostrud laborum.
-                        Aliqua sit aute labore aliqua nostrud incididunt sunt sunt consequat cillum dolor sint id. In in
-                        consequat adipisicing excepteur incididunt. Nulla esse aliquip mollit est anim duis reprehenderit
-                        qui ut labore.</p>
+                    <p><strong>Progress: </strong><i>{{$progress=DB::table('progress_update')->where('id',$p_ids)->value('new_value')}}</i>%</p>
                 </div>
                 @endforeach
-
+                
+                <div class="thumbnail">
+                @foreach ($comments_ids as $c_ids)
+                    <p>
+                        <?php $id_user=DB::table('comment')->where('id',$c_ids)->value('id_user')?>
+                        <i>{{$date=DB::table('comment')->where('id',$c_ids)->value('date')}}</i> by
+                        <i>{{$user=DB::table('users')->where('id',$id_user)->value('full_name')}}</i>
+                    </p>
+                    <p><strong>Comment: </strong><i>{{$comment=DB::table('comment')->where('id',$c_ids)->value('comment')}}</i></p>
+                    @endforeach
+                </div>
+                
             </div>
         </div>
     </div>
     <!-- END # MODAL LOGIN -->
 
-    <script>
-        $('#see-more-task-modal').on('show', function(e) {
-    var link     = e.relatedTarget(),
-        id = link.data("identification")
-    });
-    </script>
 
     <!-- Modal New team member -->
     <div class="modal fade" id="new-member-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Project;
+use App\ProjectTeam;
 use Auth;
 
 class ProjectsController extends Controller
@@ -59,6 +60,18 @@ class ProjectsController extends Controller
         ]);
 
         return redirect($userId.'/userProjects')->with('success', 'Project Created!');
+    }
+
+    public function team(Request $request){
+
+        $projectId=$request->get('project');
+        $team=ProjectTeam::create([
+            'id_user'=>$request->get('user'),
+            'id_project'=>$projectId
+        ]);
+
+        return redirect($projectId.'/projectTeam')->with('success', 'Team member added!');
+
     }
 
     /**
