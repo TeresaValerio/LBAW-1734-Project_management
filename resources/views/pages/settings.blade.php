@@ -4,7 +4,7 @@
 
 
  <title>Settings | {{$userAuth=auth()->user()->full_name}}</title>
-<link rel="stylesheet" href="CSS/userInfo.css">
+<link rel="stylesheet" href="/CSS/userInfo.css">
 
 <!-- Header -->
     <div class="header container-fluid main-color-bg">
@@ -58,8 +58,16 @@
             <div class="row" >
                 <div class="col-md-3 col-sm-4 display-table-cell v-align">
                     <div class="col-md-2 col-sm-3 display-table-cell v-align">
+                    <?php
+                                        if (DB::table("profile_picture")->where("id_user",$person->id)->value("path")){
+                                            $picture=DB::table("profile_picture")->where("id_user",$person->id)->value("path");
+                                        }
+                                        else{
+                                            $picture='https://visit.nemedic.com/storage/default.jpg';
+                                        }
+                                    ?>
                         <a href="#" class="profile-pic">
-                            <div class="profile-pic" style="background-image: url(img/profile.jpg)">
+                            <div class="profile-pic" style="background-image: url({{$picture}})">
                                 <span class="glyphicon glyphicon-camera"></span>
                                 <span>Change Image</span>
                             </div>
