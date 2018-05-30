@@ -113,7 +113,6 @@
                             <input name="register_username" class="form-control" type="text" placeholder="Username" required>
                             <input name="register_fullname" class="form-control" type="text" placeholder="Full name" required>
                             <input name="register_email" class="form-control" type="email" placeholder="E-Mail" required>  
-                            <input type="checkbox" name="register_email_public" value="true" default="false"> Public email                         
                             <input name="register_password" class="form-control" type="password" placeholder="Password" required>
 
                             

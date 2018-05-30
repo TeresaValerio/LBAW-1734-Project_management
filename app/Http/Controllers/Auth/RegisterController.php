@@ -38,8 +38,7 @@ class RegisterController extends Controller
 	    'register_email' => 'required',
         'register_username' => 'required',
         'register_fullname' => 'required',
-        'register_password' => 'required',
-        'register_email_public' => 'required'
+        'register_password' => 'required'
         ]);
         
     }
@@ -62,10 +61,9 @@ class RegisterController extends Controller
         'username' => $data['register_username'],
         'full_name' => $data['register_fullname'],
         'password' => $data['register_password'],
-        'public_email' => $data['register_email_public']
              
 	]);
-	
+	return redirect(auth()->user()->id.'/personalInfo');
 	
     }
     
@@ -74,7 +72,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/{userId}/personalInfo';
 
     /**
      * Create a new controller instance.
