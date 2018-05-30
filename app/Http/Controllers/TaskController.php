@@ -59,24 +59,6 @@ class TaskController extends Controller
         return redirect($boardId.'/tasks')->with('success', 'Task Created!');
     }
 
-    public function team(Request $request){
-
-        $teamMembers=$request->get('teamMember');
-
-        if ($teamMembers != NULL){
-            foreach ($teamMembers as $person){
-                $team=BoardTeam::create([
-                    'id_board'=>$request->get('id_board'),
-                    'id_user'=>$request->$person
-                ]);
-            }
-        }
-
-        return redirect($boardId.'/tasks')->with('success', 'Team member added!');
-
-    }
-
-
     /**
      * Display the specified resource.
      *

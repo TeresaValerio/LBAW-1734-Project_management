@@ -124,14 +124,19 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="panel-footer">
-                        <div class="input-group">
-                            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                    <div class="panel-footer"> 
+                        <form id="login-form" action= "/sendMessage" method="post">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="hidden" name="id_project" value="{{$project->id}}">
+
+                        <div>
                             <span class="input-group-btn">
+                                <input name="message_text" id="message_text" class="form-control" type="text" placeholder="Write your message here..." required>
                                 <button class="btn btn-warning btn-sm" id="btn-chat">
                                     Send</button>
                             </span>
                         </div>
+
                     </div>
                 </div>
             </div>

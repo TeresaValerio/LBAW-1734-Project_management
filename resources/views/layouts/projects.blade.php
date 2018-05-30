@@ -38,11 +38,26 @@
                     <li>
                         <a href={{ url('/explore') }}>Explore</a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li class="dropdown" align="center">
+                        <?php 
+                            $userAuth_id=auth()->user()->id;
+                            $not_ids=DB::table('notification')->where('id_user',$userAuth_id)->pluck('id');
+                        ?>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             Notifications
-                            <span class="badge badge-light">2</span>
+                            <span class="badge badge-light">{{$not_numb=DB::table('notification')->where('id_user',$userAuth_id)->where('read', false)->count()}}</span>
                         </a>
+                        <ul class="dropdown-menu" align="center">
+                            @foreach ($not_ids as $ids)
+                            <li align="center">
+                                <p>
+                                {{$notification=DB::table('notification')->where('id',$ids)->value('notification')}}
+                                </p>
+                                <button class="text-center btn btn-info">Mark as Read</button>
+                            </li>
+                            <hr />
+                            @endforeach
+                        </ul>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account</a>

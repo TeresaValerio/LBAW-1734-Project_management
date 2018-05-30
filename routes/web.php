@@ -348,7 +348,7 @@ Route::post('/addBoard', 'BoardController@store');
 
 Route::post('/addTask', 'TaskController@store');
 
-Route::post('/addTeamTask','TaskController@team');
+Route::post('/addTeamBoard','BoardController@team');
 
 Route::post('/addMeeting','MeetingController@store');
 
