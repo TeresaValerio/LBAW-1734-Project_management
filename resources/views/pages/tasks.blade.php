@@ -49,28 +49,34 @@
             <div class="row">
                 <div class="well">
                     <div class="row">
-                        <div class="col-sm-3" align="left">
+                        <div class="col-sm-3">
                             <a href="#" data-toggle="modal" data-target="#new-task-modal">
-                                <button type="button" class="btn btn-info btn-circle">
+                                <button align="center" type="button" class="btn btn-info btn-circle">
                                     <i class="glyphicon glyphicon-plus"></i> 
                                 </button>
-                                Create task
+                                <h4> <font color="#7ABED3">
+                                                <strong>Create Task</strong> </font>
+									        </h4>
                             </a>
                         </div>
-                        <div class="col-sm-3" align="center">
+                        <div class="col-sm-3">
                             <a href="#" data-toggle="modal" data-target="#new-member-modal">
                                 <button type="button" class="btn btn-info btn-circle">
                                     <i class="glyphicon glyphicon-plus"></i> 
                                 </button>
-                                Add team member
+                                <h4> <font color="#7ABED3">
+                                                <strong>Add Member</strong> </font>
+									        </h4>
                             </a>
                         </div>
-                        <div class="col-sm-3" align="right">
+                        <div class="col-sm-3">
                             <a href="#" data-toggle="modal" data-target="#new-meeting-modal">
                                 <button type="button" class="btn btn-info btn-circle">
                                     <i class="glyphicon glyphicon-plus"></i> 
                                 </button>
-                                Schedule meeting
+                                <h4> <font color="#7ABED3">
+                                                <strong>Schedule Meeting</strong> </font>
+									        </h4>
                             </a>
                         </div>
                     </div>
@@ -168,7 +174,7 @@
                                         </p>
                                         @endif
 
-                                        <a href="#" data-toggle="modal" data-target="#see-more-task-modal">
+                                        <a href="#" data-identification="{{ $id }}" data-toggle="modal" data-target="#see-more-task-modal">
                                             <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
                                         </a>
                                     </div>
@@ -182,6 +188,8 @@
             </div>
         </div>
     </div>
+
+    
 
     <!-- Modal New Task -->
     <div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -204,9 +212,9 @@
 
                                 <div id="div-register-msg">
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                    <span id="text-register-msg">Name</span>
+                                    <span id="text-register-msg">Name <strong style="font-size: 12px">(Required!)</strong></span>
                                 </div>
-                                <input id="task_name" name="task_name" class="form-control" type="name" placeholder="Task name">
+                                <input id="task_name" name="task_name" class="form-control" type="name" placeholder="Task name" required>
                                 
                                 <div id="div-register-msg">
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
@@ -222,9 +230,9 @@
 
                                 <div id="div-register-msg">
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                    <span id="text-register-msg">Deadline</span>
+                                    <span id="text-register-msg">Deadline <strong style="font-size: 12px">(Required!)</strong></span>
                                 </div>
-                                <input type="date" name="task_deadline" value="task_deadline" > 
+                                <input type="date" name="task_deadline" value="task_deadline" required> 
     
                             </div>
     
@@ -353,21 +361,25 @@
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
                     <p>
-                        <strong>Task Name</strong>
+                        <strong>{{ $task=DB::table('task')->where('id',$id)->value('name') }}</strong>
                     </p>
                 </div>
-
+                <?php 
+                    $progress_ids=DB::table('progress_update')->where('id_task',$id)->pluck('id');
+                ?>
+                @foreach ($progress_ids as $p_ids)
                 <div class="thumbnail">
                     <p>
+                        <?php $id_user=DB::table('progress_update')->where('id',$p_ids)->value('id_user')?>
                         <div id="icon-register-msg" class="glyphicon glyphicon-pushpin"></div>
                         <strong>Updated on </strong>
-                        <i>*dd-mm-yyyy*</i> by
-                        <i>*Username*</i>
+                        <i>{{$date=DB::table('progress_update')->where('id',$p_ids)->value('date')}}</i> by
+                        <i>{{$user=DB::table('users')->where('id',$id_user)->value('full_name')}}</i>
                     </p>
                     <p>
                         <strong>Changes made:</strong>
                     </p>
-                    <p>Progress from xx % to yy %</p>
+                    <p>Progress: <i>{{$progress=DB::table('progress_update')->where('id',$p_ids)->value('new_value')}}</i>%</p>
                     <p>
                         <u>Description: </u>Proident enim sint amet exercitation est aliquip ullamco elit proident ea commodo
                         et pariatur dolore. Laborum eiusmod nostrud esse elit non occaecat duis est. Quis nisi proident nisi
@@ -376,44 +388,19 @@
                         consequat adipisicing excepteur incididunt. Nulla esse aliquip mollit est anim duis reprehenderit
                         qui ut labore.</p>
                 </div>
-
-                <div class="thumbnail">
-                    <p>
-                        <div id="icon-register-msg" class="glyphicon glyphicon-pushpin"></div>
-                        <strong>Updated on </strong>
-                        <i>*dd-mm-yyyy*</i> by
-                        <i>*Username*</i>
-                    </p>
-                    <p>
-                        <strong>Changes made:</strong>
-                    </p>
-                    <p>Progress from xx % to yy %</p>
-                    <p>
-                        <u>Description: </u>Aliqua sit aute labore aliqua nostrud incididunt sunt sunt consequat cillum dolor
-                        sint id. In in consequat adipisicing excepteur incididunt. Nulla esse aliquip mollit est anim duis
-                        reprehenderit qui ut labore.</p>
-                </div>
-
-                <div class="thumbnail">
-                    <p>
-                        <div id="icon-register-msg" class="glyphicon glyphicon-pushpin"></div>
-                        <strong>Updated on </strong>
-                        <i>*dd-mm-yyyy*</i> by
-                        <i>*Username*</i>
-                    </p>
-                    <p>
-                        <strong>Changes made:</strong>
-                    </p>
-                    <p>Progress from xx % to yy %</p>
-                    <p>
-                        <u>Description: </u>Proident enim sint amet exercitation est aliquip ullamco elit proident ea commodo
-                        et pariatur dolore. Laborum eiusmod nostrud esse elit non occaecat duis est. </p>
-                </div>
+                @endforeach
 
             </div>
         </div>
     </div>
     <!-- END # MODAL LOGIN -->
+
+    <script>
+        $('#see-more-task-modal').on('show', function(e) {
+    var link     = e.relatedTarget(),
+        id = link.data("identification")
+    });
+    </script>
 
     <!-- Modal New team member -->
     <div class="modal fade" id="new-member-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -492,7 +479,7 @@
                             
                                 <div id="div-register-msg">
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                    <span id="text-register-msg">Date</span>
+                                    <span id="text-register-msg">Date <strong style="font-size: 12px">(Required!)</strong></span>
                                 </div>
                                 <input name="meeting_date" type="date" value="date" required >
 
@@ -500,7 +487,7 @@
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                     <span id="text-register-msg">Place</span>
                                 </div>
-                                <input name="meeting_place" id="meeting_place" class="form-control" type="text" placeholder="Meeting place" required>
+                                <input name="meeting_place" id="meeting_place" class="form-control" type="text" placeholder="Meeting place">
 
                                 <div id="div-register-msg">
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>

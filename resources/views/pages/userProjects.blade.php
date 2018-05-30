@@ -78,7 +78,9 @@
                                         <button type="button" class="btn btn-info btn-circle">
                                             <i class="glyphicon glyphicon-plus"></i> 
                                         </button>
-                                        Create project
+                                        <h4> <font color="#7ABED3">
+                                                <strong>Create project</strong> </font>
+									        </h4>
                                     </a>
                                 </div>
                             </div>
@@ -194,7 +196,7 @@
                         <div class="modal-body">
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Name</span>
+                                <span id="text-register-msg">Name <strong style="font-size: 12px">(Required!)</strong></span>
                             </div>
                             <input name="project_name" id="project_name" class="form-control" type="text" placeholder="Project name" required>
                             
@@ -206,9 +208,9 @@
 
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Start date</span>
+                                <span id="text-register-msg">Start date <strong style="font-size: 12px">(Required!)</strong></span>
                             </div>
-                            <input name="project_date" type="date" value="start_date" > 
+                            <input name="project_date" type="date" value="start_date" required > 
 
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
