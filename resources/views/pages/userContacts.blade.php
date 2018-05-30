@@ -1,4 +1,4 @@
-@extends('layouts.projects')
+@extends('layouts.user')
 
 
 @section('content')
@@ -66,14 +66,14 @@
                         <?php  $userAuth = auth()->user()->id ?>
                         @foreach ($contact_ids as $id)
                         <div class="col-sm-3">
-                            <div class="card" style="width:250px;" align="center">
+                            <div class="card" style="width:250px;">
                                 <div class="card-content" style="width:250px;" align="center">
-                                    <div class="card-header" style="width:250px;" align="center">
+                                    <div class="card-header" style="width:250px;">
                                         <h4>
                                             <strong>{{ $member=DB::table('users')->where('id',$id)->value('full_name') }}</strong>
                                         </h4>
                                     </div>
-                                    <div class="card-body" align="center" style="width:250px;">
+                                    <div class="card-body">
                                     <?php
                                         if (DB::table("profile_picture")->where("id_user",$id)->value("path")){
                                             $picture=DB::table("profile_picture")->where("id_user",$id)->value("path");
@@ -88,7 +88,7 @@
                                             <strong>Username:</strong>
                                             <br />{{ $member=DB::table('users')->where('id',$id)->value('username')}}
 										</p>
-                                        <p>
+                                        <p style="font-size: 11px">
                                             <strong>Email:</strong>
                                             <br /> {{ $member=DB::table('users')->where('id',$id)->value('e_mail') }}
 										</p>

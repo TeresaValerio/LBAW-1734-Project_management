@@ -374,8 +374,8 @@
     </div>
     <!-- END # MODAL LOGIN -->
 
-     <!-- Modal New team member -->
-     <div class="modal fade" id="new-member-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <!-- Modal New team member -->
+    <div class="modal fade" id="new-member-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header" style="background-color: #7ABED3; color: #fff">
@@ -418,6 +418,60 @@
                             <div class="modal-footer">
                                 <div>
                                     <button type="submit" class="btn btn-info btn-lg btn-block">Add</button>
+                                </div>
+                            </div>
+                        </form>
+    
+                        <!-- End # Login Form -->
+                    </div>
+                    <!-- End # DIV Form -->
+                </div>
+            </div>
+        </div>
+        <!-- END # MODAL LOGIN -->
+
+    <!-- Modal New meeting -->
+    <div class="modal fade" id="new-meeting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #7ABED3; color: #fff">
+                        <strong>Schedule new meeting</strong>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <!-- Begin # DIV Form -->
+                    <div id="div-forms">
+                        <!-- Begin # Login Form -->
+    
+                        <form id="login-form" action="/addMeeting" method='post'>
+                            <div class="modal-body">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <input type="hidden" name="id_board" value="{{$board->id}}">
+                            
+                                <div id="div-register-msg">
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Date</span>
+                                </div>
+                                <input name="meeting_date" type="date" value="date" required >
+
+                                <div id="div-register-msg">
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Place</span>
+                                </div>
+                                <input name="meeting_place" id="meeting_place" class="form-control" type="text" placeholder="Meeting place" required>
+
+                                <div id="div-register-msg">
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Name</span>
+                                </div>
+                                <input name="meeting_name" id="meeting_name" class="form-control" type="text" placeholder="Meeting name">
+                            
+                            </div>
+    
+                            <div class="modal-footer">
+                                <div>
+                                    <button type="submit" class="btn btn-info btn-lg btn-block">Schedule</button>
                                 </div>
                             </div>
                         </form>
