@@ -28,7 +28,7 @@ class LoginController extends Controller
     $login_password = $req -> input('login_password');
 
 
-    $checkLogin = DB::table('users') -> where ('e_mail',$login_email) ->where('password',$login_password)-> count('id');
+    $checkLogin = DB::table('users') -> where ('e_mail',$login_email) ->where('password',$login_password)-> count();
     $userId = $checkLogin;
 
 	if(count($checkLogin)>0)
