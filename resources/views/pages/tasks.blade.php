@@ -174,7 +174,7 @@
                                         </p>
                                         @endif
 
-                                        <a class="idmore" href="#" data-identification="{{ $id }}" data-toggle="modal" data-target="#see-more-task-modal">
+                                        <a id="see-more-button" href="#" dir="{{ $id }}" data-toggle="modal" data-target="#see-more-task-modal">
                                             <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
                                         </a>
                                     </div>
@@ -188,6 +188,14 @@
             </div>
         </div>
     </div>
+    <script>
+$(document).ready(function() {
+$('#see-more-button').click(function(){
+var record_id = $(this).attr('dir');
+$('.record_id').val(record_id);
+});
+});
+</script>
 
     <!-- Modal New Task -->
     <div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -261,6 +269,7 @@
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
                     <p>
+                    <input type="hidden" name="identification" />
                         <strong>Update
                             <i>{{ $task=DB::table('task')->where('id',$id)->value('name') }}</i>
                         </strong>
@@ -337,12 +346,12 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" align="center">
-                <input type="hidden" name="identification" />
+                <input type="hidden" class="record_id" value="">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
                     <p>
-                        <strong>{{ $task=DB::table('task')->where('id',$id)->value('name') }}</strong>
+                        <strong><input type="hidden" class="record_id" value="">{{ $task=DB::table('task')->where('id',$id)->value('name') }}</strong>
                     </p>
                 </div>
                 <?php 
