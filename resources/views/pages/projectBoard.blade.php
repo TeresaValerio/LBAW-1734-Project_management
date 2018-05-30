@@ -206,9 +206,9 @@
                         <div class="modal-body">
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Name</span>
+                                <span id="text-register-msg">Name <strong style="font-size: 12px">(Required!)</strong></span>
                             </div>
-                            <input name="board_name" id="board_name" class="form-control" type="name" placeholder="Board name">
+                            <input name="board_name" id="board_name" class="form-control" type="name" placeholder="Board name" required>
                             
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
