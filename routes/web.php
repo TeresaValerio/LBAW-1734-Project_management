@@ -96,7 +96,7 @@ Route::get('/{userId}/userCalendar', function ($userId){
     $meetings_names = DB::table('meeting')->join('board','meeting.id_board','=','board.id')->join('board_team','meeting.id_board','=','board_team.id_board')->where('id_user',$userId)->pluck('board.name');
 
     
-    //return view('pages.userCalendar', compact('person','picture','tasks_deadlines','tasks_names','projects_deadlines','projects_names','projects_deadlines2','projects_names2','personal_events_dates','personal_events_names','personal_events_places','meetings_dates','meetings_names','meetings_places'));
+    return view('pages.userCalendar', compact('person','picture','tasks_deadlines','tasks_names','projects_deadlines','projects_names','projects_deadlines2','projects_names2','personal_events_dates','personal_events_names','personal_events_places','meetings_dates','meetings_names','meetings_places'));
     }
     else{
     $userId=$userAuth;
