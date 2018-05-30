@@ -342,6 +342,8 @@ Route::post('/changeFullName','SettingsController@changeFullName');
 Route::post('/changePrivacy','SettingsController@changePrivacy');
 Route::post('/deleteAccount','SettingsController@deleteAccount');
 
+Route::post('/notificationRead','NotificationController@markAsRead');
+
 Route::post('/addContact', 'ContactsController@add');
 
 Route::post('/addBoard', 'BoardController@store');
