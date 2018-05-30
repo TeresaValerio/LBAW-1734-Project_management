@@ -76,7 +76,7 @@
                     </div>
                     <div class="row text-center">
                         @foreach ($tasks_ids as $id)
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="card" style="width:400px;">
                                 <div class="card-content">
                                     <div class="card-header" style="width:400px;">
@@ -112,19 +112,59 @@
                                         <h4>
                                             <strong>Deadline:</strong> {{ $creator_ids=DB::table('task')->where('id',$id)->value('deadline') }}
                                         </h4>
-
+                                        <?php // Set your timezone!!
+                                        date_default_timezone_set('Europe/Lisbon');
+ 
+                                        // Get prev & next month
+                                        if (isset($_GET['ym'])) {
+                                            $ym = $_GET['ym'];
+                                        } else {
+                                         // This month
+                                        $ym = date('Y-m');
+                                        }
+ 
+                                        // Check format
+                                        $timestamp = strtotime($ym . '-01');
+                                        if ($timestamp === false) {
+                                            $timestamp = time();
+                                        }
+ 
+                                        // Today
+                                        $today = date('Y-m-j', time());
+                                        ?>
                                         <p>
                                             <strong>Progress:</strong>
                                         </p>
                                         <div class="progress">
+                                            @if ($creator_ids=DB::table('task')->where('id',$id)->value('progress') < 100 && $today < $deadline_date=DB::table('task')->where('id',$id)->value('deadline'))
                                             <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{ $creator_ids=DB::table('task')->where('id',$id)->value('progress') }}%" aria-valuenow="{{ $creator_ids=DB::table('task')->where('id',$id)->value('progress') }}" aria-valuemin="0" aria-valuemax="100">{{ $creator_ids=DB::table('task')->where('id',$id)->value('progress') }}%</div>
+                                            @elseif ($creator_ids=DB::table('task')->where('id',$id)->value('progress') < 100 && $today > $deadline_date=DB::table('task')->where('id',$id)->value('deadline'))
+                                            <div class="progress-bar progress-bar-danger" role="progressbar" style="width: {{ $creator_ids=DB::table('task')->where('id',$id)->value('progress') }}%" aria-valuenow="{{ $creator_ids=DB::table('task')->where('id',$id)->value('progress') }}" aria-valuemin="0" aria-valuemax="100">{{ $creator_ids=DB::table('task')->where('id',$id)->value('progress') }}%</div>
+                                            @elseif ($creator_ids=DB::table('task')->where('id',$id)->value('progress') === 100)
+                                            <div class="progress-bar progress-bar-success" role="progressbar" style="width: {{ $creator_ids=DB::table('task')->where('id',$id)->value('progress') }}%" aria-valuenow="{{ $creator_ids=DB::table('task')->where('id',$id)->value('progress') }}" aria-valuemin="0" aria-valuemax="100">{{ $creator_ids=DB::table('task')->where('id',$id)->value('progress') }}%</div>
+                                            @endif
                                         </div>
 
-
+                                        @if ($creator_ids=DB::table('task')->where('id',$id)->value('progress') < 100 && $today < $deadline_date=DB::table('task')->where('id',$id)->value('deadline'))
                                         <a href="#" data-toggle="modal" data-target="#update-task-modal">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                             <strong>Update</strong>
                                         </a>
+                                        @elseif ($creator_ids=DB::table('task')->where('id',$id)->value('progress') < 100 && $today > $deadline_date=DB::table('task')->where('id',$id)->value('deadline'))
+                                        <p>
+                                            <i class="fa fa-exclamation-triangle"></i>
+                                            <strong>Deadlined Surpassed!</strong>
+                                        </p>
+                                        <a href="#" data-toggle="modal" data-target="#update-task-modal">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                            <strong>Update</strong>
+                                        </a>
+                                        @else
+                                        <p>
+                                            <i class="fa fa-check-circle" style="font-size: 15px"></i>
+                                            <strong>Task Completed!</strong>
+                                        </p>
+                                        @endif
 
                                         <a href="#" data-toggle="modal" data-target="#see-more-task-modal">
                                             <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
@@ -133,13 +173,12 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                         @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
 
     <!-- Modal New Task -->
