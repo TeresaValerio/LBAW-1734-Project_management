@@ -99,7 +99,7 @@
                                             </div>
                                             <div class="card-body">
                                             <?php {{$picture=DB::table("profile_picture")->where("id_user",$userAuth)->value("path");}} ?>
-                                                <img src="{{URL::asset($picture)}}" style="height:125px;">
+                                                <img alt="user picture" src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <p>
                                                     <strong>Username:</strong>
@@ -133,7 +133,7 @@
                                                     $picture='https://visit.nemedic.com/storage/default.jpg';
                                                 }
                                             ?>
-                                                <img src="{{URL::asset($picture)}}" style="height:125px;">
+                                                <img alt="user picture" src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <p>
                                                     <strong>Username:</strong>
@@ -179,7 +179,7 @@
                                                     $picture='https://visit.nemedic.com/storage/default.jpg';
                                                 }
                                             ?>
-                                                <img src="{{URL::asset($picture)}}" style="height:125px;">
+                                                <img alt="user picture" src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <p>
                                                     <strong>Username:</strong>

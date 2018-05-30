@@ -101,7 +101,7 @@
                                                     $picture='https://cdn2.iconfinder.com/data/icons/medicine-3-1/512/checklist-512.png';
                                                 }
                                                 ?>
-                                                <img src="{{URL::asset($picture)}}" style="height:125px;">
+                                                <img alt="project picture" src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <a href={{ url($id.'/projectInfo') }}>
                                                     <p>See more</p>
@@ -142,7 +142,7 @@
                                                         $picture='https://cdn2.iconfinder.com/data/icons/medicine-3-1/512/checklist-512.png';
                                                     }    
                                                 ?>
-                                                <img src="{{URL::asset($picture)}}" style="height:125px;">
+                                                <img alt="project picture" src="{{URL::asset($picture)}}" style="height:125px;">
                                                 <hr />
                                                 <a href={{ url($id.'/projectInfo') }}>
                                                     <p>See more </p>

@@ -82,7 +82,7 @@
                                             $picture='https://visit.nemedic.com/storage/default.jpg';
                                         }
                                     ?>
-                                        <img src="{{URL::asset($picture)}}" style="height:125px;">
+                                        <img alt="user picture" src="{{URL::asset($picture)}}" style="height:125px;">
                                         <hr />
                                         <p>
                                             <strong>Username:</strong>

@@ -140,7 +140,7 @@
                                                             $picture='https://visit.nemedic.com/storage/default.jpg';
                                                         }
                                                     ?>
-                                                    <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$coordinator)->value('full_name')}}">
+                                                    <img alt="profile picture" src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$coordinator)->value('full_name')}}">
                                                 @endif
                                                 
                                                     <?php
@@ -151,7 +151,7 @@
                                                             $picture='https://visit.nemedic.com/storage/default.jpg';
                                                         }
                                                     ?>
-                                                    <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$me)->value('full_name')}}">
+                                                    <img alt="profile picture" src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$me)->value('full_name')}}">
                                                 
                                                 @foreach ($team_ids as $t_id)
                                                     <?php
@@ -162,7 +162,7 @@
                                                             $picture='https://visit.nemedic.com/storage/default.jpg';
                                                         }
                                                     ?>
-                                                    <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$t_id)->value('full_name')}}">
+                                                    <img alt="profile picture" src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$t_id)->value('full_name')}}">
                                                 @endforeach
 
                                                 </div>
