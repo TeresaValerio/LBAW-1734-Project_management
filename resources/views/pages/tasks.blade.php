@@ -74,6 +74,8 @@
                             </a>
                         </div>
                     </div>
+                </div>
+                <div class="well">
                     <div class="row text-center">
                         @foreach ($tasks_ids as $id)
                         <div class="col-sm-4">
