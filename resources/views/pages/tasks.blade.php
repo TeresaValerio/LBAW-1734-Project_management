@@ -154,7 +154,7 @@
                                         </div>
 
                                         @if ($creator_ids=DB::table('task')->where('id',$id)->value('progress') < 100 && $today < $deadline_date=DB::table('task')->where('id',$id)->value('deadline'))
-                                        <a href="#" data-toggle="modal" data-target="#update-task-modal">
+                                        <a href="#" data-upid="{{ $id }}" data-toggle="modal" data-target="#update-task-modal">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                             <strong>Update</strong>
                                         </a>
@@ -163,7 +163,7 @@
                                             <i class="fa fa-exclamation-triangle"></i>
                                             <strong>Deadlined Surpassed!</strong>
                                         </p>
-                                        <a href="#" data-toggle="modal" data-target="#update-task-modal">
+                                        <a href="#" data-upid="{{ $id }}" data-toggle="modal" data-target="#update-task-modal">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                             <strong>Update</strong>
                                         </a>
@@ -174,7 +174,7 @@
                                         </p>
                                         @endif
 
-                                        <a href="#" data-identification="{{ $id }}" data-toggle="modal" data-target="#see-more-task-modal">
+                                        <a class="idmore" href="#" data-identification="{{ $id }}" data-toggle="modal" data-target="#see-more-task-modal">
                                             <button id="see_more_task_details_btn" type="button" class="btn btn-link">See more</button>
                                         </a>
                                     </div>
@@ -188,8 +188,6 @@
             </div>
         </div>
     </div>
-
-    
 
     <!-- Modal New Task -->
     <div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -264,7 +262,7 @@
                     </button>
                     <p>
                         <strong>Update
-                            <i>*Task name*</i>
+                            <i>{{ $task=DB::table('task')->where('id',$id)->value('name') }}</i>
                         </strong>
                     </p>
                 </div>
@@ -278,7 +276,7 @@
                                 <p>
                                     <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                     <span id="text-register-msg">
-                                        <strong>Update's commentaries *</strong>
+                                        <strong>Comment</strong>
                                     </span>
                                 </p>
                             </div>
@@ -306,19 +304,6 @@
                                 <option value="100">100 %</option>
                             </select>
 
-                            <div>
-                                <p>
-                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                    <span id="text-register-msg">
-                                        <strong>Upload file </strong>
-                                    </span>
-                                    <div id="icon-register-msg" class="glyphicon glyphicon-paperclip"></div>
-                                </p>
-                            </div>
-                            <form action="upload.php" method="post" enctype="multipart/form-data">
-                                <input type="file" name="fileToUpload" id="fileToUpload">
-                            </form>
-
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox"> Close task
@@ -326,17 +311,12 @@
                                 <p>(A message will be sent to the task's coordinator for approval)</p>
                             </div>
 
-                            <div>
-                                <p>
-                                    <strong>NOTE: Sections marked with * are of mandatory filling.</strong>
-                                </p>
-                            </div>
-
+                            <p><strong>NOTE:</strong> You must fill at least one of the fields</p>
                             <div class="modal-footer">
                                 <div>
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
+                                    <button type="submit" class="btn btn-info btn-lg btn-block">Update</button>
                                 </div>
-                            </div>
+                                    </div>
 
 
                         </div>
@@ -357,6 +337,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" align="center">
+                <input type="hidden" name="identification" />
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
@@ -397,12 +378,6 @@
     </div>
     <!-- END # MODAL LOGIN -->
 
-    <script>
-        $('#see-more-task-modal').on('show', function(e) {
-    var link     = e.relatedTarget(),
-        id = link.data("identification")
-    });
-    </script>
 
     <!-- Modal New team member -->
     <div class="modal fade" id="new-member-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
