@@ -58,17 +58,25 @@ class BoardController extends Controller
     }
 
     public function team(Request $request){
-        
-        $this->validate($request,[
-            'userID'=>'required',
-            'boardID'=>'required'
-        ]);
 
-        $team=BoardTeam::create([
-            'id_user'=>$request->get('userID'),
-            'id_board'=>$request->get('boardID')
-        ]);
+        $teamMembers=$request->get('teamMember');
+        $boardId=$request->get('id_board');
+
+        if ($teamMembers != NULL){
+            foreach ($teamMembers as $person){
+                if ($person != NULL){
+                    $team=BoardTeam::create([
+                        'id_board'=>$boardId,
+                        'id_user'=>$person
+                    ]);
+                }
+            }
+        }
+
+        return redirect($boardId.'/tasks')->with('success', 'Team member added!');
+
     }
+
 
     /**
      * Display the specified resource.

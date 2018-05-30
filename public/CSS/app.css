@@ -15,11 +15,9 @@ main > header h1 {
 }
 main > header a.button {
   margin: 1em;
-  justify-self: center;
 }
 main > header span {
   margin: 1em;
-  justify-self: center;
 }
 #cards {
   display: grid;
@@ -66,9 +64,9 @@ main > header span {
 #cards article.card li label:hover a {
   display: inline;
 }
-#cards article.card input:checked + span {
+/* #cards article.card input:checked + span {
   text-decoration: var(--primary-color) solid line-through;
-}
+} */
 #cards article.card ul {
   margin: 0;
 }

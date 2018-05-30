@@ -46,7 +46,7 @@ class MessageController extends Controller
         $time=Carbon::now()->toDateTimeString();
         $projectId=$request->get('id_project');
 
-        $meeting=Meeting::create([
+        $meeting=Message::create([
             'message' => $request->get('message_text'),
             'date' => $time,
             'id_user' => $userId,

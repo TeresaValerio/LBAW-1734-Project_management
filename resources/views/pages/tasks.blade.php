@@ -388,7 +388,7 @@
                     <div id="div-forms">
                         <!-- Begin # Login Form -->
     
-                        <form id="login-form" action="/addTeamTask" method='post'>
+                        <form id="login-form" action="/addTeamBoard" method='post'>
                             <div class="modal-body">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <input type="hidden" name="id_board" value="{{$board->id}}">
@@ -397,7 +397,7 @@
                                 $team_project=DB::table('project_team')->where('id_project',$project)->pluck('id_user');
                             ?>
                             @foreach($team_project as $person)
-                                <?php $team_board=DB::table('board_team')->where('id_user',$person)->pluck('id_user'); ?>
+                                <?php $team_board=DB::table('board_team')->where('id_user',$person)->value('id_user'); ?>
                                 @if ($team_board == NULL )
                                 <div class=row>
                                 <?php
@@ -409,7 +409,7 @@
                                     }
                                 ?>
                                 <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$person)->value('full_name')}}">
-                                <input type="checkbox" name="teamMember[{{$person}}]" value="counter_{{$id}}"> {{$user=DB::table('users')->where('id',$person)->value('full_name')}}
+                                <input type="checkbox" name="teamMember[{{$person}}]" value="{{$person}}"> {{$user=DB::table('users')->where('id',$person)->value('full_name')}}
                                 </div>
                                 @endif
                             @endforeach
