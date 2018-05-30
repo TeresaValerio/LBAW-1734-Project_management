@@ -366,6 +366,7 @@
                 </div>
                 <?php 
                     $progress_ids=DB::table('progress_update')->where('id_task',$id)->pluck('id');
+                    $comments_ids=DB::table('comment')->where('id_task',$id)->pluck('id');
                 ?>
                 @foreach ($progress_ids as $p_ids)
                 <div class="thumbnail">
@@ -376,20 +377,21 @@
                         <i>{{$date=DB::table('progress_update')->where('id',$p_ids)->value('date')}}</i> by
                         <i>{{$user=DB::table('users')->where('id',$id_user)->value('full_name')}}</i>
                     </p>
-                    <p>
-                        <strong>Changes made:</strong>
-                    </p>
-                    <p>Progress: <i>{{$progress=DB::table('progress_update')->where('id',$p_ids)->value('new_value')}}</i>%</p>
-                    <p>
-                        <u>Description: </u>Proident enim sint amet exercitation est aliquip ullamco elit proident ea commodo
-                        et pariatur dolore. Laborum eiusmod nostrud esse elit non occaecat duis est. Quis nisi proident nisi
-                        exercitation ut fugiat labore. Do dolore officia officia cillum irure laborum qui quis nostrud laborum.
-                        Aliqua sit aute labore aliqua nostrud incididunt sunt sunt consequat cillum dolor sint id. In in
-                        consequat adipisicing excepteur incididunt. Nulla esse aliquip mollit est anim duis reprehenderit
-                        qui ut labore.</p>
+                    <p><strong>Progress: </strong><i>{{$progress=DB::table('progress_update')->where('id',$p_ids)->value('new_value')}}</i>%</p>
                 </div>
                 @endforeach
-
+                
+                <div class="thumbnail">
+                @foreach ($comments_ids as $c_ids)
+                    <p>
+                        <?php $id_user=DB::table('comment')->where('id',$c_ids)->value('id_user')?>
+                        <i>{{$date=DB::table('comment')->where('id',$c_ids)->value('date')}}</i> by
+                        <i>{{$user=DB::table('users')->where('id',$id_user)->value('full_name')}}</i>
+                    </p>
+                    <p><strong>Comment: </strong><i>{{$comment=DB::table('comment')->where('id',$c_ids)->value('comment')}}</i></p>
+                    @endforeach
+                </div>
+                
             </div>
         </div>
     </div>
