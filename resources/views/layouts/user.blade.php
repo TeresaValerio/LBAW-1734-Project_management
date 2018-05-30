@@ -41,19 +41,24 @@
                         <?php 
                             $userAuth_id=auth()->user()->id;
                             $not_ids=DB::table('notification')->where('id_user',$userAuth_id)->pluck('id');
+                            $not_unread_ids=DB::table('notification')->where('id_user',$userAuth_id)->where('read', false)->pluck('id');
                         ?>
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             Notifications
                             <span class="badge badge-light">{{$not_numb=DB::table('notification')->where('id_user',$userAuth_id)->where('read', false)->count()}}</span>
                         </a>
                         <ul class="dropdown-menu">
-                            @foreach ($not_ids as $ids)
+                            @foreach ($not_unread_ids as $ids)
+                            <form action= "/notificationRead" method="post" id="name-form">
+                            <input type="hidden" name="id_notification" value="{{$ids}}">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <li>
                                 <p align="center">
                                 {{$notification=DB::table('notification')->where('id',$ids)->value('notification')}}
                                 </p>
                                 <button align="center" class="btn btn-info">Mark as Read</button>
                             </li>
+                            </form>
                             <hr />
                             @endforeach
                         </ul>
