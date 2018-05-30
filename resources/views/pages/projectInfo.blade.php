@@ -98,17 +98,45 @@
             </div>
             <div class="row" style="margin-top:20px">
                 <div class="col-md-4 col-sm-3 display-table-cell v-align">
-                    <h4 align="center">Time spent on boards</h4>
+                    <h4 align="center">Number of users of each board</h4>
                     <canvas id="pieChart" style="max-width: 250px; padding: 0px;"></canvas>
                 </div>
                 <div class="col-md-8 col-sm-9 display-table-cell v-align">
-                    <h4 align="center">Workers involved in each board</h4>
+                    <h4 align="center">Number of tasks of each board</h4>
                     <canvas id="myChart" style="max-width: 900px; padding: 0px;"></canvas>
                 </div>
             </div>
         </div>
     </div>
 
+<?php
+
+$projectId=$project->id;
+
+$boards_names=DB::table('board')->where('id_project',$projectId)->pluck('board.name');
+$n_boards=DB::table('board')->where('id_project',$projectId)->pluck('board.name')->count();
+$boards_ids=DB::table('board')->where('id_project',$projectId)->pluck('id');
+
+
+
+//UTILIZADORES EM CADA BOARD
+foreach ($boards_ids as $board_id){
+    $users=DB::table('board_team')->where('id_board',$board_id)->value('id_user');    
+    $n_users1=count($users);
+    $n_users[]=$n_users1;
+}
+
+//TASKS EM CADA BOARD
+foreach($boards_ids as $board_id){
+    $n_tasks1=DB::table('task')->join('board','task.id_board','=','board.id')->where('board.id',$board_id)->count();
+    $n_tasks[]=$n_tasks1;
+}
+
+
+foreach($boards_names as $label){
+    $labels[]=$label;
+}
+?>
 
 
     <!-- Bootstrap core JavaScript
@@ -121,9 +149,9 @@
         var myPieChart = new Chart(ctxP, {
             type: 'pie',
             data: {
-                labels: ["Collect nuts", "Field recognition", "Nuts storage", "Others"],
+                labels: ["{{$labels[0]}}", "{{$labels[1]}}","{{$labels[2]}}",],
                 datasets: [{
-                    data: [30, 70, 60, 100],
+                    data: ["{{$n_users[0]}}", "{{$n_users[1]}}","{{$n_users[2]}}"],
                     backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
                     hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
                 }]
@@ -139,10 +167,10 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Collect nuts", "Field recognition", "Nuts storage", "Others"],
+                labels: ["{{$labels[0]}}", "{{$labels[1]}}","{{$labels[2]}}",],
                 datasets: [{
-                    label: 'Number of Workers',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: 'Number of tasks',
+                    data: ["{{$n_tasks[0]}}", "{{$n_tasks[1]}}","{{$n_tasks[2]}}"],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
