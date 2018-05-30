@@ -47,13 +47,13 @@
                             Notifications
                             <span class="badge badge-light">{{$not_numb=DB::table('notification')->where('id_user',$userAuth_id)->where('read', false)->count()}}</span>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" align="center">
                             @foreach ($not_ids as $ids)
-                            <li>
-                                <p align="center">
+                            <li align="center">
+                                <p>
                                 {{$notification=DB::table('notification')->where('id',$ids)->value('notification')}}
                                 </p>
-                                <button align="center" class="btn btn-info">Mark as Read</button>
+                                <button class="text-center btn btn-info">Mark as Read</button>
                             </li>
                             <hr />
                             @endforeach
