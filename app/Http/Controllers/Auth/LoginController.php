@@ -28,11 +28,11 @@ class LoginController extends Controller
     $login_password = $req -> input('login_password');
 
 
-    $checkLogin = DB::table('users') -> where ('e_mail',$login_email) -> value('id');
+    $checkLogin = DB::table('users') -> where ('e_mail',$login_email) ->where('password',$login_password)-> value('id');
     $password = DB::table('users') -> where ('e_mail',$login_email) -> value('password');
     $userId = $checkLogin;
 
-	if(count($checkLogin)>0 && (Hash::check($login_password, $password))==true)
+	if(count($checkLogin)>0) //&& (Hash::check($login_password, $password))==true)
 	{
         Auth::loginUsingId($userId);
         return redirect ($userId.'/personalInfo');
