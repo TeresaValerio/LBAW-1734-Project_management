@@ -92,7 +92,7 @@
                                         <div class="row">
                                         <?php $creator_ids=DB::table('task')->where('id',$id)->value('id_creator') ?>
                                         <?php $picture=DB::table("profile_picture")->where("id_user",$creator_ids)->value("path") ?>
-                                                <img src="{{URL::asset($picture)}}" style="height:50px;">
+                                                <img alt="user picture" src="{{URL::asset($picture)}}" style="height:50px;">
                                             <h4>
                                                 <strong>
                                                     Task created by:
@@ -449,7 +449,7 @@
                                         $picture='https://visit.nemedic.com/storage/default.jpg';
                                     }
                                 ?>
-                                <img src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$person)->value('full_name')}}">
+                                <img alt="user picture" src="{{URL::asset($picture)}}" style="height:30px;" title="{{$name=DB::table('users')->where('id',$person)->value('full_name')}}">
                                 <input type="checkbox" name="teamMember[{{$person}}]" value="{{$person}}"> {{$user=DB::table('users')->where('id',$person)->value('full_name')}}
                                 </div>
                                 @endif
