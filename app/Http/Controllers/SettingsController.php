@@ -67,27 +67,6 @@ class SettingsController extends Controller
     }
 
 
-    public function changePrivacy(Request $request){
-
-        $userId = auth()->user()->id;
-
-        //$user = DB::table('users') -> where ('id',$userId)->get();
-        $user = User::where('id',$userId)->first();
-
-        $this->validate($request, [
-            'full_name' => 'required'
-        ]);
-
-        $user_new_full_name = $request -> input('full_name');
-        $user -> full_name = $user_new_full_name;
-
-        $user->save();
-
-        return redirect($userId.'/settings')->with('success', 'Password changed'); 
-        
-    }
-
-
     public function deleteAccount(Request $request){
 
         $userId = auth()->user()->id;
