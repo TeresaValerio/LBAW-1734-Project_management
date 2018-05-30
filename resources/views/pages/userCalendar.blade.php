@@ -3,6 +3,7 @@
 
 @section('content')
  <link rel="stylesheet" href="/CSS/calendar.css">
+ <title>Calendar | {{$userAuth=auth()->user()->full_name}}</title>
 
 <?php
 // Set your timezone!!
@@ -327,18 +328,15 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                         <li class="active">
                             <a href={{ url($person->id.'/userCalendar') }}>
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
-                                <span class="hidden-xs hidden-sm">My Calendar</span>
+                                <span class="hidden-xs hidden-sm">Calendar</span>
                             </a>
                         </li>
-<<<<<<< HEAD
-=======
                         <li>
                             <a href={{ url($person->id.'/userContacts') }}>
                                 <i class="fa fa-info" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Contacts</span>
                             </a>
                         </li>
->>>>>>> a85f91e87ae46c0009e6a8bf3d464fcdc9769e66
                     </ul>
                 </div>
             </div>
