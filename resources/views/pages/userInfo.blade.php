@@ -2,6 +2,33 @@
 
 
 @section('content')
+
+<?php
+
+$userAuth=auth()->user()->id;
+
+    $projects_working_names=DB::table('project_team')->join('projects','project_team.id_project','=','projects.id')->where('id_user',$userAuth)->pluck('projects.name');
+    $n_projects_working=DB::table('project_team')->join('projects','project_team.id_project','=','projects.id')->where('id_user',$userAuth)->pluck('projects.name')->count();
+    $projects_working_ids=DB::table('project_team')->join('projects','project_team.id_project','=','projects.id')->where('id_user',$userAuth)->pluck('projects.id');
+    $projects_created_ids=DB::table('projects')->where('id_coordinator',$userAuth)->pluck('projects.id');
+
+    //BOARDS EM CADA PROJETO
+    foreach ($projects_working_ids as $project_working_id){
+        $n_boards1=DB::table('board')->where('id_project',$project_working_id)->where('board.id_creator',$userAuth)->count() + DB::table('board')->join('board_team','board.id','=','board_team.id_board')->where('board.id_project',$project_working_id)->where('board_team.id_user')->count();
+        $n_boards[]=$n_boards1;
+    }
+
+    //TASKS EM CADA PROJETO
+    foreach($projects_working_ids as $project_working_id){
+        $n_tasks1=DB::table('projects')->join('board','projects.id','=','board.id_project')->join('task','task.id_board','=','board.id')->where('task.id_creator',$userAuth)->where('projects.id',$project_working_id)->count();
+        $n_tasks[]=$n_tasks1;
+    }
+
+    foreach($projects_working_names as $label){
+        $labels[]=$label;
+    }
+    ?>
+
 <title>Info | {{$userAuth=auth()->user()->full_name}}</title>
  <link rel="stylesheet" href="/CSS/userInfo.css">
  <!-- Header -->
@@ -44,7 +71,7 @@
                         </li>
                         <li>
                             <a href={{ url($person->id.'/userContacts') }}>
-                                <i class="fa fa-info" aria-hidden="true"></i>
+                                <i class="fa fa-address-book" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Contacts</span>
                             </a>
                         </li>
@@ -72,19 +99,23 @@
                     </div>
                 </div>
             </div>
+            @if ($n_projects_working >=3){
             <div class="row" style="margin-top:20px">
                 <div class="col-md-4 col-sm-3 display-table-cell v-align">
-                    <h4 align="center">Time spent on boards</h4>
+                    <h4 align="center">Number of boards of each project</h4>
                     <canvas id="pieChart" style="max-width: 250px; padding: 0px;"></canvas>
                 </div>
                 <div class="col-md-8 col-sm-9 display-table-cell v-align">
-                    <h4 align="center">Tasks created in each board</h4>
+                    <h4 align="center">Number of tasks of each project</h4>
                     <canvas id="myChart" style="max-width: 900px; padding: 0px;"></canvas>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 
+    
+@if($n_projects_working >=3){
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Chart -->
@@ -95,10 +126,9 @@
         var myPieChart = new Chart(ctxP, {
             type: 'pie',
             data: {
-
-                labels: ["ACORN", "Tuna FTW","Hive"],
+                labels: ["{{$labels[0]}}", "{{$labels[1]}}", "{{$labels[2]}}",],
                 datasets: [{
-                    data: [300, 50, 100],
+                    data: ["{{$n_boards[0]}}", "{{$n_boards[1]}}", "{{$n_boards[2]}}"],
                     backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C"],
                     hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870"]
                 }]
@@ -114,10 +144,10 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels:  ["ACORN", "Tuna FTW","Hive"],
+                labels:  ["{{$labels[0]}}", "{{$labels[1]}}", "{{$labels[2]}}",],
                 datasets: [{
                     label: '# of Tasks',
-                    data: [12, 19, 3,],
+                    data: ["{{$n_tasks[0]}}", "{{$n_tasks[1]}}", "{{$n_tasks[2]}}"],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -148,7 +178,7 @@
             }
         });
     </script>
-
+@endif
 
     <!-- Chart -->
 

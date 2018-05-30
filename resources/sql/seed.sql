@@ -453,6 +453,13 @@ INSERT INTO Board_team VALUES (6,8);
 INSERT INTO Board_team VALUES (6,9);
 INSERT INTO Board_team VALUES (6,10);
 INSERT INTO Board_team VALUES (6,11);
+INSERT INTO Board_team VALUES (7,1);
+INSERT INTO Board_team VALUES (8,5);
+INSERT INTO Board_team VALUES (8,6);
+INSERT INTO Board_team VALUES (9,8);
+INSERT INTO Board_team VALUES (9,1);
+
+
 
 
 --- COMMENTS ---
