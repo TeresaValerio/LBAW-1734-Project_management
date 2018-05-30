@@ -128,21 +128,7 @@
                                 <input required name="full_name" type="text" class="form-control inputpass" placeholder="Input new full name" id="pass1" /> </p>
                         </div>
                         <div class="form-group">
-                            <input class="btn btn-info" type="submit" value="Submit"> 
-                            <h6>You will receive an email to complete the registration and validation process. 
-                                Be sure to check your spam folders.</h6>
-                        </div>
-                    </form>
-                        
-                    <form action="/changePrivacy" method="post" id="privacy-form" role="form">
-                        <fieldset><legend class="text-left"><h2> E-mail </h2></legend>
-                        <div class="form-group">
-                            <b>Change privacy: </b><input type="checkbox" name="email" value="email">Public <br>
-                        </div>
-                        <div class="form-group">
-                            <input class="btn btn-info" type="submit" name="submit_reg" value="Submit"> 
-                            <h6>You will receive an email to complete the registration and validation process. 
-                                Be sure to check your spam folders.</h6>
+                            <input class="btn btn-info" type="submit" value="Submit">
                         </div>
                     </form>
 

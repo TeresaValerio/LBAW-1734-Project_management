@@ -96,38 +96,6 @@
             type: 'pie',
             data: {
 
-                
-                {{ $projects_working_names=DB::table('project_team')->join('projects','project_team.id_project','=','project.id')->where('id_user',$userAuth)->pluck('projects.name') }}
-                {{ $projects_created_names=DB::table('projects')->where('id_coordinator',$userAuth)->pluck('projects.name') }}
-                {{ $projects_working_ids=DB::table('project_team')->join('projects','project_team.id_project','=','project.id')->where('id_user',$userAuth)->pluck('projects.id') }}
-                {{ $projects_created_ids=DB::table('projects')->where('id_coordinator',$userAuth)->pluck('projects.id') }}
-
-                //BOARDS EM CADA PROJETO
-                @foreach ($projects_working_ids as $project_working_id){
-                    n_boards1=DB::table('board')->where('id_project',$project_working_id)->where('board.id_creator',$userAuth)->count() + DB::table('board')->join('board_team','board.id','=','board_team.id_board')->where('board.id_project',$projectId)->where('board_team.id_user')->count();
-                }
-                @foreach ($projects_created_ids as $project_created_id){
-                    n_boards1=DB::table('board')->where('id_project',$project_working_id)->where('board.id_creator',$userAuth)->count() + DB::table('board')->join('board_team','board.id','=','board_team.id_board')->where('board.id_project',$projectId)->where('board_team.id_user')->count();
-                }
-
-                //TASKS EM CADA PROJETO
-                @foreach($projects_working_ids as $project_working_id){
-                    n_tasks1=DB::table('projects')->join('board','projects.id','=','board.id_project')->join('task','task.id_board','=','board.id')->where('task.id_creator',$userAuth)->count();
-                }
-                @foreach($projects_created_ids as $project_working_id){
-                    n_tasks2=DB::table('projects')->join('board','projects.id','=','board.id_project')->join('task','task.id_board','=','board.id')->where('task.id_creator',$userAuth)->count();
-                }
-
-                // USERS POR BOARD
-                {{ $boards_ids=DB::table('board')->where('id_project',$projectId)->pluck('id') }}
-
-                @foreach($boards_ids as $board_id){
-                    n_users=DB::table('board_team')->where('id_board',$board_id)->count()+1;
-                }
-                @foreach($boards_ids as $board_id){
-                    n_tasks=DB::table('task')->where('id_board',$board_id)->count();
-                }
-
                 labels: ["ACORN", "Tuna FTW","Hive"],
                 datasets: [{
                     data: [300, 50, 100],
