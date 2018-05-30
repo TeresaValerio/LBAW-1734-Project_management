@@ -47,7 +47,7 @@
                         </li>
                         <li class="active">
                             <a href={{ url($person->id.'/userContacts') }}>
-                                <i class="fa fa-info" aria-hidden="true"></i>
+                                <i class="fa fa-address-book" aria-hidden="true"></i>
                                 <span class="hidden-xs hidden-sm">Contacts</span>
                             </a>
                         </li>
