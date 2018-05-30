@@ -323,6 +323,10 @@ Route::get('/explore', function () {
     return view('pages.explore');
 });
 
+Route::get('/faq',function(){
+    return view('pages.faq');
+});
+
 ////////////////////////
 ///// PROJECT FORUM ////
 ////////////////////////

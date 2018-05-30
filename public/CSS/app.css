@@ -1,6 +1,7 @@
 body {
   background-color: #ffffff;
   color: #9b4dca;
+  line-height: 1.4;
 }
 main > header {
   display: grid;

@@ -70,10 +70,10 @@
                                 <a href={{ url($userAuth=auth()->user()->id.'/settings') }}>Account Settings</a>
                             </li>
                             <li>
-                                <a href={{ url('/logout') }}>Log Out</a>
+                                <a href={{ url('/faq')}}>FAQ</a>
                             </li>
                             <li>
-                                <a href="administration.html">Administration</a>
+                                <a href={{ url('/logout') }}>Log Out</a>
                             </li>
                         </ul>
                     </li>
